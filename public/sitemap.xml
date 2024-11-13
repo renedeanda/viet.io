@@ -734,6 +734,10 @@
                       </url>
                   
                       <url>
+                          <loc>https://localhost:3000/company/smartr</loc>
+                      </url>
+                  
+                      <url>
                           <loc>https://localhost:3000/company/sobanhang</loc>
                       </url>
                   
