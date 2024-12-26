@@ -12,27 +12,39 @@ export default function Page({ children, inverted, footerHidden }: { children: R
         <Navbar
           openDrawer={() => visible ? setVisible(false) : setVisible(true)} />
         <div style={{
-          marginTop: '56px',
+          position: 'fixed',
+          top: '56px',
+          left: 0,
+          right: 0,
+          zIndex: 10,
           padding: '0.5em 1em',
-          backgroundColor: '#f7fafc',
-          color: '#1a202c',
+          backgroundColor: '#6b46c1',
+          color: '#ffffff',
           fontSize: '14px',
-          borderBottom: '1px solid #e2e8f0',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-          <a 
-            href="https://rede.io/?utm_source=Viet.io" 
+          <a
+            href="https://rede.io/?utm_source=Viet.io"
             style={{
-              fontWeight: 'bold',
+              fontWeight: '500',
               textDecoration: 'none',
               color: 'inherit',
+              transition: 'opacity 0.2s ease',
+            }}
+            onMouseOver={(e: React.MouseEvent<HTMLAnchorElement>) => {
+              const target = e.currentTarget;
+              target.style.opacity = '0.9';
+            }}
+            onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => {
+              const target = e.currentTarget;
+              target.style.opacity = '1';
             }}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Check out 📚 Rede.io for your daily tech newsletter!
+            Interested in AI & tech? Subscribe to the Daily Rede Newsletter 🤖✨
           </a>
         </div>
         {children}
