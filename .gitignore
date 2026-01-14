@@ -32,3 +32,6 @@ yarn-error.log*
 
 # image optimization cache
 .image-optimization-cache.json
+
+# typescript build cache
+tsconfig.tsbuildinfo
