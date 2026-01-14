@@ -1,9 +1,23 @@
 import Link from 'next/link';
 import { Container, Menu, Icon } from 'semantic-ui-react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 export default function Navbar({ openDrawer }: { openDrawer: () => void; }) {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div

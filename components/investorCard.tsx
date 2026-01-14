@@ -1,9 +1,7 @@
-import {
-  Card,
-  Label
-} from 'semantic-ui-react';
 import Image from 'next/image';
 import { Investor } from '../types/investor.types';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 export default function InvestorCard({ investor, setInvType, openInvestor }: {
   investor: Investor,
@@ -16,17 +14,13 @@ export default function InvestorCard({ investor, setInvType, openInvestor }: {
 
   return (
     <Card
-      as='a'
       onClick={(e) => {
         openInvestor(investor);
       }}
-      key={investor.slug}
-      fluid
-      link
-      color='yellow'
-      style={{ maxWidth: '360px', margin: '0.5em' }}>
-      <Card.Content textAlign='left'>
-      <div>
+      className="max-w-[360px] m-2 cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02] bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700"
+    >
+      <CardContent className="pt-6 text-left">
+        <div className="mb-3">
           {avatarSrc ?
             <Image
               quality={60}
@@ -34,28 +28,30 @@ export default function InvestorCard({ investor, setInvType, openInvestor }: {
               height={56}
               width={56}
               src={avatarSrc}
-              className='card-avatar' />
+              className="rounded-lg"
+            />
             : null
           }
         </div>
-        <h2 className='card-title' style={{ marginTop: 0, marginBottom: '8px' }}>{investor.name}</h2>
-        <p style={{ fontSize: '1.1em', marginTop: '8px' }} className='tagline'>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2 truncate">
+          {investor.name}
+        </h2>
+        <p className="text-sm text-slate-600 dark:text-slate-400 italic line-clamp-2 mt-2">
           {investor.description}
         </p>
-      </Card.Content>
-      <Card.Content extra textAlign='right' style={{ backgroundColor: 'var(--card-bg)', borderTop: '1px solid var(--border-color)' }}>
-        <Label
-          style={{
-            color: 'var(--accent-primary)',
-            borderColor: 'var(--accent-primary)',
-            fontFamily: 'Nunito',
-            backgroundColor: 'transparent'
-          }}
+      </CardContent>
+      <CardFooter className="justify-end border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+        <Badge
+          variant="outline"
+          className="cursor-pointer border-purple-500 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-950"
           onClick={(e) => {
             e.stopPropagation();
             setInvType(investor.type)
-          }} circular basic>{investor.type}</Label>
-      </Card.Content>
-    </Card >
+          }}
+        >
+          {investor.type}
+        </Badge>
+      </CardFooter>
+    </Card>
   )
 }

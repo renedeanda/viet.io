@@ -1,10 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import {
-  Grid,
-  Header,
-  Container,
-  Loader
-} from 'semantic-ui-react';
 import fs from 'fs';
 import path from 'path';
 import Page from '../../components/page';
@@ -85,39 +79,41 @@ export default function Home({ companies }: { companies: any[] }) {
         canonical='https://viet.io/companies' />
 
       <Page>
-        <Container style={{ width: '100vw', margin: '3em 0' }}>
-          <Grid
-            container
-            stackable
-            textAlign='center'
-            verticalAlign='middle'>
-            <Grid.Row style={{ marginTop: '60px', padding: '0.5em' }}>
-              <Grid.Column>
-                <Header
-                  style={{ color: 'var(--text-primary)', fontSize: '3em', wordWrap: 'break-word' }}>
-                  Find <text style={{ color: 'var(--accent-primary)' }}>Vietnam Companies</text>
-                </Header>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row style={{ padding: 0, margin: 0 }}>
+        <div className="w-full my-12 px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Header */}
+            <div className="text-center mt-16 mb-8">
+              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white">
+                Find <span className="text-purple-600 dark:text-purple-400">Vietnam Companies</span>
+              </h1>
+            </div>
+
+            {/* Search */}
+            <div className="mb-8">
               <MySearch items={companies} openItem={openCompany} type='companies' />
-            </Grid.Row>
-            <Grid.Row style={{ padding: 0, margin: 0 }}>
+            </div>
+
+            {/* Industry Filter Buttons */}
+            <div className="mb-8">
               <IndustryButtons setIndustry={setIndustry} industry={industry} filteredLength={filteredCos.length} />
-            </Grid.Row>
-            <Grid.Row style={{ padding: 0, margin: 0 }}>
+            </div>
+
+            {/* Company Cards Grid */}
+            <div className="flex flex-wrap justify-center gap-4">
               {currentCos && currentCos.length > 0 ?
                 currentCos.map((item: any) =>
                   <CompanyCard key={item.data.slug} company={item.data} setIndustry={setIndustry} openCompany={openCompany} />)
-                : <p style={{ margin: '3em', color: 'var(--accent-primary)', fontSize: '2em', textAlign: 'center' }}>{`No ${industry} companies`}</p>}
-            </Grid.Row>
+                : <p className="my-12 text-purple-600 dark:text-purple-400 text-2xl text-center w-full">{`No ${industry} companies`}</p>}
+            </div>
+
+            {/* Loading Indicator */}
             {filteredCos.length > 0 && currentPage !== maxPage ? (
-              <div ref={setElement}>
-                <Loader style={{ margin: '3em' }} active inline='centered' />
+              <div ref={setElement} className="flex justify-center my-12">
+                <div className="animate-spin h-8 w-8 border-4 border-purple-500 border-t-transparent rounded-full"></div>
               </div>
             ) : null}
-          </Grid>
-        </Container>
+          </div>
+        </div>
       </Page>
     </div>
   )

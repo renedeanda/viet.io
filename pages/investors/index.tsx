@@ -1,6 +1,5 @@
 import Page from '../../components/page';
 import Meta from '../../components/Meta';
-import { Container, Grid, Header, Loader } from 'semantic-ui-react';
 import { GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';
@@ -107,77 +106,62 @@ export default function Investors({ investors }: { investors: Investor[] }) {
       <Meta
         title='Viet.io - Vietnam Investors'
         desc='List of 200+ Vietnam startups and big tech companies. Viet.io is an open-source website built with React and Next.js listing 200+ technology companies in Vietnam.'
-        canonical='https://viet.io/investors' 
+        canonical='https://viet.io/investors'
       />
       <Page>
-        <Container style={{ width: '100vw', margin: '3em 0' }}>
-          <Grid
-            container
-            stackable
-            textAlign='center'
-            verticalAlign='middle'
-          >
-            <Grid.Row style={{ marginTop: '60px', padding: '0.5em' }}>
-              <Grid.Column>
-                <Header style={{
-                  color: 'var(--text-primary)',
-                  fontSize: '3em',
-                  wordWrap: 'break-word'
-                }}>
-                  Find <text style={{ color: 'var(--accent-primary)' }}>Vietnam Investors</text>
-                </Header>
-              </Grid.Column>
-            </Grid.Row>
+        <div className="w-full my-12 px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Header */}
+            <div className="text-center mt-16 mb-8">
+              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white">
+                Find <span className="text-purple-600 dark:text-purple-400">Vietnam Investors</span>
+              </h1>
+            </div>
 
-            <Grid.Row style={{ padding: 0, margin: 0 }}>
-              <MySearch 
-                items={investors} 
-                openItem={openInvestor} 
-                type='investors' 
+            {/* Search */}
+            <div className="mb-8">
+              <MySearch
+                items={investors}
+                openItem={openInvestor}
+                type='investors'
               />
-            </Grid.Row>
+            </div>
 
-            <Grid.Row style={{ padding: 0, margin: 0 }}>
-              <InvTypeButtons 
-                setInvType={setInvType} 
-                invType={invType} 
-                filteredLength={filteredInvs.length} 
+            {/* Type Filter Buttons */}
+            <div className="mb-8">
+              <InvTypeButtons
+                setInvType={setInvType}
+                invType={invType}
+                filteredLength={filteredInvs.length}
               />
-            </Grid.Row>
+            </div>
 
-            <Grid.Row style={{ padding: 0, margin: 0 }}>
+            {/* Investor Cards Grid */}
+            <div className="flex flex-wrap justify-center gap-4">
               {currentInvs && currentInvs.length > 0 ? (
                 currentInvs.map((item: { data: Investor }) => (
-                  <InvestorCard 
-                    key={item.data.slug} 
-                    investor={item.data} 
-                    setInvType={setInvType} 
-                    openInvestor={openInvestor} 
+                  <InvestorCard
+                    key={item.data.slug}
+                    investor={item.data}
+                    setInvType={setInvType}
+                    openInvestor={openInvestor}
                   />
                 ))
               ) : (
-                <p style={{
-                  margin: '3em',
-                  color: 'var(--accent-primary)',
-                  fontSize: '2em',
-                  textAlign: 'center'
-                }}>
+                <p className="my-12 text-purple-600 dark:text-purple-400 text-2xl text-center w-full">
                   {`No ${invType} investors`}
                 </p>
               )}
-            </Grid.Row>
+            </div>
 
+            {/* Loading Indicator */}
             {filteredInvs.length > 0 && currentPage !== maxPage ? (
-              <div ref={setElement}>
-                <Loader
-                  style={{ margin: '3em' }}
-                  active
-                  inline='centered'
-                />
+              <div ref={setElement} className="flex justify-center my-12">
+                <div className="animate-spin h-8 w-8 border-4 border-purple-500 border-t-transparent rounded-full"></div>
               </div>
             ) : null}
-          </Grid>
-        </Container>
+          </div>
+        </div>
       </Page>
     </>
   );
