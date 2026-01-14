@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { Container, Menu, Icon } from 'semantic-ui-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function Navbar({ openDrawer }: { openDrawer: () => void; }) {
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div
@@ -21,6 +23,15 @@ export default function Navbar({ openDrawer }: { openDrawer: () => void; }) {
                 size='large'
                 name='bars'
                 className='hamburger' />
+            </Menu.Item>
+            <Menu.Item
+              className='button-item theme-toggle'
+              onClick={toggleTheme}
+              style={{ cursor: 'pointer' }}>
+              <Icon
+                name={theme === 'dark' ? 'sun' : 'moon'}
+                size='large'
+                className='navbar-text2' />
             </Menu.Item>
             <Menu.Item
               as='a'

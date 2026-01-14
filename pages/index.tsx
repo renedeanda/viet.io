@@ -19,35 +19,81 @@ export default function Home() {
 
       <Page inverted footerHidden>
         <div className='hero-image' />
-        <Container style={{ width: '100vw', margin: '3em 0' }}>
+        <Container style={{ width: '100vw', margin: '0', padding: '0' }}>
           <Grid
             container
             stackable
             textAlign='center'
-            verticalAlign='middle'>
-            <Grid.Row style={{ marginTop: '80px', padding: '0.5em' }}>
+            verticalAlign='middle'
+            style={{ minHeight: 'calc(100vh - 56px)' }}>
+            <Grid.Row style={{ padding: '2em 1em' }}>
               <Grid.Column>
                 <Header
-                  style={{ color: '#fafafa', fontSize: '3em', wordWrap: 'break-word' }}>
+                  as='h1'
+                  style={{
+                    color: '#fafafa',
+                    fontSize: 'clamp(2em, 5vw, 3.5em)',
+                    wordWrap: 'break-word',
+                    marginBottom: '0.5em',
+                    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)'
+                  }}>
                   <div>Vietnam Startup Ecosystem</div>
-                  <div style={{ color: '#BEBEFF' }}>Open-sourced</div>
+                  <div style={{
+                    color: '#BEBEFF',
+                    fontSize: '0.6em',
+                    marginTop: '0.3em',
+                    fontWeight: 'normal'
+                  }}>Open-sourced</div>
                 </Header>
-                <Button
-                  as='a'
-                  style={{ display: 'inline-block', margin: '0.3em' }}
-                  color='violet'
-                  icon='building outline'
-                  content='Find Companies'
-                  href='/companies'
-                  rel="noopener" />
-                <Button
-                  as='a'
-                  style={{ display: 'inline-block', margin: '0.3em' }}
-                  color='violet'
-                  icon='chart line'
-                  content='Find Investors'
-                  href='/investors'
-                  rel="noopener" />
+                <div style={{
+                  marginTop: '2em',
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '1em',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}>
+                  <Button
+                    as='a'
+                    size='large'
+                    color='violet'
+                    icon='building outline'
+                    content='Find Companies'
+                    href='/companies'
+                    rel="noopener"
+                    style={{
+                      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+                      transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.3)';
+                    }} />
+                  <Button
+                    as='a'
+                    size='large'
+                    color='violet'
+                    icon='chart line'
+                    content='Find Investors'
+                    href='/investors'
+                    rel="noopener"
+                    style={{
+                      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+                      transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.3)';
+                    }} />
+                </div>
               </Grid.Column>
             </Grid.Row>
           </Grid>

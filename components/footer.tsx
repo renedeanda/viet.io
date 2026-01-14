@@ -17,10 +17,18 @@ export default function Footer(
         <Segment
           inverted
           vertical
-          style={{ width: '100vw', backgroundColor: inverted ? 'transparent' : '#F5F5F7', padding: '5em 0em' }}>
+          style={{
+            width: '100vw',
+            backgroundColor: inverted ? 'transparent' : 'var(--bg-primary)',
+            padding: '5em 0em',
+            border: 'none'
+          }}>
           <Container textAlign='center'>
             <a
-              style={{ color: inverted ? '#BEBEFF' : null, fontSize: '1.2em' }}
+              style={{
+                color: inverted ? 'var(--text-tertiary)' : 'var(--text-secondary)',
+                fontSize: '1.2em'
+              }}
               className='card-link'
               href='https://www.renedeanda.com' target='_blank'>
               {`© ${new Date().getFullYear()} Open-source Project by `}<b>René DeAnda</b></a>

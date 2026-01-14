@@ -2,46 +2,20 @@ import { useState } from 'react';
 import Navbar from './navbar';
 import Footer from './footer';
 import { Menu, Icon, Sidebar } from 'semantic-ui-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function Page({ children, inverted, footerHidden }: { children: React.ReactNode, inverted?: boolean, footerHidden?: boolean }) {
   const [visible, setVisible] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <>
-      <main style={{ backgroundColor: inverted ? 'transparent' : '#F5F5F7' }}>
+      <main style={{
+        backgroundColor: inverted ? 'transparent' : 'var(--bg-primary)',
+        minHeight: '100vh'
+      }}>
         <Navbar
           openDrawer={() => visible ? setVisible(false) : setVisible(true)} />
-        <a
-          href="https://rede.io/?utm_source=viet.io"
-          style={{
-            position: 'fixed',
-            top: '56px',
-            left: 0,
-            right: 0,
-            zIndex: 10,
-            padding: '0.5em 1em',
-            backgroundColor: '#6b46c1',
-            color: '#ffffff',
-            fontSize: '14px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            textDecoration: 'none',
-            transition: 'opacity 0.2s ease',
-          }}
-          onMouseOver={(e: React.MouseEvent<HTMLAnchorElement>) => {
-            const target = e.currentTarget;
-            target.style.opacity = '0.9';
-          }}
-          onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => {
-            const target = e.currentTarget;
-            target.style.opacity = '1';
-          }}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Interested in AI & tech? Subscribe to the Daily Rede Newsletter 🤖✨
-        </a>
         {children}
         <Sidebar
           className='sidebar-menu'
@@ -54,6 +28,16 @@ export default function Page({ children, inverted, footerHidden }: { children: R
           <Menu.Item style={{ display: 'flex', justifyContent: 'right' }} onClick={() => { setVisible(false) }}>
             <div className='navbar-text2'>
               <Icon name='close' /></div>
+          </Menu.Item>
+          <Menu.Item
+            onClick={toggleTheme}
+            style={{ cursor: 'pointer' }}>
+            <div
+              style={{ padding: '0.5em' }}
+              className='navbar-text2'>
+              <Icon name={theme === 'dark' ? 'sun' : 'moon'} />
+              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            </div>
           </Menu.Item>
           <Menu.Item
             as='a'

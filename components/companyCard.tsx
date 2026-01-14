@@ -46,9 +46,14 @@ export default function CompanyCard({ company, setIndustry, openCompany }: {
               ? company.description : null}
         </p>
       </Card.Content>
-      <Card.Content extra textAlign='right'>
+      <Card.Content extra textAlign='right' style={{ backgroundColor: 'var(--card-bg)', borderTop: '1px solid var(--border-color)' }}>
         <Label
-          style={{ color: '#0C5FFF', borderColor: '#0C5FFF', fontFamily: 'Nunito' }}
+          style={{
+            color: 'var(--accent-primary)',
+            borderColor: 'var(--accent-primary)',
+            fontFamily: 'Nunito',
+            backgroundColor: 'transparent'
+          }}
           onClick={(e) => {
             e.stopPropagation();
             setIndustry(company.industry)

@@ -58,7 +58,7 @@ export default function CompanyContainer({ company, modal }: {
               }
             </div>
             <Header style={{
-              color: '#1A202C',
+              color: 'var(--text-primary)',
               marginTop: 0,
               marginBottom: '8px',
               fontSize: '2.5em',
@@ -72,11 +72,17 @@ export default function CompanyContainer({ company, modal }: {
               rel="noreferrer">
               <Icon name='external' />{company.website}</a>
             {company.tagline ? <p
-              style={{ color: '#555B66', marginTop: '8px', fontStyle: 'italic', fontSize: '1.1em', wordWrap: 'break-word', fontFamily: 'Nunito' }}
+              style={{ color: 'var(--text-secondary)', marginTop: '8px', fontStyle: 'italic', fontSize: '1.1em', wordWrap: 'break-word', fontFamily: 'Nunito' }}
             >{company.tagline}</p>
               : null}
             <div>
-              <Label style={{ marginTop: '8px', color: '#0C5FFF', borderColor: '#0C5FFF', fontFamily: 'Nunito' }} circular basic >{company.industry}</Label>
+              <Label style={{
+                marginTop: '8px',
+                color: 'var(--accent-primary)',
+                borderColor: 'var(--accent-primary)',
+                fontFamily: 'Nunito',
+                backgroundColor: 'transparent'
+              }} circular basic >{company.industry}</Label>
             </div>
             <div style={{ marginTop: '8px' }}>
               <LinkButtons company={company} isTextList />
@@ -84,13 +90,14 @@ export default function CompanyContainer({ company, modal }: {
             {company.description ?
               <>
                 <Header dividing style={{
-                  color: '#1A202C',
-                  fontSize: '1.4em'
+                  color: 'var(--text-primary)',
+                  fontSize: '1.4em',
+                  borderColor: 'var(--border-color)'
                 }}>About</Header>
                 {company.description.split('\n').map((item, i) => {
                   return <p style={{
                     marginBottom: '1em',
-                    color: '#555B66',
+                    color: 'var(--text-secondary)',
                     lineHeight: '1.1em',
                     fontSize: '1.33em',
                     wordWrap: 'break-word',

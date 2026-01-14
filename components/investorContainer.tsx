@@ -48,7 +48,7 @@ export default function InvestorContainer({ investor, modal }: {
               }
             </div>
             <Header style={{
-              color: '#1A202C',
+              color: 'var(--text-primary)',
               marginTop: 0,
               marginBottom: '8px',
               fontSize: '2.5em',
@@ -67,13 +67,14 @@ export default function InvestorContainer({ investor, modal }: {
             {investor.description || investor.type || investor.location || investor.founded ?
               <>
                 <Header dividing style={{
-                  color: '#1A202C',
-                  fontSize: '1.4em'
+                  color: 'var(--text-primary)',
+                  fontSize: '1.4em',
+                  borderColor: 'var(--border-color)'
                 }}>About</Header>
                 {investor.description ? investor.description.split('\n').map((item, i) => {
                   return <p style={{
                     marginBottom: '1em',
-                    color: '#555B66',
+                    color: 'var(--text-secondary)',
                     lineHeight: '1.1em',
                     fontSize: '1.33em',
                     wordWrap: 'break-word',
@@ -85,14 +86,14 @@ export default function InvestorContainer({ investor, modal }: {
                   <div>
                     <p style={{
                       marginTop: '16px',
-                      color: '#555B66',
+                      color: 'var(--text-secondary)',
                       lineHeight: '1em',
                       fontSize: '1.2em',
                       fontFamily: 'Nunito',
                       fontWeight: 'bold'
                     }}>Type of Investor</p>
                     <p style={{
-                      color: '#555B66',
+                      color: 'var(--text-secondary)',
                       lineHeight: '1em',
                       fontSize: '1.2em',
                       fontFamily: 'Nunito'
@@ -102,14 +103,14 @@ export default function InvestorContainer({ investor, modal }: {
                   <div>
                     <p style={{
                       marginTop: '16px',
-                      color: '#555B66',
+                      color: 'var(--text-secondary)',
                       lineHeight: '1em',
                       fontSize: '1.2em',
                       fontFamily: 'Nunito',
                       fontWeight: 'bold'
                     }}>Headquarters</p>
                     <p style={{
-                      color: '#555B66',
+                      color: 'var(--text-secondary)',
                       lineHeight: '1em',
                       fontSize: '1.2em',
                       fontFamily: 'Nunito'
@@ -119,14 +120,14 @@ export default function InvestorContainer({ investor, modal }: {
                   <div>
                     <p style={{
                       marginTop: '16px',
-                      color: '#555B66',
+                      color: 'var(--text-secondary)',
                       lineHeight: '1em',
                       fontSize: '1.2em',
                       fontFamily: 'Nunito',
                       fontWeight: 'bold'
                     }}>Founded</p>
                     <p style={{
-                      color: '#555B66',
+                      color: 'var(--text-secondary)',
                       lineHeight: '1em',
                       fontSize: '1.2em',
                       fontFamily: 'Nunito'
