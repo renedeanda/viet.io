@@ -67,8 +67,7 @@ export default function Investors({ investors }: { investors: Investor[] }) {
   const currentInvs = currentData();
 
   // Intersection Observer setup for infinite scroll
-  const observer = useRef<IntersectionObserver>();
-  const prevY = useRef(0);
+  const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     observer.current = new IntersectionObserver(
@@ -76,15 +75,20 @@ export default function Investors({ investors }: { investors: Investor[] }) {
         const firstEntry = entries[0];
         if (!firstEntry) return;
 
-        const y = firstEntry.boundingClientRect.y;
-        if (prevY.current > y) {
+        // If the loading element is visible and we're not on the last page, load more
+        if (firstEntry.isIntersecting && currentPage < maxPage) {
           next();
         }
-        prevY.current = y;
       },
-      { threshold: 0.5 }
+      { threshold: 0.1, rootMargin: '100px' }
     );
-  }, [next]);
+
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    };
+  }, [currentPage, maxPage, next]);
 
   useEffect(() => {
     const currentElement = element;

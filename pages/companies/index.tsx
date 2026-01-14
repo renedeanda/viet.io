@@ -39,33 +39,37 @@ export default function Home({ companies }: { companies: any[] }) {
   const currentCos = currentData();
   const [element, setElement] = useState(null);
 
-  const observer = useRef<IntersectionObserver>();
-  const prevY = useRef(0);
+  const observer = useRef<IntersectionObserver | null>(null);
+
   useEffect(() => {
     observer.current = new IntersectionObserver(
       (entries) => {
         const firstEntry = entries[0];
-        const y = firstEntry.boundingClientRect.y;
-
-        if (prevY.current > y) {
+        // If the loading element is visible and we're not on the last page, load more
+        if (firstEntry.isIntersecting && currentPage < maxPage) {
           next();
         }
-        prevY.current = y;
       },
-      { threshold: 0.5 }
+      { threshold: 0.1, rootMargin: '100px' }
     );
-  });
+
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    };
+  }, [currentPage, maxPage, next]);
 
   useEffect(() => {
     const currentElement = element;
     const currentObserver = observer.current;
 
-    if (currentElement) {
+    if (currentElement && currentObserver) {
       currentObserver.observe(currentElement);
     }
 
     return () => {
-      if (currentElement) {
+      if (currentElement && currentObserver) {
         currentObserver.unobserve(currentElement);
       }
     };
