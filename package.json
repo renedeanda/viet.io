@@ -6,11 +6,12 @@
   "scripts": {
     "next-build-export": "next build && next export",
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run optimize:images && next build",
     "start": "next start",
     "now-dev": "npm run semantic:build && next dev",
     "export": "next export",
-    "now-build": "npm run semantic:build && next build",
+    "now-build": "npm run semantic:build && npm run optimize:images && next build",
+    "optimize:images": "node scripts/optimize-images.js",
     "semantic:build": "cd semantic && gulp build-css build-assets",
     "semantic:watch": "cd semantic && npm run semantic:build && gulp watch",
     "lint": "eslint .",
@@ -34,6 +35,7 @@
     "eslint-config-next": "^14.0.4",
     "globby": "^14.0.0",
     "raw-loader": "^4.0.2",
+    "sharp": "^0.33.5",
     "typescript": "^5.3.3"
   }
 }
