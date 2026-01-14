@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { withHttp } from '../util/helpers';
-import ShareMenu from './shareMenu';
 import { Investor } from '../types/investor.types';
 import LinkButtons from './linkButtons';
 import { Card, CardContent } from '@/components/ui/card';
@@ -20,10 +19,7 @@ export default function InvestorContainer({ investor, modal }: {
     <div className={`flex justify-center min-h-screen px-4 ${contPadding}`}>
       <Card className="w-full max-w-3xl bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-700">
         <CardContent className="p-6 pb-24">
-          <div className="flex justify-end mb-4">
-            <ShareMenu url={`${process.env.PUBLIC_URL}/investors/${investor.slug}`} />
-          </div>
-          <div className="mb-4">
+          <div className="mb-6">
             {avatarSrc && (
               <Image
                 quality={60}

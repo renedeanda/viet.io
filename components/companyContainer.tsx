@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { withHttp } from '../util/helpers';
-import ShareMenu from './shareMenu';
 import LinkButtons from './linkButtons';
 import { Company } from '../types/company.types';
 import { Badge } from '@/components/ui/badge';
@@ -31,23 +30,21 @@ export default function CompanyContainer({ company, modal }: {
             src={screenSrc}
             className="w-full h-auto rounded-t-lg object-cover"
           />
-        </div>
-        <CardContent className="p-6 pb-24">
-          <div className="flex justify-end mb-4">
-            <ShareMenu url={`${process.env.PUBLIC_URL}/company/${company.slug}`} />
-          </div>
-          <div className="-mt-24 mb-4">
-            {avatarSrc && (
+          {/* Avatar overlapping the screenshot */}
+          {avatarSrc && (
+            <div className="absolute -bottom-12 left-6">
               <Image
                 quality={60}
                 alt={company.name}
                 height={100}
                 width={100}
                 src={avatarSrc}
-                className="rounded-xl shadow-lg bg-white p-2"
+                className="rounded-xl shadow-lg bg-white dark:bg-white p-2 border-4 border-white dark:border-[#1e293b]"
               />
-            )}
-          </div>
+            </div>
+          )}
+        </div>
+        <CardContent className="p-6 pb-24 pt-16">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 break-words">
             {company.name}
           </h1>

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Menu, Sun, Moon, Github } from 'lucide-react';
 
 export default function Navbar({ openDrawer }: { openDrawer: () => void; }) {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -12,7 +12,9 @@ export default function Navbar({ openDrawer }: { openDrawer: () => void; }) {
   }, []);
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    // Use resolvedTheme to handle system preference correctly
+    const currentTheme = resolvedTheme || theme;
+    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
   };
 
   if (!mounted) {
@@ -35,7 +37,7 @@ export default function Navbar({ openDrawer }: { openDrawer: () => void; }) {
               className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {resolvedTheme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
 
             <a
