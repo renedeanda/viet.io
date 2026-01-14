@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button } from '@/components/ui/button';
 
 const invTypeOptions = [
   { key: "All", text: "All", value: "All" },
@@ -25,20 +25,30 @@ export default function InvTypeButtons({ invType, filteredLength, setInvType }: 
       }
     })
   }
-  return (
 
-    <div style={{ padding: '1em 0 1.2em 0' }}>
-      {invTypeOptions.map((option, key) =>
-      (<Button
-        key={key}
-        className='industry-button'
-        content={option.value}
-        circular
-        size='tiny'
-        active={!validOption && (option.value.toLowerCase() == "all") ? true : invType.toString().toLowerCase() == option.value.toLowerCase()}
-        onClick={() => setInvType(option.value)}
-        style={{ display: 'inline-block', margin: '0.2em' }} />)
-      )}
+  const isActive = (value: string) => {
+    return !validOption && value.toLowerCase() === "all"
+      ? true
+      : invType.toString().toLowerCase() === value.toLowerCase();
+  };
+
+  return (
+    <div className="flex flex-wrap gap-2 py-4 justify-center">
+      {invTypeOptions.map((option, key) => (
+        <Button
+          key={key}
+          variant={isActive(option.value) ? "default" : "outline"}
+          size="sm"
+          onClick={() => setInvType(option.value)}
+          className={`rounded-full transition-all ${
+            isActive(option.value)
+              ? "bg-purple-600 hover:bg-purple-700 text-white"
+              : "bg-transparent dark:bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+          }`}
+        >
+          {option.value}
+        </Button>
+      ))}
     </div>
   )
 }

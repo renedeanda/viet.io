@@ -1,55 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* shadcn/ui CSS Variables */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 252 82% 58%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 252 82% 58%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 252 82% 66%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 252 82% 66%;
+  }
+}
+
+/* Legacy CSS Variables for Theming (keeping for gradual migration) */
+:root {
+    --bg-primary: #F5F5F7;
+    --bg-secondary: #FFFFFF;
+    --bg-tertiary: #FAFAFA;
+    --text-primary: #1A202C;
+    --text-secondary: #555B66;
+    --text-tertiary: #BEBEFF;
+    --accent-primary: #5131F7;
+    --accent-hover: #6b46c1;
+    --border-color: #CECECF;
+    --card-bg: #FFFFFF;
+    --navbar-bg: #FFFFFF;
+    --footer-bg: #FFFFFF;
+    --hero-overlay: rgba(0, 0, 0, 0.6);
+    --sidebar-bg: #FFFFFF;
+    --button-bg: #FFFFFF;
+    --github-bg: #333333;
+    --github-hover: #111111;
+}
+
+.dark {
+    --bg-primary: #0D1117;
+    --bg-secondary: #161B22;
+    --bg-tertiary: #21262D;
+    --text-primary: #E6EDF3;
+    --text-secondary: #8B949E;
+    --text-tertiary: #7D8590;
+    --accent-primary: #7C5CFF;
+    --accent-hover: #9B7FFF;
+    --border-color: #30363D;
+    --card-bg: #161B22;
+    --navbar-bg: #161B22;
+    --footer-bg: #0D1117;
+    --hero-overlay: rgba(0, 0, 0, 0.7);
+    --sidebar-bg: #161B22;
+    --button-bg: #21262D;
+    --github-bg: #238636;
+    --github-hover: #2EA043;
+}
+
 html {
     font-family: var(--font-nunito);
     font-style: normal;
     font-weight: 400;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
 }
 
 .card-link {
-    color: #555B66;
+    color: var(--text-secondary);
     font-family: 'Nunito';
+    transition: color 0.2s ease;
 }
 
 .card-link:hover {
-    color: #5131F7;
+    color: var(--accent-primary);
 }
 
 .ui.button.github-button {
-    background-color: #333333;
+    background-color: var(--github-bg);
     color: #ffffff;
     font-family: 'Nunito';
+    transition: background-color 0.2s ease;
 }
 
 .ui.button.github-button:hover {
-    background-color: #111111;
+    background-color: var(--github-hover);
     color: #ffffff;
 }
 
 .ui.button.industry-button {
-    color: #555B66;
-    background-color: white;
-    border: 1px solid #CECECF;
+    color: var(--text-secondary);
+    background-color: var(--button-bg);
+    border: 1px solid var(--border-color);
     font-family: 'Nunito';
+    transition: all 0.2s ease;
 }
 
 .ui.button.industry-button:hover {
-    background-color: #5131F7;
+    background-color: var(--accent-primary);
     color: #ffffff;
 }
 
 .ui.button.active.industry-button {
-    background-color: #5131F7;
+    background-color: var(--accent-primary);
     color: #ffffff;
 }
 
 .ui.button.active.industry-button:hover {
-    background-color: #5131F7;
+    background-color: var(--accent-primary);
     color: #ffffff;
 }
 
 .Navbar {
     height: 56px;
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #CECECF;
+    background-color: var(--navbar-bg);
+    border-bottom: 1px solid var(--border-color);
     width: 100%;
     position: fixed;
     top: 0;
@@ -58,6 +160,7 @@ html {
     padding: 0;
     box-sizing: border-box;
     z-index: 90;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .Navbar Menu {
@@ -65,28 +168,30 @@ html {
 }
 
 .navbar-text {
-    color: #555B66;
+    color: var(--text-secondary);
     font-size: 1.5em;
     display: block;
     font-weight: bold;
     font-family: 'Nunito';
+    transition: color 0.2s ease;
 }
 
 .navbar-text:hover {
-    color: #5131F7;
+    color: var(--accent-primary);
     font-size: 1.5em;
     display: block;
 }
 
 .navbar-text2 {
-    color: #555B66;
+    color: var(--text-secondary);
     font-size: 1.2em;
     font-weight: bold;
     font-family: 'Nunito';
+    transition: color 0.2s ease;
 }
 
 .navbar-text2:hover {
-    color: #5131F7;
+    color: var(--accent-primary);
 }
 
 .ui.secondary.menu a.item.button-item {
@@ -94,8 +199,9 @@ html {
 }
 
 .ui.secondary.menu a.item.hamburger-item {
-    color: #555B66;
+    color: var(--text-secondary);
     display: block;
+    transition: color 0.2s ease;
 }
 
 .ui.secondary.menu a.item.main-item:hover, .ui.secondary.menu a.item.hamburger-item:hover {
@@ -103,7 +209,7 @@ html {
 }
 
 .card-title {
-    color: #1A202C;
+    color: var(--text-primary);
     position: 'relative';
     font-size: 1.5em;
     overflow: hidden;
@@ -112,6 +218,7 @@ html {
     -webkit-line-clamp: 1;
     /* number of lines to show */
     -webkit-box-orient: vertical;
+    transition: color 0.3s ease;
 }
 
 .card-image-header {
@@ -143,7 +250,7 @@ html {
 }
 
 .tagline {
-    color: #555B66;
+    color: var(--text-secondary);
     height: 42px;
     font-style: italic;
     font-family: 'Nunito';
@@ -153,17 +260,244 @@ html {
     -webkit-line-clamp: 2;
     /* number of lines to show */
     -webkit-box-orient: vertical;
+    transition: color 0.3s ease;
 }
 
 /* The hero image */
 
 .hero-image {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../public/vietnam.jpg) no-repeat center;
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), url(/vietnam.jpg) no-repeat center;
     background-size: cover;
     position: absolute;
     height: 100vh;
     width: 100vw;
     z-index: -1;
+    transition: background 0.3s ease;
+}
+
+/* Sidebar dark theme support - with important overrides */
+.ui.sidebar.sidebar-menu {
+    background-color: var(--sidebar-bg) !important;
+    transition: background-color 0.3s ease;
+}
+
+.ui.sidebar.sidebar-menu .item {
+    background-color: var(--sidebar-bg) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+.ui.sidebar.sidebar-menu .item:hover {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--accent-primary) !important;
+}
+
+.ui.sidebar.sidebar-menu .item .icon {
+    color: var(--text-secondary) !important;
+}
+
+/* Semantic UI Card dark theme support */
+.ui.card,
+.ui.cards > .card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ui.card:hover,
+.ui.cards > .card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.ui.card > .content,
+.ui.cards > .card > .content {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.ui.card > .content:first-child,
+.ui.cards > .card > .content:first-child {
+    border-top: none;
+}
+
+/* Semantic UI Container dark theme support */
+.ui.container {
+    color: var(--text-primary);
+}
+
+/* Semantic UI Segment dark theme support */
+.ui.segment {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Semantic UI Button dark theme support */
+.ui.button {
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Semantic UI Menu dark theme support */
+.ui.menu {
+    background-color: transparent;
+}
+
+.ui.secondary.menu {
+    background-color: transparent;
+    border: none;
+}
+
+.ui.menu .item {
+    color: var(--text-secondary);
+}
+
+.ui.menu .item:hover {
+    background-color: transparent;
+    color: var(--accent-primary);
+}
+
+/* Icon color fix for dark mode */
+.ui.icon {
+    color: var(--text-secondary);
+}
+
+/* Pagination dark theme support */
+.ui.pagination.menu .item {
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+}
+
+.ui.pagination.menu .active.item {
+    background-color: var(--accent-primary);
+    color: white;
+}
+
+/* Modal dark theme support */
+.ui.modal {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.ui.modal > .header {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-bottom-color: var(--border-color);
+}
+
+.ui.modal > .content {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.ui.modal > .actions {
+    background-color: var(--bg-tertiary);
+    border-top-color: var(--border-color);
+}
+
+.ui.dimmer {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* Input fields dark theme support */
+.ui.input > input {
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.ui.input > input:focus {
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
+}
+
+.ui.input > input::placeholder {
+    color: var(--text-tertiary);
+}
+
+/* Search component dark theme support */
+.ui.search > .results {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.ui.search > .results .result {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.ui.search > .results .result:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.ui.search > .results .result .title {
+    color: var(--text-primary);
+}
+
+.ui.search > .results .result .description {
+    color: var(--text-secondary);
+}
+
+/* List component dark theme support */
+.ui.list .item .header {
+    color: var(--text-primary);
+}
+
+.ui.list .item .description {
+    color: var(--text-secondary);
+}
+
+/* Dropdown dark theme support */
+.ui.dropdown {
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.ui.dropdown .menu {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.ui.dropdown .menu > .item {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.ui.dropdown .menu > .item:hover {
+    background-color: var(--bg-tertiary);
+}
+
+/* Header dark theme support */
+.ui.header {
+    color: var(--text-primary);
+}
+
+.ui.header .sub.header {
+    color: var(--text-secondary);
+}
+
+/* Divider dark theme support */
+.ui.divider {
+    border-top-color: var(--border-color);
+    border-bottom-color: var(--border-color);
+}
+
+/* Loader dark theme support */
+.ui.loader {
+    color: var(--accent-primary);
+}
+
+.ui.loader:before {
+    border-color: var(--border-color);
+}
+
+.ui.loader:after {
+    border-color: var(--accent-primary) transparent transparent;
 }
 
 @media only screen and (min-width: 720px) {

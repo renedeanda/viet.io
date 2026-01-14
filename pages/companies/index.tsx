@@ -1,10 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import {
-  Grid,
-  Header,
-  Container,
-  Loader
-} from 'semantic-ui-react';
 import fs from 'fs';
 import path from 'path';
 import Page from '../../components/page';
@@ -20,15 +14,16 @@ import MySearch from '../../components/mySearch';
 
 export default function Home({ companies }: { companies: any[] }) {
   const router = useRouter();
-  let queryIndustry: string | string[];
+  const [industry, setIndustry] = useState<string | string[]>("all");
+  const [filteredCos, setFilteredCos] = useState(companies);
+
   useEffect(() => {
     if (!router.isReady) return;
-    queryIndustry = router.query['industry'];
-    setIndustry(queryIndustry);
-  }, [router.isReady]);
-
-  const [industry, setIndustry] = useState(queryIndustry ? queryIndustry : "all");
-  const [filteredCos, setFilteredCos] = useState(companies);
+    const queryIndustry = router.query['industry'];
+    if (queryIndustry) {
+      setIndustry(queryIndustry);
+    }
+  }, [router.isReady, router.query]);
 
   const openCompany = (company: Company) => {
     window.open(`/company/${company.slug}`, '_blank')
@@ -37,10 +32,9 @@ export default function Home({ companies }: { companies: any[] }) {
   const { next, currentPage, currentData, maxPage, resetCurrentPage } = usePagination(filteredCos, 12);
 
   useEffect(() => {
-    setIndustry(industry);
     setFilteredCos(filterCompanies(companies, industry));
     resetCurrentPage();
-  }, [industry])
+  }, [industry, companies, resetCurrentPage])
 
   const currentCos = currentData();
   const [element, setElement] = useState(null);
@@ -85,39 +79,47 @@ export default function Home({ companies }: { companies: any[] }) {
         canonical='https://viet.io/companies' />
 
       <Page>
-        <Container style={{ width: '100vw', margin: '3em 0' }}>
-          <Grid
-            container
-            stackable
-            textAlign='center'
-            verticalAlign='middle'>
-            <Grid.Row style={{ marginTop: '60px', padding: '0.5em' }}>
-              <Grid.Column>
-                <Header
-                  style={{ color: '#1A202C', fontSize: '3em', wordWrap: 'break-word' }}>
-                  Find <text style={{ color: '#5131F7' }}>Vietnam Companies</text>
-                </Header>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row style={{ padding: 0, margin: 0 }}>
+        <div className="w-full my-12 px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Header */}
+            <div className="text-center mt-16 mb-8">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+                Find <span className="text-purple-600 dark:text-purple-400">Vietnam Companies</span>
+              </h1>
+            </div>
+
+            {/* Search */}
+            <div className="mb-8">
               <MySearch items={companies} openItem={openCompany} type='companies' />
-            </Grid.Row>
-            <Grid.Row style={{ padding: 0, margin: 0 }}>
+            </div>
+
+            {/* Industry Filter Buttons */}
+            <div className="mb-8">
               <IndustryButtons setIndustry={setIndustry} industry={industry} filteredLength={filteredCos.length} />
-            </Grid.Row>
-            <Grid.Row style={{ padding: 0, margin: 0 }}>
+            </div>
+
+            {/* Company Cards Grid */}
+            <div className="flex flex-wrap justify-center gap-4">
               {currentCos && currentCos.length > 0 ?
                 currentCos.map((item: any) =>
                   <CompanyCard key={item.data.slug} company={item.data} setIndustry={setIndustry} openCompany={openCompany} />)
-                : <p style={{ margin: '3em', color: '#5131F7', fontSize: '2em', textAlign: 'center' }}>{`No ${industry} companies`}</p>}
-            </Grid.Row>
+                : <p className="my-12 text-purple-600 dark:text-purple-400 text-2xl text-center w-full">{`No ${industry} companies`}</p>}
+            </div>
+
+            {/* Loading Indicator */}
             {filteredCos.length > 0 && currentPage !== maxPage ? (
-              <div ref={setElement}>
-                <Loader style={{ margin: '3em', color: '#5131F7' }} active inline='centered' />
+              <div ref={setElement} className="flex flex-col items-center gap-3 my-12">
+                <div className="relative">
+                  <div className="animate-spin h-10 w-10 border-4 border-purple-500 border-t-transparent rounded-full"></div>
+                  <div className="absolute inset-0 animate-pulse">
+                    <div className="h-10 w-10 rounded-full bg-purple-500/20 blur-sm"></div>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-500 dark:text-gray-400 animate-pulse">Loading more...</p>
               </div>
             ) : null}
-          </Grid>
-        </Container>
+          </div>
+        </div>
       </Page>
     </div>
   )

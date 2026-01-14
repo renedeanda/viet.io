@@ -1,205 +1,144 @@
-import { Button, List, Icon, SemanticSIZES } from 'semantic-ui-react';
 import { withHttp } from '../util/helpers';
 import { Company } from '../types/company.types';
 import { Investor } from '../types/investor.types';
+import { Facebook, Linkedin, Globe, Rss, Briefcase, Smartphone, Store } from 'lucide-react';
 
 export default function LinkButtons(
   { company, investor, size, isTextList }: {
     company?: Company,
     investor?: Investor,
-    size?: SemanticSIZES,
+    size?: string,
     isTextList?: boolean
   }) {
 
-  const buttons =
-    (company && (
-      company.facebook ||
-      company.linkedin ||
-      company.androidUrl ||
-      company.iosUrl) ?
-      <List horizontal>
-        {company.facebook ?
-          <List.Item style={{ margin: '0 0.33em 0 0' }}>
-            <Button
-              as='a'
-              title='Facebook'
-              size={size}
-              href={withHttp(company.facebook)}
-              target="_blank"
-              rel="noopener"
-              icon='facebook'
-              color='facebook'
-              circular
-              onClick={(e) => {
-                e.stopPropagation();
-              }} />
-          </List.Item>
-          : null}
-        {company.linkedin ?
-          <List.Item style={{ margin: '0 0.33em 0 0' }}>
-            <Button
-              as='a'
-              title='LinkedIn'
-              size={size}
-              href={withHttp(company.linkedin)}
-              target="_blank"
-              rel="noopener"
-              icon='linkedin'
-              color='linkedin'
-              circular
-              onClick={(e) => {
-                e.stopPropagation();
-              }} />
-          </List.Item>
-          : null}
-        {company.androidUrl ?
-          <List.Item style={{ margin: '0 0.33em 0 0' }}>
-            <Button
-              as='a'
-              title='Google Play Store'
-              size={size}
-              color='teal'
-              href={withHttp(company.androidUrl)}
-              target="_blank"
-              rel="noopener"
-              icon='google play'
-              circular
-              onClick={(e) => {
-                e.stopPropagation();
-              }} />
-          </List.Item>
-          : null}
-        {company.iosUrl ?
-          <List.Item style={{ margin: '0 0.33em 0 0' }}>
-            <Button
-              as='a'
-              title='Apple App Store'
-              size={size}
-              color='blue'
-              href={withHttp(company.iosUrl)}
-              target="_blank"
-              rel="noopener"
-              icon='app store ios'
-              circular
-              onClick={(e) => {
-                e.stopPropagation();
-              }} />
-          </List.Item>
-
-          : null}
-      </List>
-      : null)
-
   const textList = (
     company ?
-      (<List>
+      (<ul className="space-y-3">
         {company.blogUrl ?
-          <List.Item style={{ padding: '8px 0' }}>
+          <li>
             <a
-              style={{ fontSize: '1.33em' }}
-              className='card-link'
+              className='group flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 hover:translate-x-1 transition-all duration-200'
               href={withHttp(company.blogUrl)}
               target='_blank'
               rel="noreferrer">
-              <Icon name='rss' />Blog</a></List.Item>
+              <Rss className="h-5 w-5 group-hover:scale-110 transition-transform" />
+              Blog
+            </a>
+          </li>
           : null}
         {company.facebook ?
-          <List.Item style={{ padding: '8px 0' }}>
+          <li>
             <a
-              style={{ fontSize: '1.33em' }}
-              className='card-link'
+              className='group flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 hover:translate-x-1 transition-all duration-200'
               href={withHttp(company.facebook)}
               target='_blank'
               rel="noreferrer">
-              <Icon name='facebook' />Facebook</a></List.Item>
+              <Facebook className="h-5 w-5 group-hover:scale-110 transition-transform" />
+              Facebook
+            </a>
+          </li>
           : null}
         {company.linkedin ?
-          <List.Item style={{ padding: '8px 0' }}>
+          <li>
             <a
-              style={{ fontSize: '1.33em' }}
-              className='card-link'
+              className='group flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 hover:translate-x-1 transition-all duration-200'
               href={withHttp(company.linkedin)}
               target='_blank'
               rel="noreferrer">
-              <Icon name='linkedin' />LinkedIn</a></List.Item>
+              <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
+              LinkedIn
+            </a>
+          </li>
           : null}
         {company.demoUrl ?
-          <List.Item style={{ padding: '8px 0' }}>
+          <li>
             <a
-              style={{ fontSize: '1.33em' }}
-              className='card-link'
+              className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
               href={withHttp(company.demoUrl)}
               target='_blank'
               rel="noreferrer">
-              <Icon name='globe' />Product Demo</a></List.Item>
+              <Globe className="h-5 w-5" />
+              Product Demo
+            </a>
+          </li>
           : null}
         {company.androidUrl ?
-          <List.Item style={{ padding: '8px 0' }}>
+          <li>
             <a
-              style={{ fontSize: '1.33em' }}
-              className='card-link'
+              className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
               href={withHttp(company.androidUrl)}
               target='_blank'
               rel="noreferrer">
-              <Icon name='google play' />Google Play</a></List.Item>
+              <Smartphone className="h-5 w-5" />
+              Google Play
+            </a>
+          </li>
           : null}
         {company.iosUrl ?
-          <List.Item style={{ padding: '8px 0' }}>
+          <li>
             <a
-              style={{ fontSize: '1.33em' }}
-              className='card-link'
+              className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
               href={withHttp(company.iosUrl)}
               target='_blank'
               rel="noreferrer">
-              <Icon name='app store ios' />App Store</a></List.Item>
+              <Store className="h-5 w-5" />
+              App Store
+            </a>
+          </li>
           : null}
-      </List>) : (investor ?
-        (<List>
+      </ul>) : (investor ?
+        (<ul className="space-y-3">
           {investor.facebook ?
-            <List.Item style={{ padding: '8px 0' }}>
+            <li>
               <a
-                style={{ fontSize: '1.33em' }}
-                className='card-link'
+                className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
                 href={withHttp(investor.facebook)}
                 target='_blank'
                 rel="noreferrer">
-                <Icon name='facebook' />Facebook</a></List.Item>
+                <Facebook className="h-5 w-5" />
+                Facebook
+              </a>
+            </li>
             : null}
           {investor.linkedin ?
-            <List.Item style={{ padding: '8px 0' }}>
+            <li>
               <a
-                style={{ fontSize: '1.33em' }}
-                className='card-link'
+                className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
                 href={withHttp(investor.linkedin)}
                 target='_blank'
                 rel="noreferrer">
-                <Icon name='linkedin' />LinkedIn</a></List.Item>
+                <Linkedin className="h-5 w-5" />
+                LinkedIn
+              </a>
+            </li>
             : null}
           {investor.crunchbase ?
-            <List.Item style={{ padding: '8px 0' }}>
+            <li>
               <a
-                style={{ fontSize: '1.33em' }}
-                className='card-link'
+                className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
                 href={withHttp(investor.crunchbase)}
                 target='_blank'
                 rel="noreferrer">
-                <Icon name='globe' />Crunchbase</a></List.Item>
+                <Globe className="h-5 w-5" />
+                Crunchbase
+              </a>
+            </li>
             : null}
           {investor.portfolio ?
-            <List.Item style={{ padding: '8px 0' }}>
+            <li>
               <a
-                style={{ fontSize: '1.33em' }}
-                className='card-link'
+                className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
                 href={withHttp(investor.portfolio)}
                 target='_blank'
                 rel="noreferrer">
-                <Icon name='briefcase' />Portfolio</a></List.Item>
+                <Briefcase className="h-5 w-5" />
+                Portfolio
+              </a>
+            </li>
             : null}
-        </List>) : null
+        </ul>) : null
       )
   )
 
-  return (
-    isTextList ? textList : buttons
-  )
+  return textList
 }

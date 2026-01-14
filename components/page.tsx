@@ -1,96 +1,109 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './navbar';
 import Footer from './footer';
-import { Menu, Icon, Sidebar } from 'semantic-ui-react';
+import { useTheme } from 'next-themes';
+import { X, Sun, Moon, Github, Building, TrendingUp, ExternalLink } from 'lucide-react';
 
 export default function Page({ children, inverted, footerHidden }: { children: React.ReactNode, inverted?: boolean, footerHidden?: boolean }) {
   const [visible, setVisible] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    // Use resolvedTheme to handle system preference correctly
+    const currentTheme = resolvedTheme || theme;
+    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  };
 
   return (
-    <>
-      <main style={{ backgroundColor: inverted ? 'transparent' : '#F5F5F7' }}>
-        <Navbar
-          openDrawer={() => visible ? setVisible(false) : setVisible(true)} />
-        <a
-          href="https://rede.io/?utm_source=viet.io"
-          style={{
-            position: 'fixed',
-            top: '56px',
-            left: 0,
-            right: 0,
-            zIndex: 10,
-            padding: '0.5em 1em',
-            backgroundColor: '#6b46c1',
-            color: '#ffffff',
-            fontSize: '14px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            textDecoration: 'none',
-            transition: 'opacity 0.2s ease',
-          }}
-          onMouseOver={(e: React.MouseEvent<HTMLAnchorElement>) => {
-            const target = e.currentTarget;
-            target.style.opacity = '0.9';
-          }}
-          onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => {
-            const target = e.currentTarget;
-            target.style.opacity = '1';
-          }}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Interested in AI & tech? Subscribe to the Daily Rede Newsletter 🤖✨
-        </a>
+    <div className={inverted ? 'bg-transparent min-h-screen flex flex-col' : 'bg-gray-50 dark:bg-[#0D1117] min-h-screen flex flex-col'}>
+      <Navbar
+        openDrawer={() => setVisible(!visible)} />
+      <main className="flex-1">
         {children}
-        <Sidebar
-          className='sidebar-menu'
-          as={Menu}
-          animation='overlay'
-          direction='right'
-          onHide={() => setVisible(false)}
-          vertical
-          visible={visible}>
-          <Menu.Item style={{ display: 'flex', justifyContent: 'right' }} onClick={() => { setVisible(false) }}>
-            <div className='navbar-text2'>
-              <Icon name='close' /></div>
-          </Menu.Item>
-          <Menu.Item
-            as='a'
-            href='https://github.com/renedeanda/Tech.Viet'
-            target='_blank'
-            rel="noopener">
-            <div
-              style={{ padding: '0.5em' }}
-              className='navbar-text2'><Icon name='github' />GitHub</div>
-          </Menu.Item>
-          <Menu.Item
-            as='a'
-            href='/companies'
-            rel="noopener">
-            <div
-              style={{ padding: '0.5em' }}
-              className='navbar-text2'><Icon name='building outline' />Companies</div>
-          </Menu.Item>
-          <Menu.Item
-            as='a'
-            href='/investors'
-            rel="noopener">
-            <div
-              style={{ padding: '0.5em' }}
-              className='navbar-text2'><Icon name='chart line' />Investors</div>
-          </Menu.Item>
-          <Menu.Item
-            as='a'
-            href='https://www.renedeanda.com'
-            target='_blank'>
-            <div
-              style={{ padding: '0.5em' }}
-              className='navbar-text2'><Icon name='linkify' />Project by René</div>
-          </Menu.Item>
-        </Sidebar>
       </main>
+
+        {/* Mobile Sidebar Overlay */}
+        <div
+          className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          onClick={() => setVisible(false)}
+        />
+
+        {/* Mobile Sidebar */}
+        <div className={`fixed top-0 right-0 h-full w-72 bg-white dark:bg-[#161B22] shadow-2xl z-50 transform transition-all duration-300 ease-out md:hidden ${visible ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className="flex flex-col h-full">
+            {/* Header with close button */}
+            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white">Menu</h2>
+              <button
+                onClick={() => setVisible(false)}
+                className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                aria-label="Close menu"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* Menu items */}
+            <nav className="flex-1 overflow-y-auto p-4 space-y-1">
+              <button
+                onClick={() => {
+                  toggleTheme();
+                  setVisible(false);
+                }}
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 group"
+              >
+                {mounted && resolvedTheme === 'dark' ? <Sun className="h-5 w-5 group-hover:scale-110 transition-transform" /> : <Moon className="h-5 w-5 group-hover:scale-110 transition-transform" />}
+                <span className="font-medium">{mounted && resolvedTheme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+              </button>
+
+              <a
+                href="https://github.com/renedeanda/Tech.Viet"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 group"
+                onClick={() => setVisible(false)}
+              >
+                <Github className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                <span className="font-medium">GitHub</span>
+              </a>
+
+              <a
+                href="/companies"
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 group"
+                onClick={() => setVisible(false)}
+              >
+                <Building className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                <span className="font-medium">Companies</span>
+              </a>
+
+              <a
+                href="/investors"
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 group"
+                onClick={() => setVisible(false)}
+              >
+                <TrendingUp className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                <span className="font-medium">Investors</span>
+              </a>
+
+              <a
+                href="https://www.renedeanda.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 group"
+                onClick={() => setVisible(false)}
+              >
+                <ExternalLink className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                <span className="font-medium">Project by René</span>
+              </a>
+            </nav>
+          </div>
+        </div>
       <Footer inverted={inverted} hidden={footerHidden} />
-    </>
+    </div>
   )
 }
