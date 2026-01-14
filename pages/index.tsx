@@ -19,81 +19,51 @@ export default function Home() {
 
       <Page inverted footerHidden>
         <div className='hero-image' />
-        <Container style={{ width: '100vw', margin: '0', padding: '0' }}>
+        <Container style={{ width: '100vw', margin: '3em 0' }}>
           <Grid
             container
             stackable
             textAlign='center'
-            verticalAlign='middle'
-            style={{ minHeight: 'calc(100vh - 56px)' }}>
-            <Grid.Row style={{ padding: '2em 1em' }}>
+            verticalAlign='middle'>
+            <Grid.Row style={{ marginTop: '80px', padding: '0.5em' }}>
               <Grid.Column>
                 <Header
                   as='h1'
                   style={{
                     color: '#fafafa',
-                    fontSize: 'clamp(2em, 5vw, 3.5em)',
+                    fontSize: '3em',
                     wordWrap: 'break-word',
-                    marginBottom: '0.5em',
+                    marginBottom: '0.25em',
                     textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)'
                   }}>
-                  <div>Vietnam Startup Ecosystem</div>
-                  <div style={{
-                    color: '#BEBEFF',
-                    fontSize: '0.6em',
-                    marginTop: '0.3em',
-                    fontWeight: 'normal'
-                  }}>Open-sourced</div>
+                  Vietnam Startup Ecosystem
                 </Header>
                 <div style={{
-                  marginTop: '2em',
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '1em',
-                  justifyContent: 'center',
-                  alignItems: 'center'
+                  color: '#BEBEFF',
+                  fontSize: '1.5em',
+                  marginBottom: '1.5em',
+                  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'
                 }}>
-                  <Button
-                    as='a'
-                    size='large'
-                    color='violet'
-                    icon='building outline'
-                    content='Find Companies'
-                    href='/companies'
-                    rel="noopener"
-                    style={{
-                      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
-                      transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                      e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.4)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.3)';
-                    }} />
-                  <Button
-                    as='a'
-                    size='large'
-                    color='violet'
-                    icon='chart line'
-                    content='Find Investors'
-                    href='/investors'
-                    rel="noopener"
-                    style={{
-                      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
-                      transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                      e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.4)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.3)';
-                    }} />
+                  Open-sourced
                 </div>
+                <Button
+                  as='a'
+                  size='large'
+                  color='violet'
+                  icon='building outline'
+                  content='Find Companies'
+                  href='/companies'
+                  rel="noopener"
+                  style={{ margin: '0.5em' }} />
+                <Button
+                  as='a'
+                  size='large'
+                  color='violet'
+                  icon='chart line'
+                  content='Find Investors'
+                  href='/investors'
+                  rel="noopener"
+                  style={{ margin: '0.5em' }} />
               </Grid.Column>
             </Grid.Row>
           </Grid>

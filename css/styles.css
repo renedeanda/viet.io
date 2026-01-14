@@ -223,10 +223,25 @@ body {
     transition: background 0.3s ease;
 }
 
-/* Sidebar dark theme support */
+/* Sidebar dark theme support - with important overrides */
 .ui.sidebar.sidebar-menu {
-    background-color: var(--sidebar-bg);
+    background-color: var(--sidebar-bg) !important;
     transition: background-color 0.3s ease;
+}
+
+.ui.sidebar.sidebar-menu .item {
+    background-color: var(--sidebar-bg) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+.ui.sidebar.sidebar-menu .item:hover {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--accent-primary) !important;
+}
+
+.ui.sidebar.sidebar-menu .item .icon {
+    color: var(--text-secondary) !important;
 }
 
 /* Semantic UI Card dark theme support */
@@ -275,8 +290,12 @@ body {
 
 /* Semantic UI Menu dark theme support */
 .ui.menu {
-    background-color: var(--navbar-bg);
-    border: 1px solid var(--border-color);
+    background-color: transparent;
+}
+
+.ui.secondary.menu {
+    background-color: transparent;
+    border: none;
 }
 
 .ui.menu .item {
@@ -284,7 +303,8 @@ body {
 }
 
 .ui.menu .item:hover {
-    background-color: var(--bg-tertiary);
+    background-color: transparent;
+    color: var(--accent-primary);
 }
 
 /* Icon color fix for dark mode */
@@ -301,6 +321,81 @@ body {
 .ui.pagination.menu .active.item {
     background-color: var(--accent-primary);
     color: white;
+}
+
+/* Modal dark theme support */
+.ui.modal {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.ui.modal > .header {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-bottom-color: var(--border-color);
+}
+
+.ui.modal > .content {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.ui.modal > .actions {
+    background-color: var(--bg-tertiary);
+    border-top-color: var(--border-color);
+}
+
+.ui.dimmer {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* Input fields dark theme support */
+.ui.input > input {
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.ui.input > input:focus {
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
+}
+
+/* Dropdown dark theme support */
+.ui.dropdown {
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.ui.dropdown .menu {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.ui.dropdown .menu > .item {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.ui.dropdown .menu > .item:hover {
+    background-color: var(--bg-tertiary);
+}
+
+/* Header dark theme support */
+.ui.header {
+    color: var(--text-primary);
+}
+
+.ui.header .sub.header {
+    color: var(--text-secondary);
+}
+
+/* Divider dark theme support */
+.ui.divider {
+    border-top-color: var(--border-color);
+    border-bottom-color: var(--border-color);
 }
 
 @media only screen and (min-width: 720px) {
