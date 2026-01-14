@@ -362,6 +362,43 @@ body {
     border-color: var(--accent-primary);
 }
 
+.ui.input > input::placeholder {
+    color: var(--text-tertiary);
+}
+
+/* Search component dark theme support */
+.ui.search > .results {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.ui.search > .results .result {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.ui.search > .results .result:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.ui.search > .results .result .title {
+    color: var(--text-primary);
+}
+
+.ui.search > .results .result .description {
+    color: var(--text-secondary);
+}
+
+/* List component dark theme support */
+.ui.list .item .header {
+    color: var(--text-primary);
+}
+
+.ui.list .item .description {
+    color: var(--text-secondary);
+}
+
 /* Dropdown dark theme support */
 .ui.dropdown {
     background-color: var(--button-bg);
@@ -396,6 +433,19 @@ body {
 .ui.divider {
     border-top-color: var(--border-color);
     border-bottom-color: var(--border-color);
+}
+
+/* Loader dark theme support */
+.ui.loader {
+    color: var(--accent-primary);
+}
+
+.ui.loader:before {
+    border-color: var(--border-color);
+}
+
+.ui.loader:after {
+    border-color: var(--accent-primary) transparent transparent;
 }
 
 @media only screen and (min-width: 720px) {

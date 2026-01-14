@@ -94,8 +94,8 @@ export default function Home({ companies }: { companies: any[] }) {
             <Grid.Row style={{ marginTop: '60px', padding: '0.5em' }}>
               <Grid.Column>
                 <Header
-                  style={{ color: '#1A202C', fontSize: '3em', wordWrap: 'break-word' }}>
-                  Find <text style={{ color: '#5131F7' }}>Vietnam Companies</text>
+                  style={{ color: 'var(--text-primary)', fontSize: '3em', wordWrap: 'break-word' }}>
+                  Find <text style={{ color: 'var(--accent-primary)' }}>Vietnam Companies</text>
                 </Header>
               </Grid.Column>
             </Grid.Row>
@@ -109,11 +109,11 @@ export default function Home({ companies }: { companies: any[] }) {
               {currentCos && currentCos.length > 0 ?
                 currentCos.map((item: any) =>
                   <CompanyCard key={item.data.slug} company={item.data} setIndustry={setIndustry} openCompany={openCompany} />)
-                : <p style={{ margin: '3em', color: '#5131F7', fontSize: '2em', textAlign: 'center' }}>{`No ${industry} companies`}</p>}
+                : <p style={{ margin: '3em', color: 'var(--accent-primary)', fontSize: '2em', textAlign: 'center' }}>{`No ${industry} companies`}</p>}
             </Grid.Row>
             {filteredCos.length > 0 && currentPage !== maxPage ? (
               <div ref={setElement}>
-                <Loader style={{ margin: '3em', color: '#5131F7' }} active inline='centered' />
+                <Loader style={{ margin: '3em' }} active inline='centered' />
               </div>
             ) : null}
           </Grid>

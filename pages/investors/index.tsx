@@ -119,12 +119,12 @@ export default function Investors({ investors }: { investors: Investor[] }) {
           >
             <Grid.Row style={{ marginTop: '60px', padding: '0.5em' }}>
               <Grid.Column>
-                <Header style={{ 
-                  color: '#1A202C', 
-                  fontSize: '3em', 
-                  wordWrap: 'break-word' 
+                <Header style={{
+                  color: 'var(--text-primary)',
+                  fontSize: '3em',
+                  wordWrap: 'break-word'
                 }}>
-                  Find <text style={{ color: '#5131F7' }}>Vietnam Investors</text>
+                  Find <text style={{ color: 'var(--accent-primary)' }}>Vietnam Investors</text>
                 </Header>
               </Grid.Column>
             </Grid.Row>
@@ -156,11 +156,11 @@ export default function Investors({ investors }: { investors: Investor[] }) {
                   />
                 ))
               ) : (
-                <p style={{ 
-                  margin: '3em', 
-                  color: '#5131F7', 
-                  fontSize: '2em', 
-                  textAlign: 'center' 
+                <p style={{
+                  margin: '3em',
+                  color: 'var(--accent-primary)',
+                  fontSize: '2em',
+                  textAlign: 'center'
                 }}>
                   {`No ${invType} investors`}
                 </p>
@@ -169,10 +169,10 @@ export default function Investors({ investors }: { investors: Investor[] }) {
 
             {filteredInvs.length > 0 && currentPage !== maxPage ? (
               <div ref={setElement}>
-                <Loader 
-                  style={{ margin: '3em', color: '#5131F7' }} 
-                  active 
-                  inline='centered' 
+                <Loader
+                  style={{ margin: '3em' }}
+                  active
+                  inline='centered'
                 />
               </div>
             ) : null}
