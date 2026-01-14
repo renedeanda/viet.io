@@ -19,16 +19,19 @@ export default function InvestorContainer({ investor, modal }: {
     <div className={`flex justify-center min-h-screen px-4 ${contPadding}`}>
       <Card className="w-full max-w-3xl bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-700">
         <CardContent className="p-6 pb-24">
-          <div className="mb-6">
+          <div className="mb-6 flex justify-center">
             {avatarSrc && (
-              <Image
-                quality={60}
-                alt={investor.name}
-                height={100}
-                width={100}
-                src={avatarSrc}
-                className="rounded-xl shadow-lg bg-white p-2"
-              />
+              <div className="relative">
+                <div className="absolute inset-0 bg-purple-100 dark:bg-purple-900/20 rounded-xl blur-xl"></div>
+                <Image
+                  quality={60}
+                  alt={investor.name}
+                  height={120}
+                  width={120}
+                  src={avatarSrc}
+                  className="relative rounded-xl shadow-xl bg-white dark:bg-white p-3 border-2 border-gray-100 dark:border-gray-700"
+                />
+              </div>
             )}
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 break-words">

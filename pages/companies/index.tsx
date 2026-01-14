@@ -83,7 +83,7 @@ export default function Home({ companies }: { companies: any[] }) {
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="text-center mt-16 mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
                 Find <span className="text-purple-600 dark:text-purple-400">Vietnam Companies</span>
               </h1>
             </div>

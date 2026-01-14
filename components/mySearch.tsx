@@ -81,7 +81,7 @@ export default function MySearch({ items, openItem, type }: {
           placeholder={`Search ${type}`}
           value={value}
           onChange={handleSearchChange}
-          className="w-full px-4 py-3 text-base rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+          className="w-full px-4 py-3 text-base rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
         />
         {loading && (
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -91,18 +91,18 @@ export default function MySearch({ items, openItem, type }: {
       </div>
 
       {showResults && results.length > 0 && (
-        <div className="absolute z-50 w-full mt-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg max-h-96 overflow-y-auto">
+        <div className="absolute z-50 w-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl max-h-96 overflow-y-auto">
           {results.map((item: any, index: number) => (
             <div
               key={index}
               onClick={() => handleResultClick(item)}
-              className="px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer border-b border-slate-100 dark:border-slate-700 last:border-b-0 transition-colors"
+              className="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer border-b border-gray-100 dark:border-gray-700 last:border-b-0 transition-colors"
             >
-              <div className="font-semibold text-slate-900 dark:text-white">
+              <div className="font-semibold text-gray-900 dark:text-white">
                 {item.data.name}
               </div>
               {item.data.tagline && (
-                <div className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-1">
                   {item.data.tagline}
                 </div>
               )}
@@ -112,9 +112,9 @@ export default function MySearch({ items, openItem, type }: {
       )}
 
       {showResults && value && results.length === 0 && !loading && (
-        <div className="absolute z-50 w-full mt-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg p-4">
-          <div className="text-center text-slate-600 dark:text-slate-400">
-            No results found
+        <div className="absolute z-50 w-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl p-4">
+          <div className="text-center text-gray-600 dark:text-gray-400">
+            No results found for "{value}"
           </div>
         </div>
       )}
