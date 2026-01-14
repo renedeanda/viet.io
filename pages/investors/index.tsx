@@ -21,12 +21,12 @@ export default function Investors({ investors }: { investors: Investor[] }) {
   // Initialize router and query parameters
   useEffect(() => {
     if (!router.isReady) return;
-    
+
     const queryInvType = router.query['type'];
     if (queryInvType && typeof queryInvType === 'string') {
       setInvType(queryInvType);
     }
-  }, [router.isReady]);
+  }, [router.isReady, router.query]);
 
   const openInvestor = (investor: Investor) => {
     try {
@@ -58,11 +58,11 @@ export default function Investors({ investors }: { investors: Investor[] }) {
   // Update filtered investors when invType changes
   useEffect(() => {
     if (!investors) return;
-    
+
     const filtered = filterInvestors(investors, invType);
     setFilteredInvs(filtered);
     resetCurrentPage();
-  }, [invType, investors]);
+  }, [invType, investors, resetCurrentPage]);
 
   const currentInvs = currentData();
 

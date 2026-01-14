@@ -114,7 +114,7 @@ export default function MySearch({ items, openItem, type }: {
       {showResults && value && results.length === 0 && !loading && (
         <div className="absolute z-50 w-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl p-4 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="text-center text-gray-600 dark:text-gray-400">
-            No results found for "{value}"
+            No results found for &quot;{value}&quot;
           </div>
         </div>
       )}

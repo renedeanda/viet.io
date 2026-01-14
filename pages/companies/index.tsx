@@ -14,15 +14,16 @@ import MySearch from '../../components/mySearch';
 
 export default function Home({ companies }: { companies: any[] }) {
   const router = useRouter();
-  let queryIndustry: string | string[];
+  const [industry, setIndustry] = useState<string | string[]>("all");
+  const [filteredCos, setFilteredCos] = useState(companies);
+
   useEffect(() => {
     if (!router.isReady) return;
-    queryIndustry = router.query['industry'];
-    setIndustry(queryIndustry);
-  }, [router.isReady]);
-
-  const [industry, setIndustry] = useState(queryIndustry ? queryIndustry : "all");
-  const [filteredCos, setFilteredCos] = useState(companies);
+    const queryIndustry = router.query['industry'];
+    if (queryIndustry) {
+      setIndustry(queryIndustry);
+    }
+  }, [router.isReady, router.query]);
 
   const openCompany = (company: Company) => {
     window.open(`/company/${company.slug}`, '_blank')
@@ -31,10 +32,9 @@ export default function Home({ companies }: { companies: any[] }) {
   const { next, currentPage, currentData, maxPage, resetCurrentPage } = usePagination(filteredCos, 12);
 
   useEffect(() => {
-    setIndustry(industry);
     setFilteredCos(filterCompanies(companies, industry));
     resetCurrentPage();
-  }, [industry])
+  }, [industry, companies, resetCurrentPage])
 
   const currentCos = currentData();
   const [element, setElement] = useState(null);
