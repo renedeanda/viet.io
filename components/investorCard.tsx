@@ -17,33 +17,34 @@ export default function InvestorCard({ investor, setInvType, openInvestor }: {
       onClick={(e) => {
         openInvestor(investor);
       }}
-      className="max-w-[360px] m-2 cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02] bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700"
+      className="w-full max-w-[360px] m-2 cursor-pointer transition-all hover:shadow-xl hover:scale-[1.02] bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-700"
     >
-      <CardContent className="pt-6 text-left">
-        <div className="mb-3">
-          {avatarSrc ?
-            <Image
-              quality={60}
-              alt={investor.name}
-              height={56}
-              width={56}
-              src={avatarSrc}
-              className="rounded-lg"
-            />
-            : null
-          }
+      <CardContent className="p-6">
+        <div className="flex flex-col items-start">
+          {avatarSrc && (
+            <div className="mb-4">
+              <Image
+                quality={60}
+                alt={investor.name}
+                height={56}
+                width={56}
+                src={avatarSrc}
+                className="rounded-lg object-contain bg-white p-1"
+              />
+            </div>
+          )}
+          <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 line-clamp-1 w-full">
+            {investor.name}
+          </h2>
+          <p className="text-sm text-gray-600 dark:text-gray-300 italic line-clamp-3 min-h-[60px]">
+            {investor.description || 'No description available'}
+          </p>
         </div>
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2 truncate">
-          {investor.name}
-        </h2>
-        <p className="text-sm text-slate-600 dark:text-slate-400 italic line-clamp-2 mt-2">
-          {investor.description}
-        </p>
       </CardContent>
-      <CardFooter className="justify-end border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+      <CardFooter className="px-6 py-4 bg-gray-50 dark:bg-[#0f172a] border-t border-gray-200 dark:border-gray-700">
         <Badge
           variant="outline"
-          className="cursor-pointer border-purple-500 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-950"
+          className="cursor-pointer border-purple-500 dark:border-purple-400 text-purple-600 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors"
           onClick={(e) => {
             e.stopPropagation();
             setInvType(investor.type)

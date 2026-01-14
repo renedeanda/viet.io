@@ -51,7 +51,7 @@
 }
 
 /* Legacy CSS Variables for Theming (keeping for gradual migration) */
-:root[data-theme="light"] {
+:root {
     --bg-primary: #F5F5F7;
     --bg-secondary: #FFFFFF;
     --bg-tertiary: #FAFAFA;
@@ -71,7 +71,7 @@
     --github-hover: #111111;
 }
 
-:root[data-theme="dark"] {
+.dark {
     --bg-primary: #0D1117;
     --bg-secondary: #161B22;
     --bg-tertiary: #21262D;
@@ -266,7 +266,7 @@ body {
 /* The hero image */
 
 .hero-image {
-    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), url(../public/vietnam.jpg) no-repeat center;
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), url(/vietnam.jpg) no-repeat center;
     background-size: cover;
     position: absolute;
     height: 100vh;
