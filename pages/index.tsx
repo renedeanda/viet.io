@@ -1,12 +1,9 @@
-import {
-  Button,
-  Grid,
-  Header,
-  Container
-} from 'semantic-ui-react';
+import Link from 'next/link';
+import { Building, TrendingUp } from 'lucide-react';
 import Page from '../components/page';
 import Meta from '../components/Meta';
 import Footer from '../components/footer';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
 
@@ -19,55 +16,38 @@ export default function Home() {
 
       <Page inverted footerHidden>
         <div className='hero-image' />
-        <Container style={{ width: '100vw', margin: '3em 0' }}>
-          <Grid
-            container
-            stackable
-            textAlign='center'
-            verticalAlign='middle'>
-            <Grid.Row style={{ marginTop: '80px', padding: '0.5em' }}>
-              <Grid.Column>
-                <Header
-                  as='h1'
-                  style={{
-                    color: '#fafafa',
-                    fontSize: '3em',
-                    wordWrap: 'break-word',
-                    marginBottom: '0.25em',
-                    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)'
-                  }}>
-                  Vietnam Startup Ecosystem
-                </Header>
-                <div style={{
-                  color: '#BEBEFF',
-                  fontSize: '1.5em',
-                  marginBottom: '1.5em',
-                  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'
-                }}>
-                  Open-sourced
-                </div>
-                <Button
-                  as='a'
-                  size='large'
-                  color='violet'
-                  icon='building outline'
-                  content='Find Companies'
-                  href='/companies'
-                  rel="noopener"
-                  style={{ margin: '0.5em' }} />
-                <Button
-                  as='a'
-                  size='large'
-                  color='violet'
-                  icon='chart line'
-                  content='Find Investors'
-                  href='/investors'
-                  rel="noopener"
-                  style={{ margin: '0.5em' }} />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
+        <div className="w-full py-12 px-4">
+          <div className="container mx-auto max-w-5xl">
+            <div className="flex flex-col items-center justify-center text-center mt-20">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Vietnam Startup Ecosystem
+              </h1>
+              <p className="text-xl md:text-2xl text-purple-200 mb-8 drop-shadow-md">
+                Open-sourced
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/companies">
+                  <Button
+                    size="lg"
+                    className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-6 text-base font-semibold shadow-lg"
+                  >
+                    <Building className="mr-2 h-5 w-5" />
+                    Find Companies
+                  </Button>
+                </Link>
+                <Link href="/investors">
+                  <Button
+                    size="lg"
+                    className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-6 text-base font-semibold shadow-lg"
+                  >
+                    <TrendingUp className="mr-2 h-5 w-5" />
+                    Find Investors
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
         <Footer inverted />
       </Page>
 
