@@ -40,14 +40,25 @@ export default function Home({ companies }: { companies: any[] }) {
   const [element, setElement] = useState(null);
 
   const observer = useRef<IntersectionObserver | null>(null);
+  const currentPageRef = useRef(currentPage);
+  const maxPageRef = useRef(maxPage);
+  const nextRef = useRef(next);
 
+  // Keep refs updated with latest values
+  useEffect(() => {
+    currentPageRef.current = currentPage;
+    maxPageRef.current = maxPage;
+    nextRef.current = next;
+  });
+
+  // Create observer once
   useEffect(() => {
     observer.current = new IntersectionObserver(
       (entries) => {
         const firstEntry = entries[0];
         // If the loading element is visible and we're not on the last page, load more
-        if (firstEntry.isIntersecting && currentPage < maxPage) {
-          next();
+        if (firstEntry.isIntersecting && currentPageRef.current < maxPageRef.current) {
+          nextRef.current();
         }
       },
       { threshold: 0.1, rootMargin: '100px' }
@@ -58,7 +69,7 @@ export default function Home({ companies }: { companies: any[] }) {
         observer.current.disconnect();
       }
     };
-  }, [currentPage, maxPage, next]);
+  }, []); // Only create once
 
   useEffect(() => {
     const currentElement = element;
