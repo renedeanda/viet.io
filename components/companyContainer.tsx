@@ -1,15 +1,11 @@
-import {
-  Header,
-  Container,
-  Label,
-  Card,
-  Icon
-} from 'semantic-ui-react';
 import Image from 'next/image';
 import { withHttp } from '../util/helpers';
 import ShareMenu from './shareMenu';
 import LinkButtons from './linkButtons';
 import { Company } from '../types/company.types';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
+import { ExternalLink } from 'lucide-react';
 
 export default function CompanyContainer({ company, modal }: {
   company: Company,
@@ -21,95 +17,78 @@ export default function CompanyContainer({ company, modal }: {
 
   const screenSrc = `/img/company/${company.slug}-screenshot.png`
 
-  const contPadding = modal ? '3em 0 0.5em 0' : '5em 0 0.5em 0'
+  const contPadding = modal ? 'pt-12 pb-2' : 'pt-20 pb-2'
 
   return (
-    <>
-      <Container style={{ display: 'flex', justifyContent: 'center', minHeight: '80vh', padding: contPadding }}>
-        <Card
-          fluid
-          style={{ maxWidth: 720 }}>
-          <div className="image">
-            <Image
-              quality={60}
-              alt={company.name}
-              height={300}
-              width={720}
-              src={screenSrc}
-              className='card-image-header'
-            />
+    <div className={`flex justify-center min-h-screen px-4 ${contPadding}`}>
+      <Card className="w-full max-w-3xl bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-700">
+        <div className="relative">
+          <Image
+            quality={60}
+            alt={company.name}
+            height={300}
+            width={720}
+            src={screenSrc}
+            className="w-full h-auto rounded-t-lg object-cover"
+          />
+        </div>
+        <CardContent className="p-6 pb-24">
+          <div className="flex justify-end mb-4">
+            <ShareMenu url={`${process.env.PUBLIC_URL}/company/${company.slug}`} />
           </div>
-          <Card.Content
-            textAlign='left'
-            style={{ padding: '0px 22px 100px 22px' }}>
-            <Container fluid style={{ paddingTop: '20px', display: 'flex', justifyContent: 'flex-end' }}>
-              <ShareMenu url={`${process.env.PUBLIC_URL}/company/${company.slug}`} />
-            </Container>
-            <div style={{ marginTop: '-100px' }}>
-              {avatarSrc ?
-                <Image
-                  quality={60}
-                  alt={company.name}
-                  height={100}
-                  width={100}
-                  src={avatarSrc}
-                  className='card-avatar-big' />
-                : null
-              }
-            </div>
-            <Header style={{
-              color: 'var(--text-primary)',
-              marginTop: 0,
-              marginBottom: '8px',
-              fontSize: '2.5em',
-              wordWrap: 'break-word'
-            }}>{company.name}</Header>
-            <a
-              style={{ fontSize: '1.5em' }}
-              className='card-link'
-              href={withHttp(company.website)}
-              target='_blank'
-              rel="noreferrer">
-              <Icon name='external' />{company.website}</a>
-            {company.tagline ? <p
-              style={{ color: 'var(--text-secondary)', marginTop: '8px', fontStyle: 'italic', fontSize: '1.1em', wordWrap: 'break-word', fontFamily: 'Nunito' }}
-            >{company.tagline}</p>
-              : null}
-            <div>
-              <Label style={{
-                marginTop: '8px',
-                color: 'var(--accent-primary)',
-                borderColor: 'var(--accent-primary)',
-                fontFamily: 'Nunito',
-                backgroundColor: 'transparent'
-              }} circular basic >{company.industry}</Label>
-            </div>
-            <div style={{ marginTop: '8px' }}>
-              <LinkButtons company={company} isTextList />
-            </div>
-            {company.description ?
-              <>
-                <Header dividing style={{
-                  color: 'var(--text-primary)',
-                  fontSize: '1.4em',
-                  borderColor: 'var(--border-color)'
-                }}>About</Header>
-                {company.description.split('\n').map((item, i) => {
-                  return <p style={{
-                    marginBottom: '1em',
-                    color: 'var(--text-secondary)',
-                    lineHeight: '1.1em',
-                    fontSize: '1.33em',
-                    wordWrap: 'break-word',
-                    fontFamily: 'Nunito'
-                  }}
-                    key={i}>{item}</p>;
-                })}
-              </>
-              : null}
-          </Card.Content>
-        </Card>
-      </Container>
-    </>
+          <div className="-mt-24 mb-4">
+            {avatarSrc && (
+              <Image
+                quality={60}
+                alt={company.name}
+                height={100}
+                width={100}
+                src={avatarSrc}
+                className="rounded-xl shadow-lg bg-white p-2"
+              />
+            )}
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 break-words">
+            {company.name}
+          </h1>
+          <a
+            className="flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors mb-3"
+            href={withHttp(company.website)}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <ExternalLink className="h-5 w-5" />
+            {company.website}
+          </a>
+          {company.tagline && (
+            <p className="text-gray-600 dark:text-gray-400 italic text-lg mb-3 break-words">
+              {company.tagline}
+            </p>
+          )}
+          <div className="mb-3">
+            <Badge variant="outline" className="text-purple-600 dark:text-purple-400 border-purple-500 dark:border-purple-400">
+              {company.industry}
+            </Badge>
+          </div>
+          <div className="mb-6">
+            <LinkButtons company={company} isTextList />
+          </div>
+          {company.description && (
+            <>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2 mb-4">
+                About
+              </h2>
+              <div className="space-y-4">
+                {company.description.split('\n').map((item, i) => (
+                  <p key={i} className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed break-words">
+                    {item}
+                  </p>
+                ))}
+              </div>
+            </>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   )
 }
