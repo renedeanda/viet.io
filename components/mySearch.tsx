@@ -1,5 +1,9 @@
-import _ from 'lodash';
 import React, { useRef, useEffect } from 'react';
+
+// Helper function to escape special regex characters
+function escapeRegExp(string: string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
 
 const initialState = {
   loading: false,
@@ -54,12 +58,12 @@ export default function MySearch({ items, openItem, type }: {
         return
       }
 
-      const re = new RegExp(_.escapeRegExp(query), 'i')
+      const re = new RegExp(escapeRegExp(query), 'i')
       const isMatch = (result) => re.test(result.data.name)
 
       dispatch({
         type: 'FINISH_SEARCH',
-        results: _.filter(items, isMatch),
+        results: items.filter(isMatch),
       })
     }, 300)
   }
