@@ -91,14 +91,14 @@ export default function MySearch({ items, openItem, type }: {
       </div>
 
       {showResults && results.length > 0 && (
-        <div className="absolute z-50 w-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl max-h-96 overflow-y-auto">
+        <div className="absolute z-50 w-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl max-h-96 overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200">
           {results.map((item: any, index: number) => (
             <div
               key={index}
               onClick={() => handleResultClick(item)}
-              className="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer border-b border-gray-100 dark:border-gray-700 last:border-b-0 transition-colors"
+              className="group px-4 py-3 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:pl-5 cursor-pointer border-b border-gray-100 dark:border-gray-700 last:border-b-0 transition-all duration-200"
             >
-              <div className="font-semibold text-gray-900 dark:text-white">
+              <div className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                 {item.data.name}
               </div>
               {item.data.tagline && (
@@ -112,7 +112,7 @@ export default function MySearch({ items, openItem, type }: {
       )}
 
       {showResults && value && results.length === 0 && !loading && (
-        <div className="absolute z-50 w-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl p-4">
+        <div className="absolute z-50 w-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl p-4 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="text-center text-gray-600 dark:text-gray-400">
             No results found for "{value}"
           </div>

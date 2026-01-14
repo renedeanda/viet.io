@@ -17,11 +17,11 @@ export default function LinkButtons(
         {company.blogUrl ?
           <li>
             <a
-              className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
+              className='group flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 hover:translate-x-1 transition-all duration-200'
               href={withHttp(company.blogUrl)}
               target='_blank'
               rel="noreferrer">
-              <Rss className="h-5 w-5" />
+              <Rss className="h-5 w-5 group-hover:scale-110 transition-transform" />
               Blog
             </a>
           </li>
@@ -29,11 +29,11 @@ export default function LinkButtons(
         {company.facebook ?
           <li>
             <a
-              className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
+              className='group flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 hover:translate-x-1 transition-all duration-200'
               href={withHttp(company.facebook)}
               target='_blank'
               rel="noreferrer">
-              <Facebook className="h-5 w-5" />
+              <Facebook className="h-5 w-5 group-hover:scale-110 transition-transform" />
               Facebook
             </a>
           </li>
@@ -41,11 +41,11 @@ export default function LinkButtons(
         {company.linkedin ?
           <li>
             <a
-              className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
+              className='group flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 hover:translate-x-1 transition-all duration-200'
               href={withHttp(company.linkedin)}
               target='_blank'
               rel="noreferrer">
-              <Linkedin className="h-5 w-5" />
+              <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
               LinkedIn
             </a>
           </li>

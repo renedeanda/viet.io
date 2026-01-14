@@ -62,10 +62,10 @@ export default function IndustryButtons({ industry, filteredLength, setIndustry 
           variant={isActive(option.value) ? "default" : "outline"}
           size="sm"
           onClick={() => setIndustry(option.value)}
-          className={`rounded-full transition-all ${
+          className={`rounded-full transition-all duration-200 hover:scale-105 active:scale-95 ${
             isActive(option.value)
-              ? "bg-purple-600 hover:bg-purple-700 text-white"
-              : "bg-transparent dark:bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              ? "bg-purple-600 hover:bg-purple-700 text-white shadow-md hover:shadow-lg"
+              : "bg-transparent dark:bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-purple-400 dark:hover:border-purple-500"
           }`}
         >
           {option.value}
