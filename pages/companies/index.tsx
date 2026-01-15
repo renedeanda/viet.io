@@ -38,39 +38,40 @@ export default function Home({ companies }: { companies: any[] }) {
 
   const currentCos = currentData();
 
-  // Refs for intersection observer
-  const observerRef = useRef<IntersectionObserver | null>(null);
-  const loadingRef = useRef<HTMLDivElement | null>(null);
+  // Intersection observer setup (using working pattern from before Tailwind migration)
+  const [element, setElement] = useState<HTMLDivElement | null>(null);
+  const observer = useRef<IntersectionObserver>();
+  const prevY = useRef(0);
 
-  // Set up intersection observer
   useEffect(() => {
-    // Clean up previous observer
-    if (observerRef.current) {
-      observerRef.current.disconnect();
-    }
-
-    // Create new observer
-    observerRef.current = new IntersectionObserver(
+    observer.current = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && currentPage < maxPage) {
+        const firstEntry = entries[0];
+        const y = firstEntry.boundingClientRect.y;
+
+        if (prevY.current > y) {
           next();
         }
+        prevY.current = y;
       },
       { threshold: 0.5 }
     );
+  });
 
-    // Observe the loading element if it exists
-    if (loadingRef.current) {
-      observerRef.current.observe(loadingRef.current);
+  useEffect(() => {
+    const currentElement = element;
+    const currentObserver = observer.current;
+
+    if (currentElement) {
+      currentObserver?.observe(currentElement);
     }
 
-    // Cleanup on unmount or when dependencies change
     return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
+      if (currentElement) {
+        currentObserver?.unobserve(currentElement);
       }
     };
-  }, [currentPage, maxPage, next]);
+  }, [element]);
 
   return (
     <div>
@@ -109,7 +110,7 @@ export default function Home({ companies }: { companies: any[] }) {
 
             {/* Loading Indicator */}
             {filteredCos.length > 0 && currentPage !== maxPage ? (
-              <div ref={loadingRef} className="flex flex-col items-center gap-3 my-12">
+              <div ref={setElement} className="flex flex-col items-center gap-3 my-12">
                 <div className="relative">
                   <div className="animate-spin h-10 w-10 border-4 border-purple-500 border-t-transparent rounded-full"></div>
                   <div className="absolute inset-0 animate-pulse">
