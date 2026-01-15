@@ -38,40 +38,21 @@ export default function Home({ companies }: { companies: any[] }) {
 
   const currentCos = currentData();
 
-  console.log('🔍 Debug Info:', {
-    currentPage,
-    maxPage,
-    filteredCosLength: filteredCos.length,
-    currentCosLength: currentCos.length,
-    shouldShowLoader: filteredCos.length > 0 && currentPage !== maxPage
-  });
-
   // Intersection observer setup (using working pattern from before Tailwind migration)
   const [element, setElement] = useState<HTMLDivElement | null>(null);
   const observer = useRef<IntersectionObserver>();
   const prevY = useRef(0);
 
   useEffect(() => {
-    console.log('📡 Creating new IntersectionObserver');
     observer.current = new IntersectionObserver(
       (entries) => {
         const firstEntry = entries[0];
         const y = firstEntry.boundingClientRect.y;
 
-        console.log('👀 Observer triggered:', {
-          isIntersecting: firstEntry.isIntersecting,
-          y,
-          prevY: prevY.current,
-          scrollingDown: prevY.current > y,
-          currentPage,
-          maxPage
-        });
-
         // Load more if intersecting and not at max page
         // Handle first intersection (prevY === 0) OR scrolling down (prevY > y)
         if (firstEntry.isIntersecting && currentPage < maxPage) {
           if (prevY.current === 0 || prevY.current > y) {
-            console.log('⬇️ Loading more - calling next()');
             next();
           }
         }
@@ -85,20 +66,13 @@ export default function Home({ companies }: { companies: any[] }) {
     const currentElement = element;
     const currentObserver = observer.current;
 
-    console.log('🎯 Element ref changed:', {
-      hasElement: !!currentElement,
-      hasObserver: !!currentObserver
-    });
-
     if (currentElement) {
       currentObserver?.observe(currentElement);
-      console.log('✅ Started observing loading element');
     }
 
     return () => {
       if (currentElement) {
         currentObserver?.unobserve(currentElement);
-        console.log('🛑 Stopped observing loading element');
       }
     };
   }, [element]);
