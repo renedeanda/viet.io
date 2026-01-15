@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import fs from 'fs';
 import path from 'path';
 import Page from '../../components/page';
@@ -37,54 +37,21 @@ export default function Home({ companies }: { companies: any[] }) {
   }, [industry, companies, resetCurrentPage])
 
   const currentCos = currentData();
-  const [element, setElement] = useState(null);
 
-  const observer = useRef<IntersectionObserver | null>(null);
-  const currentPageRef = useRef(currentPage);
-  const maxPageRef = useRef(maxPage);
-  const nextRef = useRef(next);
+  // Callback ref for intersection observer
+  const observerRef = useRef<IntersectionObserver>();
 
-  // Keep refs updated with latest values
-  useEffect(() => {
-    currentPageRef.current = currentPage;
-    maxPageRef.current = maxPage;
-    nextRef.current = next;
-  });
+  const lastElementRef = useCallback((node: HTMLDivElement) => {
+    if (observerRef.current) observerRef.current.disconnect();
 
-  // Create observer once
-  useEffect(() => {
-    observer.current = new IntersectionObserver(
-      (entries) => {
-        const firstEntry = entries[0];
-        // If the loading element is visible and we're not on the last page, load more
-        if (firstEntry.isIntersecting && currentPageRef.current < maxPageRef.current) {
-          nextRef.current();
-        }
-      },
-      { threshold: 0.1, rootMargin: '100px' }
-    );
-
-    return () => {
-      if (observer.current) {
-        observer.current.disconnect();
+    observerRef.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && currentPage < maxPage) {
+        next();
       }
-    };
-  }, []); // Only create once
+    }, { threshold: 0.5 });
 
-  useEffect(() => {
-    const currentElement = element;
-    const currentObserver = observer.current;
-
-    if (currentElement && currentObserver) {
-      currentObserver.observe(currentElement);
-    }
-
-    return () => {
-      if (currentElement && currentObserver) {
-        currentObserver.unobserve(currentElement);
-      }
-    };
-  }, [element]);
+    if (node) observerRef.current.observe(node);
+  }, [currentPage, maxPage, next]);
 
   return (
     <div>
@@ -123,7 +90,7 @@ export default function Home({ companies }: { companies: any[] }) {
 
             {/* Loading Indicator */}
             {filteredCos.length > 0 && currentPage !== maxPage ? (
-              <div ref={setElement} className="flex flex-col items-center gap-3 my-12">
+              <div ref={lastElementRef} className="flex flex-col items-center gap-3 my-12">
                 <div className="relative">
                   <div className="animate-spin h-10 w-10 border-4 border-purple-500 border-t-transparent rounded-full"></div>
                   <div className="absolute inset-0 animate-pulse">
