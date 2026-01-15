@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import fs from 'fs';
 import path from 'path';
 import Page from '../../components/page';
@@ -38,44 +38,28 @@ export default function Home({ companies }: { companies: any[] }) {
 
   const currentCos = currentData();
 
-  // Intersection observer setup (using working pattern from before Tailwind migration)
+  // Intersection observer for infinite scroll pagination
   const [element, setElement] = useState<HTMLDivElement | null>(null);
-  const observer = useRef<IntersectionObserver>();
-  const prevY = useRef(0);
 
   useEffect(() => {
-    observer.current = new IntersectionObserver(
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
       (entries) => {
         const firstEntry = entries[0];
-        const y = firstEntry.boundingClientRect.y;
-
-        // Load more if intersecting and not at max page
-        // Handle first intersection (prevY === 0) OR scrolling down (prevY > y)
         if (firstEntry.isIntersecting && currentPage < maxPage) {
-          if (prevY.current === 0 || prevY.current > y) {
-            next();
-          }
+          next();
         }
-        prevY.current = y;
       },
-      { threshold: 0.5 }
+      { threshold: 0.1, rootMargin: '100px' }
     );
-  });
 
-  useEffect(() => {
-    const currentElement = element;
-    const currentObserver = observer.current;
-
-    if (currentElement) {
-      currentObserver?.observe(currentElement);
-    }
+    observer.observe(element);
 
     return () => {
-      if (currentElement) {
-        currentObserver?.unobserve(currentElement);
-      }
+      observer.disconnect();
     };
-  }, [element]);
+  }, [element, currentPage, maxPage, next]);
 
   return (
     <div>

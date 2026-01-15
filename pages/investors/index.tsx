@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import InvestorCard from '../../components/investorCard';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Investor } from '../../types/investor.types';
 import { filterInvestors } from '../../util/helpers';
 import usePagination from '../../util/hooks/usePagination';
@@ -66,55 +66,26 @@ export default function Investors({ investors }: { investors: Investor[] }) {
 
   const currentInvs = currentData();
 
-  // Intersection Observer setup for infinite scroll
-  const observer = useRef<IntersectionObserver | null>(null);
-  const currentPageRef = useRef(currentPage);
-  const maxPageRef = useRef(maxPage);
-  const nextRef = useRef(next);
-
-  // Keep refs updated with latest values
+  // Intersection observer for infinite scroll pagination
   useEffect(() => {
-    currentPageRef.current = currentPage;
-    maxPageRef.current = maxPage;
-    nextRef.current = next;
-  });
+    if (!element) return;
 
-  // Create observer once
-  useEffect(() => {
-    observer.current = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
         const firstEntry = entries[0];
-        if (!firstEntry) return;
-
-        // If the loading element is visible and we're not on the last page, load more
-        if (firstEntry.isIntersecting && currentPageRef.current < maxPageRef.current) {
-          nextRef.current();
+        if (firstEntry.isIntersecting && currentPage < maxPage) {
+          next();
         }
       },
       { threshold: 0.1, rootMargin: '100px' }
     );
 
-    return () => {
-      if (observer.current) {
-        observer.current.disconnect();
-      }
-    };
-  }, []); // Only create once
-
-  useEffect(() => {
-    const currentElement = element;
-    const currentObserver = observer.current;
-
-    if (currentElement && currentObserver) {
-      currentObserver.observe(currentElement);
-    }
+    observer.observe(element);
 
     return () => {
-      if (currentElement && currentObserver) {
-        currentObserver.unobserve(currentElement);
-      }
+      observer.disconnect();
     };
-  }, [element]);
+  }, [element, currentPage, maxPage, next]);
 
   return (
     <>
