@@ -67,24 +67,39 @@ export default function Investors({ investors }: { investors: Investor[] }) {
   const currentInvs = currentData();
 
   // Intersection Observer setup for infinite scroll
-  const observer = useRef<IntersectionObserver>();
-  const prevY = useRef(0);
+  const observer = useRef<IntersectionObserver | null>(null);
+  const currentPageRef = useRef(currentPage);
+  const maxPageRef = useRef(maxPage);
+  const nextRef = useRef(next);
 
+  // Keep refs updated with latest values
+  useEffect(() => {
+    currentPageRef.current = currentPage;
+    maxPageRef.current = maxPage;
+    nextRef.current = next;
+  });
+
+  // Create observer once
   useEffect(() => {
     observer.current = new IntersectionObserver(
       (entries) => {
         const firstEntry = entries[0];
         if (!firstEntry) return;
 
-        const y = firstEntry.boundingClientRect.y;
-        if (prevY.current > y) {
-          next();
+        // If the loading element is visible and we're not on the last page, load more
+        if (firstEntry.isIntersecting && currentPageRef.current < maxPageRef.current) {
+          nextRef.current();
         }
-        prevY.current = y;
       },
-      { threshold: 0.5 }
+      { threshold: 0.1, rootMargin: '100px' }
     );
-  }, [next]);
+
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    };
+  }, []); // Only create once
 
   useEffect(() => {
     const currentElement = element;

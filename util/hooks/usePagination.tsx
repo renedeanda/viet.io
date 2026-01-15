@@ -6,9 +6,9 @@ function usePagination(data: Array<any>, itemsPerPage: number) {
   const maxPage = Math.ceil(data.length / itemsPerPage);
 
   function currentData() {
-    const begin = (currentPage - 1) * itemsPerPage;
-    const end = begin + itemsPerPage;
-    return data.slice(null, end);
+    const begin = 0;
+    const end = currentPage * itemsPerPage;
+    return data.slice(begin, end);
   }
 
   function next() {
