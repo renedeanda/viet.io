@@ -1,23 +1,23 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 
 function usePagination(data: Array<any>, itemsPerPage: number) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const maxPage = Math.ceil(data.length / itemsPerPage);
 
-  function currentData() {
+  const currentData = useCallback(() => {
     const begin = 0;
     const end = currentPage * itemsPerPage;
     return data.slice(begin, end);
-  }
+  }, [data, currentPage, itemsPerPage]);
 
-  function next() {
+  const next = useCallback(() => {
     setCurrentPage((currentPage) => Math.min(currentPage + 1, maxPage));
-  }
+  }, [maxPage]);
 
-  function resetCurrentPage() {
-    setCurrentPage(1)
-  }
+  const resetCurrentPage = useCallback(() => {
+    setCurrentPage(1);
+  }, []);
 
   return { next, currentData, currentPage, maxPage, resetCurrentPage };
 }
