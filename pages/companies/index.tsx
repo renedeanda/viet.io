@@ -67,9 +67,13 @@ export default function Home({ companies }: { companies: any[] }) {
           maxPage
         });
 
-        if (prevY.current > y) {
-          console.log('⬇️ Scrolling down - calling next()');
-          next();
+        // Load more if intersecting and not at max page
+        // Handle first intersection (prevY === 0) OR scrolling down (prevY > y)
+        if (firstEntry.isIntersecting && currentPage < maxPage) {
+          if (prevY.current === 0 || prevY.current > y) {
+            console.log('⬇️ Loading more - calling next()');
+            next();
+          }
         }
         prevY.current = y;
       },
