@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import fs from 'fs';
 import path from 'path';
 import Page from '../../components/page';
@@ -38,19 +38,38 @@ export default function Home({ companies }: { companies: any[] }) {
 
   const currentCos = currentData();
 
-  // Callback ref for intersection observer
-  const observerRef = useRef<IntersectionObserver>();
+  // Refs for intersection observer
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const loadingRef = useRef<HTMLDivElement | null>(null);
 
-  const lastElementRef = useCallback((node: HTMLDivElement) => {
-    if (observerRef.current) observerRef.current.disconnect();
+  // Set up intersection observer
+  useEffect(() => {
+    // Clean up previous observer
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
 
-    observerRef.current = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && currentPage < maxPage) {
-        next();
+    // Create new observer
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && currentPage < maxPage) {
+          next();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    // Observe the loading element if it exists
+    if (loadingRef.current) {
+      observerRef.current.observe(loadingRef.current);
+    }
+
+    // Cleanup on unmount or when dependencies change
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
       }
-    }, { threshold: 0.5 });
-
-    if (node) observerRef.current.observe(node);
+    };
   }, [currentPage, maxPage, next]);
 
   return (
@@ -90,7 +109,7 @@ export default function Home({ companies }: { companies: any[] }) {
 
             {/* Loading Indicator */}
             {filteredCos.length > 0 && currentPage !== maxPage ? (
-              <div ref={lastElementRef} className="flex flex-col items-center gap-3 my-12">
+              <div ref={loadingRef} className="flex flex-col items-center gap-3 my-12">
                 <div className="relative">
                   <div className="animate-spin h-10 w-10 border-4 border-purple-500 border-t-transparent rounded-full"></div>
                   <div className="absolute inset-0 animate-pulse">
