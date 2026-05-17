@@ -36,7 +36,7 @@
     "eslint": "^8.56.0",
     "eslint-config-next": "^15.5.16",
     "globby": "^14.0.0",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.14",
     "sharp": "^0.33.5",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.3.3"
@@ -51,6 +51,12 @@
     "picomatch@4.0.0 - 4.0.3": "^4.0.4",
     "serialize-javascript": "^7.0.5",
     "terser-webpack-plugin": "^5.6.0",
-    "loader-utils": "^3.3.1"
+    "loader-utils": "^3.3.1",
+    "postcss": "^8.5.14",
+    "ajv": "^6.15.0",
+    "brace-expansion": "^1.1.13",
+    "js-yaml": "^4.1.1",
+    "yaml": "^2.8.3",
+    "mdast-util-to-hast": "^13.2.1"
   }
 }
