@@ -4,11 +4,9 @@
   "type": "commonjs",
   "private": true,
   "scripts": {
-    "next-build-export": "next build && next export",
     "dev": "next dev",
     "build": "npm run optimize:images && next build",
     "start": "next start",
-    "export": "next export",
     "optimize:images": "node scripts/optimize-images.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
