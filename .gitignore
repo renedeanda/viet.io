@@ -30,8 +30,5 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# image optimization cache
-.image-optimization-cache.json
-
 # typescript build cache
 tsconfig.tsbuildinfo
