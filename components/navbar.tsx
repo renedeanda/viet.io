@@ -7,6 +7,7 @@ const navLinks = [
   { href: '/companies', label: 'Companies' },
   { href: '/investors', label: 'Investors' },
   { href: '/market', label: 'Market' },
+  { href: '/about', label: 'About' },
 ];
 
 export default function Navbar({ openDrawer }: { openDrawer: () => void; }) {

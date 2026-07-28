@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Navbar from './navbar';
 import Footer from './footer';
 import { useTheme } from 'next-themes';
-import { X, Sun, Moon, Github, Building, TrendingUp, BarChart3, ExternalLink } from 'lucide-react';
+import { X, Sun, Moon, Github, Building, TrendingUp, BarChart3, Info, ExternalLink } from 'lucide-react';
 
 export default function Page({ children, inverted, footerHidden }: { children: React.ReactNode, inverted?: boolean, footerHidden?: boolean }) {
   const [visible, setVisible] = useState(false);
@@ -76,6 +76,15 @@ export default function Page({ children, inverted, footerHidden }: { children: R
               >
                 <BarChart3 className="h-5 w-5" />
                 <span className="font-medium">Market Overview</span>
+              </Link>
+
+              <Link
+                href="/about"
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
+                onClick={() => setVisible(false)}
+              >
+                <Info className="h-5 w-5" />
+                <span className="font-medium">About</span>
               </Link>
 
               <button
