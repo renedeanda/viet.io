@@ -72,9 +72,9 @@ export default function Home({ companies }: { companies: any[] }) {
         <div className="w-full my-12 px-4">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
-            <div className="text-center mt-16 mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
-                Find <span className="text-purple-600 dark:text-purple-400">Vietnam Companies</span>
+            <div className="text-center mt-16 mb-8 animate-fade-in-up">
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+                Find <span className="text-primary">Vietnam Companies</span>
               </h1>
             </div>
 
@@ -89,23 +89,18 @@ export default function Home({ companies }: { companies: any[] }) {
             </div>
 
             {/* Company Cards Grid */}
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {currentCos && currentCos.length > 0 ?
                 currentCos.map((item: any) =>
                   <CompanyCard key={item.data.slug} company={item.data} setIndustry={setIndustry} openCompany={openCompany} />)
-                : <p className="my-12 text-purple-600 dark:text-purple-400 text-2xl text-center w-full">{`No ${industry} companies`}</p>}
+                : <p className="my-12 text-muted-foreground text-xl text-center col-span-full">{`No ${industry} companies`}</p>}
             </div>
 
             {/* Loading Indicator */}
             {filteredCos.length > 0 && currentPage !== maxPage ? (
               <div ref={setElement} className="flex flex-col items-center gap-3 my-12">
-                <div className="relative">
-                  <div className="animate-spin h-10 w-10 border-4 border-purple-500 border-t-transparent rounded-full"></div>
-                  <div className="absolute inset-0 animate-pulse">
-                    <div className="h-10 w-10 rounded-full bg-purple-500/20 blur-sm"></div>
-                  </div>
-                </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 animate-pulse">Loading more...</p>
+                <div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full"></div>
+                <p className="text-sm text-muted-foreground">Loading more...</p>
               </div>
             ) : null}
           </div>
