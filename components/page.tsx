@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Navbar from './navbar';
 import Footer from './footer';
 import { useTheme } from 'next-themes';
-import { X, Sun, Moon, Github, Building, TrendingUp, ExternalLink } from 'lucide-react';
+import { X, Sun, Moon, Github, Building, TrendingUp, BarChart3, Info, Languages, ExternalLink } from 'lucide-react';
+import { useLocale, localePath, alternatePath, strings } from '../util/i18n';
 
 export default function Page({ children, inverted, footerHidden }: { children: React.ReactNode, inverted?: boolean, footerHidden?: boolean }) {
   const [visible, setVisible] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const locale = useLocale();
+  const router = useRouter();
+  const s = strings[locale];
+  const switchHref = alternatePath(router.asPath, locale === 'vi' ? 'en' : 'vi');
 
   useEffect(() => {
     setMounted(true);
@@ -20,10 +27,16 @@ export default function Page({ children, inverted, footerHidden }: { children: R
   };
 
   return (
-    <div className={inverted ? 'bg-transparent min-h-screen flex flex-col' : 'bg-gray-50 dark:bg-[#0D1117] min-h-screen flex flex-col'}>
+    <div className="bg-background min-h-screen flex flex-col">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-primary-foreground"
+      >
+        Skip to content
+      </a>
       <Navbar
         openDrawer={() => setVisible(!visible)} />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {children}
       </main>
 
@@ -34,14 +47,14 @@ export default function Page({ children, inverted, footerHidden }: { children: R
         />
 
         {/* Mobile Sidebar */}
-        <div className={`fixed top-0 right-0 h-full w-72 bg-white dark:bg-[#161B22] shadow-2xl z-50 transform transition-all duration-300 ease-out md:hidden ${visible ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className={`fixed top-0 right-0 h-full w-72 bg-card border-l border-border shadow-2xl z-50 transform transition-all duration-300 ease-out md:hidden ${visible ? 'translate-x-0' : 'translate-x-full'}`}>
           <div className="flex flex-col h-full">
             {/* Header with close button */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-              <h2 className="text-lg font-bold text-gray-900 dark:text-white">Menu</h2>
+            <div className="flex items-center justify-between p-4 border-b border-border">
+              <h2 className="text-lg font-bold text-foreground">{s.nav.menu}</h2>
               <button
                 onClick={() => setVisible(false)}
-                className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" />
@@ -50,55 +63,82 @@ export default function Page({ children, inverted, footerHidden }: { children: R
 
             {/* Menu items */}
             <nav className="flex-1 overflow-y-auto p-4 space-y-1">
+              <Link
+                href={localePath(locale, '/companies')}
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
+                onClick={() => setVisible(false)}
+              >
+                <Building className="h-5 w-5" />
+                <span className="font-medium">{s.nav.companies}</span>
+              </Link>
+
+              <Link
+                href={localePath(locale, '/investors')}
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
+                onClick={() => setVisible(false)}
+              >
+                <TrendingUp className="h-5 w-5" />
+                <span className="font-medium">{s.nav.investors}</span>
+              </Link>
+
+              <Link
+                href={localePath(locale, '/market')}
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
+                onClick={() => setVisible(false)}
+              >
+                <BarChart3 className="h-5 w-5" />
+                <span className="font-medium">{s.nav.marketOverview}</span>
+              </Link>
+
+              <Link
+                href={localePath(locale, '/about')}
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
+                onClick={() => setVisible(false)}
+              >
+                <Info className="h-5 w-5" />
+                <span className="font-medium">{s.nav.about}</span>
+              </Link>
+
+              <Link
+                href={switchHref}
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
+                onClick={() => setVisible(false)}
+              >
+                <Languages className="h-5 w-5" />
+                <span className="font-medium">{s.nav.language}</span>
+              </Link>
+
               <button
                 onClick={() => {
                   toggleTheme();
                   setVisible(false);
                 }}
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 group"
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
               >
-                {mounted && resolvedTheme === 'dark' ? <Sun className="h-5 w-5 group-hover:scale-110 transition-transform" /> : <Moon className="h-5 w-5 group-hover:scale-110 transition-transform" />}
-                <span className="font-medium">{mounted && resolvedTheme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+                {mounted && resolvedTheme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                <span className="font-medium">{mounted && resolvedTheme === 'dark' ? s.nav.lightMode : s.nav.darkMode}</span>
               </button>
 
               <a
-                href="https://github.com/renedeanda/Tech.Viet"
+                href="https://github.com/renedeanda/viet.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 group"
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
                 onClick={() => setVisible(false)}
               >
-                <Github className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                <Github className="h-5 w-5" />
                 <span className="font-medium">GitHub</span>
-              </a>
-
-              <a
-                href="/companies"
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 group"
-                onClick={() => setVisible(false)}
-              >
-                <Building className="h-5 w-5 group-hover:scale-110 transition-transform" />
-                <span className="font-medium">Companies</span>
-              </a>
-
-              <a
-                href="/investors"
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 group"
-                onClick={() => setVisible(false)}
-              >
-                <TrendingUp className="h-5 w-5 group-hover:scale-110 transition-transform" />
-                <span className="font-medium">Investors</span>
               </a>
 
               <a
                 href="https://www.renedeanda.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-200 group"
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
                 onClick={() => setVisible(false)}
               >
-                <ExternalLink className="h-5 w-5 group-hover:scale-110 transition-transform" />
-                <span className="font-medium">Project by René</span>
+                <ExternalLink className="h-5 w-5" />
+                <span className="font-medium">{s.nav.projectBy}</span>
               </a>
             </nav>
           </div>

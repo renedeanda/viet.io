@@ -29,10 +29,11 @@ function searchReducer(state, action) {
   }
 }
 
-export default function MySearch({ items, openItem, type }: {
+export default function MySearch({ items, openItem, type, placeholder }: {
   items: any[],
   openItem: any,
-  type: string
+  type: string,
+  placeholder?: string
 }) {
   const [state, dispatch] = React.useReducer(searchReducer, initialState)
   const { loading, results, value, showResults } = state
@@ -78,31 +79,31 @@ export default function MySearch({ items, openItem, type }: {
       <div className="relative">
         <input
           type="text"
-          placeholder={`Search ${type}`}
+          placeholder={placeholder || `Search ${type}`}
           value={value}
           onChange={handleSearchChange}
-          className="w-full px-4 py-3 text-base rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+          className="w-full px-4 py-3 text-base rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
         />
         {loading && (
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
-            <div className="animate-spin h-5 w-5 border-2 border-purple-500 border-t-transparent rounded-full"></div>
+            <div className="animate-spin h-5 w-5 border-2 border-primary border-t-transparent rounded-full"></div>
           </div>
         )}
       </div>
 
       {showResults && results.length > 0 && (
-        <div className="absolute z-50 w-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl max-h-96 overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="absolute z-50 w-full mt-2 bg-popover border border-border rounded-xl shadow-lg max-h-96 overflow-y-auto">
           {results.map((item: any, index: number) => (
             <div
               key={index}
               onClick={() => handleResultClick(item)}
-              className="group px-4 py-3 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:pl-5 cursor-pointer border-b border-gray-100 dark:border-gray-700 last:border-b-0 transition-all duration-200"
+              className="group px-4 py-3 hover:bg-secondary cursor-pointer border-b border-border last:border-b-0 transition-colors duration-200"
             >
-              <div className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+              <div className="font-semibold text-foreground group-hover:text-primary transition-colors">
                 {item.data.name}
               </div>
               {item.data.tagline && (
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-1">
+                <div className="text-sm text-muted-foreground mt-1 line-clamp-1">
                   {item.data.tagline}
                 </div>
               )}
@@ -112,8 +113,8 @@ export default function MySearch({ items, openItem, type }: {
       )}
 
       {showResults && value && results.length === 0 && !loading && (
-        <div className="absolute z-50 w-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl p-4 animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="text-center text-gray-600 dark:text-gray-400">
+        <div className="absolute z-50 w-full mt-2 bg-popover border border-border rounded-xl shadow-lg p-4">
+          <div className="text-center text-muted-foreground">
             No results found for &quot;{value}&quot;
           </div>
         </div>

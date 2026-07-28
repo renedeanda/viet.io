@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
 
 const invTypeOptions = [
   { key: "All", text: "All", value: "All" },
@@ -35,19 +34,17 @@ export default function InvTypeButtons({ invType, filteredLength, setInvType }: 
   return (
     <div className="flex flex-wrap gap-2 py-4 justify-center">
       {invTypeOptions.map((option, key) => (
-        <Button
+        <button
           key={key}
-          variant={isActive(option.value) ? "default" : "outline"}
-          size="sm"
           onClick={() => setInvType(option.value)}
-          className={`rounded-full transition-all ${
+          className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-all duration-200 hover:-translate-y-0.5 border ${
             isActive(option.value)
-              ? "bg-purple-600 hover:bg-purple-700 text-white"
-              : "bg-transparent dark:bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              ? "bg-primary border-primary text-primary-foreground"
+              : "bg-card border-border text-muted-foreground hover:text-foreground hover:border-gold-400/60 hover:shadow-sm"
           }`}
         >
           {option.value}
-        </Button>
+        </button>
       ))}
     </div>
   )

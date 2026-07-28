@@ -11,9 +11,13 @@ import { filterInvestors } from '../../util/helpers';
 import usePagination from '../../util/hooks/usePagination';
 import MySearch from '../../components/mySearch';
 import InvTypeButtons from '../../components/invTypeButtons';
+import { itemListSchema, breadcrumbSchema } from '../../util/seo';
+import { useLocale, localePath, hreflangAlternates, strings } from '../../util/i18n';
 
 export default function Investors({ investors }: { investors: Investor[] }) {
   const router = useRouter();
+  const locale = useLocale();
+  const s = strings[locale];
   const [invType, setInvType] = useState<string>("all");
   const [filteredInvs, setFilteredInvs] = useState(investors);
   const [element, setElement] = useState<HTMLDivElement | null>(null);
@@ -90,17 +94,29 @@ export default function Investors({ investors }: { investors: Investor[] }) {
   return (
     <>
       <Meta
-        title='Viet.io - Vietnam Investors'
-        desc='List of 200+ Vietnam startups and big tech companies. Viet.io is an open-source website built with React and Next.js listing 200+ technology companies in Vietnam.'
-        canonical='https://viet.io/investors'
+        title={s.investors.metaTitle(investors.length)}
+        desc={s.investors.metaDesc(investors.length)}
+        keywords='Vietnam venture capital, Vietnam investors, Vietnam VC firms, Vietnam angel investors, Vietnam startup accelerators, Southeast Asia venture capital'
+        canonical={localePath(locale, '/investors')}
+        locale={locale}
+        alternates={hreflangAlternates('/investors')}
+        jsonLd={[
+          itemListSchema({
+            name: 'Vietnam Startup Investors & VCs',
+            description: `Directory of ${investors.length} active investors in Vietnam's startup ecosystem.`,
+            path: '/investors',
+            items: investors.map((inv: any) => ({ name: inv.data.name, path: `/investors/${inv.data.slug}` })),
+          }),
+          breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Investors', path: '/investors' }]),
+        ]}
       />
       <Page>
         <div className="w-full my-12 px-4">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
-            <div className="text-center mt-16 mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
-                Find <span className="text-purple-600 dark:text-purple-400">Vietnam Investors</span>
+            <div className="text-center mt-16 mb-8 animate-fade-in-up">
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+                {s.investors.headerPre}<span className="text-primary">{s.investors.headerAccent}</span>
               </h1>
             </div>
 
@@ -110,6 +126,7 @@ export default function Investors({ investors }: { investors: Investor[] }) {
                 items={investors}
                 openItem={openInvestor}
                 type='investors'
+                placeholder={s.investors.searchPlaceholder}
               />
             </div>
 
@@ -123,7 +140,7 @@ export default function Investors({ investors }: { investors: Investor[] }) {
             </div>
 
             {/* Investor Cards Grid */}
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {currentInvs && currentInvs.length > 0 ? (
                 currentInvs.map((item: { data: Investor }) => (
                   <InvestorCard
@@ -134,8 +151,8 @@ export default function Investors({ investors }: { investors: Investor[] }) {
                   />
                 ))
               ) : (
-                <p className="my-12 text-purple-600 dark:text-purple-400 text-2xl text-center w-full">
-                  {`No ${invType} investors`}
+                <p className="my-12 text-muted-foreground text-xl text-center col-span-full">
+                  {s.investors.noResults(invType)}
                 </p>
               )}
             </div>
@@ -143,13 +160,8 @@ export default function Investors({ investors }: { investors: Investor[] }) {
             {/* Loading Indicator */}
             {filteredInvs.length > 0 && currentPage !== maxPage ? (
               <div ref={setElement} className="flex flex-col items-center gap-3 my-12">
-                <div className="relative">
-                  <div className="animate-spin h-10 w-10 border-4 border-purple-500 border-t-transparent rounded-full"></div>
-                  <div className="absolute inset-0 animate-pulse">
-                    <div className="h-10 w-10 rounded-full bg-purple-500/20 blur-sm"></div>
-                  </div>
-                </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 animate-pulse">Loading more...</p>
+                <div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full"></div>
+                <p className="text-sm text-muted-foreground">{s.investors.loadingMore}</p>
               </div>
             ) : null}
           </div>
@@ -164,13 +176,20 @@ export const getStaticProps: GetStaticProps = async () => {
     const investorsDirectory = path.join(process.cwd(), '/public/data/investors');
     const filenames = fs.readdirSync(investorsDirectory);
 
+    // Slim payload: only fields used by cards, search, and filters
     const investors = filenames.map((filename) => {
       const filePath = path.join(investorsDirectory, filename);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const investor = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
       return {
-        filename,
-        data: JSON.parse(fileContents),
+        data: {
+          name: investor.name || '',
+          slug: investor.slug || '',
+          type: investor.type || '',
+          description: investor.description ? `${investor.description.slice(0, 160)}` : '',
+          logoUrl: investor.logoUrl || '',
+          tagline: '',
+        },
       };
     });
 

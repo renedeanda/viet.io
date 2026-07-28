@@ -1,16 +1,26 @@
 {
   "short_name": "Viet.io",
-  "name": "Viet.io",
+  "name": "Viet.io - Vietnam Startup Ecosystem",
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/ico"
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#333333",
-  "background_color": "#ffffff",
-  "description": "An open-source view into the Vietnam Tech ecosystem."
+  "theme_color": "#C8102E",
+  "background_color": "#FAFAF8",
+  "description": "Open-source directory of Vietnam technology companies, startups, and investors."
 }

@@ -1,19 +1,19 @@
 import '../css/styles.css';
 import { AppProps } from 'next/app';
-import { Nunito } from 'next/font/google'
+import { Be_Vietnam_Pro } from 'next/font/google'
 import { ThemeProvider } from 'next-themes';
 
-export const nunito = Nunito({
-  weight: ['400', '700'],
+export const beVietnamPro = Be_Vietnam_Pro({
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
-  subsets: ['latin'],
+  subsets: ['latin', 'vietnamese'],
   display: 'swap'
 })
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <div className={nunito.className}>
+      <div className={beVietnamPro.className}>
         <Component {...pageProps} />
       </div>
     </ThemeProvider>
