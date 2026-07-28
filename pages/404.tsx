@@ -5,7 +5,7 @@ import Meta from '../components/Meta';
 export default function Custom404() {
   return (
     <>
-      <Meta title='404 | Page Not Found' />
+      <Meta title='404 | Page Not Found' desc='The page you are looking for does not exist.' noindex />
       <Page>
         <div className="flex flex-col items-center justify-center text-center px-6" style={{ minHeight: '70vh' }}>
           <p className="text-6xl font-bold text-primary mb-4">404</p>

@@ -11,6 +11,7 @@ import { filterInvestors } from '../../util/helpers';
 import usePagination from '../../util/hooks/usePagination';
 import MySearch from '../../components/mySearch';
 import InvTypeButtons from '../../components/invTypeButtons';
+import { itemListSchema, breadcrumbSchema } from '../../util/seo';
 
 export default function Investors({ investors }: { investors: Investor[] }) {
   const router = useRouter();
@@ -90,9 +91,19 @@ export default function Investors({ investors }: { investors: Investor[] }) {
   return (
     <>
       <Meta
-        title='Viet.io - Vietnam Investors'
-        desc='List of 200+ Vietnam startups and big tech companies. Viet.io is an open-source website built with React and Next.js listing 200+ technology companies in Vietnam.'
+        title={`Vietnam Startup Investors & VCs — Browse ${investors.length}+ | Viet.io`}
+        desc={`Discover ${investors.length}+ active investors in Vietnam startups: venture capital firms, angels, accelerators, corporate VCs and private equity. Free, open-source directory.`}
+        keywords='Vietnam venture capital, Vietnam investors, Vietnam VC firms, Vietnam angel investors, Vietnam startup accelerators, Southeast Asia venture capital'
         canonical='https://viet.io/investors'
+        jsonLd={[
+          itemListSchema({
+            name: 'Vietnam Startup Investors & VCs',
+            description: `Directory of ${investors.length} active investors in Vietnam's startup ecosystem.`,
+            path: '/investors',
+            items: investors.map((inv: any) => ({ name: inv.data.name, path: `/investors/${inv.data.slug}` })),
+          }),
+          breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Investors', path: '/investors' }]),
+        ]}
       />
       <Page>
         <div className="w-full my-12 px-4">

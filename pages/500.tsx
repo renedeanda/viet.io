@@ -5,7 +5,7 @@ import Meta from '../components/Meta';
 export default function Custom500() {
   return (
     <>
-      <Meta title='500 | Server-side error occurred' />
+      <Meta title='500 | Server-side error occurred' desc='A server-side error occurred.' noindex />
       <Page>
         <div className="flex flex-col items-center justify-center text-center px-6" style={{ minHeight: '70vh' }}>
           <p className="text-6xl font-bold text-primary mb-4">500</p>

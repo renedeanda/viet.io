@@ -6,22 +6,33 @@ import path from 'path';
 import InvestorContainer from '../../components/investorContainer';
 import { Investor, RelatedInvestor } from '../../types/investor.types';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import { investorSchema, breadcrumbSchema } from '../../util/seo';
 
 export default function InvestorPage({ investor, related }: { investor: Investor, related: RelatedInvestor[] }) {
 
-  const description = investor.name ?
-    `${investor.name} on Viet.io. Vietnam Startup Ecosystem open-sourced.`
-    : 'Vietnam Startup Ecosystem.'
+  const shortDesc = investor.description ? investor.description.split('\n')[0].slice(0, 120) : ''
+  const description = shortDesc
+    ? `${investor.name} — ${shortDesc}… ${investor.type || 'Investor'} active in Vietnam startups. Profile, portfolio and links on Viet.io.`
+    : `${investor.name}, ${investor.type ? `a ${investor.type} investor` : 'an investor'} active in Vietnam's startup ecosystem. Profile, portfolio and links on Viet.io.`
 
   const screenSrc = `/img/investor/${investor.slug}-screenshot.png`
 
   return (
     <>
       <Meta
-        title={investor.name ? `${investor.name} | Viet.io - Vietnam Startup Ecosystem` : 'Investor Not Found'}
-        desc={investor.description ? `${investor.description} ${description}` : description}
+        title={investor.name ? `${investor.name} — ${investor.type || 'Investor'} in Vietnam | Viet.io` : 'Investor Not Found'}
+        desc={description}
+        keywords={`${investor.name}, ${investor.type} Vietnam, Vietnam venture capital, Vietnam startup investors`}
         canonical={`https://viet.io/investors/${investor.slug}`}
-        image={screenSrc} />
+        image={screenSrc}
+        jsonLd={[
+          investorSchema(investor),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Investors', path: '/investors' },
+            { name: investor.name, path: `/investors/${investor.slug}` },
+          ]),
+        ]} />
 
       <Page>
         <InvestorContainer investor={investor} related={related} />

@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import usePagination from "../../util/hooks/usePagination";
 import { Company } from '../../types/company.types';
 import MySearch from '../../components/mySearch';
+import { itemListSchema, breadcrumbSchema } from '../../util/seo';
 
 export default function Home({ companies }: { companies: any[] }) {
   const router = useRouter();
@@ -64,9 +65,19 @@ export default function Home({ companies }: { companies: any[] }) {
   return (
     <div>
       <Meta
-        title='Viet.io - Vietnam Companies'
-        desc='List of 200+ Vietnam startups and big tech companies. Viet.io is an open-source website built with React and Next.js listing 200+ technology companies in Vietnam.'
-        canonical='https://viet.io/companies' />
+        title={`Vietnam Tech Companies & Startups — Browse ${companies.length}+ | Viet.io`}
+        desc={`Browse ${companies.length}+ Vietnam technology companies and startups by industry: fintech, ecommerce, gaming, healthcare, education and more. Free, open-source directory.`}
+        keywords='Vietnam tech companies, Vietnam startups list, Vietnam fintech, Vietnam ecommerce companies, Vietnam software companies, startups in Ho Chi Minh City, startups in Hanoi'
+        canonical='https://viet.io/companies'
+        jsonLd={[
+          itemListSchema({
+            name: 'Vietnam Tech Companies & Startups',
+            description: `Directory of ${companies.length} technology companies in Vietnam.`,
+            path: '/companies',
+            items: companies.map((c: any) => ({ name: c.data.name, path: `/company/${c.data.slug}` })),
+          }),
+          breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Companies', path: '/companies' }]),
+        ]} />
 
       <Page>
         <div className="w-full my-12 px-4">

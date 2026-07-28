@@ -5,6 +5,7 @@ import { GetStaticProps } from 'next';
 import { Building, TrendingUp, Github, Users, Globe, Smartphone, Landmark, Wallet, CalendarClock } from 'lucide-react';
 import Page from '../../components/page';
 import Meta from '../../components/Meta';
+import { marketDatasetSchema, breadcrumbSchema } from '../../util/seo';
 
 interface Breakdown {
   name: string;
@@ -103,9 +104,14 @@ export default function Market({ stats }: { stats: MarketStats }) {
   return (
     <>
       <Meta
-        title='Vietnam Market Overview | Viet.io'
-        desc="A snapshot of Vietnam's tech market: live ecosystem stats from the Viet.io directory plus key macro indicators on the country's fast-growing digital economy."
+        title='Vietnam Market Overview — Tech Economy Stats & Startup Data | Viet.io'
+        desc={`Vietnam tech market snapshot: ${stats.companyCount} companies and ${stats.investorCount} investors tracked across ${stats.industryCount} industries, plus macro indicators — GDP growth, digital economy size, internet adoption and demographics.`}
+        keywords='Vietnam market overview, Vietnam digital economy, Vietnam GDP growth, Vietnam tech market, Vietnam startup statistics, Vietnam internet economy, e-Conomy SEA Vietnam'
         canonical='https://viet.io/market'
+        jsonLd={[
+          marketDatasetSchema({ companyCount: stats.companyCount, investorCount: stats.investorCount }),
+          breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Market Overview', path: '/market' }]),
+        ]}
       />
 
       <Page>

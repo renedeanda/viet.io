@@ -7,6 +7,7 @@ import Page from '../components/page';
 import Meta from '../components/Meta';
 import LanternBackground from '../components/lanternBackground';
 import Reveal from '../components/reveal';
+import { websiteSchema, siteOrganizationSchema } from '../util/seo';
 
 interface HomeStats {
   companyCount: number;
@@ -20,9 +21,11 @@ export default function Home({ stats }: { stats: HomeStats }) {
   return (
     <div>
       <Meta
-        title='Viet.io - Vietnam Startup Ecosystem'
-        desc='List of 200+ Vietnam startups and big tech companies. Viet.io is an open-source website built with React and Next.js listing 200+ technology companies in Vietnam.'
-        canonical='https://viet.io' />
+        title='Viet.io — Vietnam Startup Ecosystem & Tech Company Directory'
+        desc={`Explore ${stats.companyCount}+ Vietnam startups and tech companies plus ${stats.investorCount}+ active investors across ${stats.industryCount} industries. Viet.io is the open-source directory of Vietnam's fast-growing digital economy.`}
+        keywords='Vietnam startups, Vietnam tech companies, Vietnam startup ecosystem, Vietnam investors, Vietnam venture capital, Southeast Asia startups, Vietnam digital economy'
+        canonical='https://viet.io'
+        jsonLd={[websiteSchema(), siteOrganizationSchema()]} />
 
       <Page>
         {/* Hero */}

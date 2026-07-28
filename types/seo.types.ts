@@ -6,4 +6,9 @@ export interface SEOProps {
     image?: string;
     js?: string;
     icon?: string;
+    keywords?: string;
+    noindex?: boolean;
+    locale?: 'en' | 'vi';
+    alternates?: { hrefLang: string; href: string }[];
+    jsonLd?: object[];
 }
