@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import Navbar from './navbar';
 import Footer from './footer';
 import { useTheme } from 'next-themes';
@@ -50,32 +51,32 @@ export default function Page({ children, inverted, footerHidden }: { children: R
 
             {/* Menu items */}
             <nav className="flex-1 overflow-y-auto p-4 space-y-1">
-              <a
+              <Link
                 href="/companies"
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
                 onClick={() => setVisible(false)}
               >
                 <Building className="h-5 w-5" />
                 <span className="font-medium">Companies</span>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/investors"
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
                 onClick={() => setVisible(false)}
               >
                 <TrendingUp className="h-5 w-5" />
                 <span className="font-medium">Investors</span>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/market"
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
                 onClick={() => setVisible(false)}
               >
                 <BarChart3 className="h-5 w-5" />
                 <span className="font-medium">Market Overview</span>
-              </a>
+              </Link>
 
               <button
                 onClick={() => {
