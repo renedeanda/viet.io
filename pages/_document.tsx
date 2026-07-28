@@ -2,8 +2,9 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { GA_TRACKING_ID } from '../lib/gtag';
 export default class MyDocument extends Document {
   render() {
+    const isVi = this.props.__NEXT_DATA__.page.startsWith('/vi');
     return (
-      <Html lang="en">
+      <Html lang={isVi ? 'vi' : 'en'}>
         <Head>
           <script
             async

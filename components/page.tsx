@@ -1,14 +1,20 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Navbar from './navbar';
 import Footer from './footer';
 import { useTheme } from 'next-themes';
-import { X, Sun, Moon, Github, Building, TrendingUp, BarChart3, Info, ExternalLink } from 'lucide-react';
+import { X, Sun, Moon, Github, Building, TrendingUp, BarChart3, Info, Languages, ExternalLink } from 'lucide-react';
+import { useLocale, localePath, alternatePath, strings } from '../util/i18n';
 
 export default function Page({ children, inverted, footerHidden }: { children: React.ReactNode, inverted?: boolean, footerHidden?: boolean }) {
   const [visible, setVisible] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const locale = useLocale();
+  const router = useRouter();
+  const s = strings[locale];
+  const switchHref = alternatePath(router.asPath, locale === 'vi' ? 'en' : 'vi');
 
   useEffect(() => {
     setMounted(true);
@@ -22,9 +28,15 @@ export default function Page({ children, inverted, footerHidden }: { children: R
 
   return (
     <div className="bg-background min-h-screen flex flex-col">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-primary-foreground"
+      >
+        Skip to content
+      </a>
       <Navbar
         openDrawer={() => setVisible(!visible)} />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {children}
       </main>
 
@@ -39,7 +51,7 @@ export default function Page({ children, inverted, footerHidden }: { children: R
           <div className="flex flex-col h-full">
             {/* Header with close button */}
             <div className="flex items-center justify-between p-4 border-b border-border">
-              <h2 className="text-lg font-bold text-foreground">Menu</h2>
+              <h2 className="text-lg font-bold text-foreground">{s.nav.menu}</h2>
               <button
                 onClick={() => setVisible(false)}
                 className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
@@ -52,39 +64,48 @@ export default function Page({ children, inverted, footerHidden }: { children: R
             {/* Menu items */}
             <nav className="flex-1 overflow-y-auto p-4 space-y-1">
               <Link
-                href="/companies"
+                href={localePath(locale, '/companies')}
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
                 onClick={() => setVisible(false)}
               >
                 <Building className="h-5 w-5" />
-                <span className="font-medium">Companies</span>
+                <span className="font-medium">{s.nav.companies}</span>
               </Link>
 
               <Link
-                href="/investors"
+                href={localePath(locale, '/investors')}
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
                 onClick={() => setVisible(false)}
               >
                 <TrendingUp className="h-5 w-5" />
-                <span className="font-medium">Investors</span>
+                <span className="font-medium">{s.nav.investors}</span>
               </Link>
 
               <Link
-                href="/market"
+                href={localePath(locale, '/market')}
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
                 onClick={() => setVisible(false)}
               >
                 <BarChart3 className="h-5 w-5" />
-                <span className="font-medium">Market Overview</span>
+                <span className="font-medium">{s.nav.marketOverview}</span>
               </Link>
 
               <Link
-                href="/about"
+                href={localePath(locale, '/about')}
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
                 onClick={() => setVisible(false)}
               >
                 <Info className="h-5 w-5" />
-                <span className="font-medium">About</span>
+                <span className="font-medium">{s.nav.about}</span>
+              </Link>
+
+              <Link
+                href={switchHref}
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
+                onClick={() => setVisible(false)}
+              >
+                <Languages className="h-5 w-5" />
+                <span className="font-medium">{s.nav.language}</span>
               </Link>
 
               <button
@@ -95,11 +116,11 @@ export default function Page({ children, inverted, footerHidden }: { children: R
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
               >
                 {mounted && resolvedTheme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-                <span className="font-medium">{mounted && resolvedTheme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+                <span className="font-medium">{mounted && resolvedTheme === 'dark' ? s.nav.lightMode : s.nav.darkMode}</span>
               </button>
 
               <a
-                href="https://github.com/renedeanda/Tech.Viet"
+                href="https://github.com/renedeanda/viet.io"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-secondary hover:text-primary transition-colors"
@@ -117,7 +138,7 @@ export default function Page({ children, inverted, footerHidden }: { children: R
                 onClick={() => setVisible(false)}
               >
                 <ExternalLink className="h-5 w-5" />
-                <span className="font-medium">Project by René</span>
+                <span className="font-medium">{s.nav.projectBy}</span>
               </a>
             </nav>
           </div>

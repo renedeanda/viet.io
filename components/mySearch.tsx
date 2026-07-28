@@ -29,10 +29,11 @@ function searchReducer(state, action) {
   }
 }
 
-export default function MySearch({ items, openItem, type }: {
+export default function MySearch({ items, openItem, type, placeholder }: {
   items: any[],
   openItem: any,
-  type: string
+  type: string,
+  placeholder?: string
 }) {
   const [state, dispatch] = React.useReducer(searchReducer, initialState)
   const { loading, results, value, showResults } = state
@@ -78,7 +79,7 @@ export default function MySearch({ items, openItem, type }: {
       <div className="relative">
         <input
           type="text"
-          placeholder={`Search ${type}`}
+          placeholder={placeholder || `Search ${type}`}
           value={value}
           onChange={handleSearchChange}
           className="w-full px-4 py-3 text-base rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"

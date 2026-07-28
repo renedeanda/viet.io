@@ -1,9 +1,13 @@
+import { useLocale, strings } from '../util/i18n';
+
 export default function Footer(
   { inverted, hidden }: {
     inverted?: boolean,
     hidden?: boolean
   }
 ) {
+  const locale = useLocale();
+  const s = strings[locale];
 
   return (
     !hidden ?
@@ -15,7 +19,7 @@ export default function Footer(
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-primary transition-colors"
           >
-            {`© ${new Date().getFullYear()} Open-source Project by `}
+            {`© ${new Date().getFullYear()} ${s.footer.copyright} `}
             <span className="font-semibold">René DeAnda</span>
           </a>
         </div>

@@ -12,9 +12,12 @@ import usePagination from '../../util/hooks/usePagination';
 import MySearch from '../../components/mySearch';
 import InvTypeButtons from '../../components/invTypeButtons';
 import { itemListSchema, breadcrumbSchema } from '../../util/seo';
+import { useLocale, localePath, hreflangAlternates, strings } from '../../util/i18n';
 
 export default function Investors({ investors }: { investors: Investor[] }) {
   const router = useRouter();
+  const locale = useLocale();
+  const s = strings[locale];
   const [invType, setInvType] = useState<string>("all");
   const [filteredInvs, setFilteredInvs] = useState(investors);
   const [element, setElement] = useState<HTMLDivElement | null>(null);
@@ -91,10 +94,12 @@ export default function Investors({ investors }: { investors: Investor[] }) {
   return (
     <>
       <Meta
-        title={`Vietnam Startup Investors & VCs — Browse ${investors.length}+ | Viet.io`}
-        desc={`Discover ${investors.length}+ active investors in Vietnam startups: venture capital firms, angels, accelerators, corporate VCs and private equity. Free, open-source directory.`}
+        title={s.investors.metaTitle(investors.length)}
+        desc={s.investors.metaDesc(investors.length)}
         keywords='Vietnam venture capital, Vietnam investors, Vietnam VC firms, Vietnam angel investors, Vietnam startup accelerators, Southeast Asia venture capital'
-        canonical='https://viet.io/investors'
+        canonical={localePath(locale, '/investors')}
+        locale={locale}
+        alternates={hreflangAlternates('/investors')}
         jsonLd={[
           itemListSchema({
             name: 'Vietnam Startup Investors & VCs',
@@ -111,7 +116,7 @@ export default function Investors({ investors }: { investors: Investor[] }) {
             {/* Header */}
             <div className="text-center mt-16 mb-8 animate-fade-in-up">
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-                Find <span className="text-primary">Vietnam Investors</span>
+                {s.investors.headerPre}<span className="text-primary">{s.investors.headerAccent}</span>
               </h1>
             </div>
 
@@ -121,6 +126,7 @@ export default function Investors({ investors }: { investors: Investor[] }) {
                 items={investors}
                 openItem={openInvestor}
                 type='investors'
+                placeholder={s.investors.searchPlaceholder}
               />
             </div>
 
@@ -146,7 +152,7 @@ export default function Investors({ investors }: { investors: Investor[] }) {
                 ))
               ) : (
                 <p className="my-12 text-muted-foreground text-xl text-center col-span-full">
-                  {`No ${invType} investors`}
+                  {s.investors.noResults(invType)}
                 </p>
               )}
             </div>
@@ -155,7 +161,7 @@ export default function Investors({ investors }: { investors: Investor[] }) {
             {filteredInvs.length > 0 && currentPage !== maxPage ? (
               <div ref={setElement} className="flex flex-col items-center gap-3 my-12">
                 <div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full"></div>
-                <p className="text-sm text-muted-foreground">Loading more...</p>
+                <p className="text-sm text-muted-foreground">{s.investors.loadingMore}</p>
               </div>
             ) : null}
           </div>

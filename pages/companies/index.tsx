@@ -12,9 +12,12 @@ import usePagination from "../../util/hooks/usePagination";
 import { Company } from '../../types/company.types';
 import MySearch from '../../components/mySearch';
 import { itemListSchema, breadcrumbSchema } from '../../util/seo';
+import { useLocale, localePath, hreflangAlternates, strings } from '../../util/i18n';
 
 export default function Home({ companies }: { companies: any[] }) {
   const router = useRouter();
+  const locale = useLocale();
+  const s = strings[locale];
   const [industry, setIndustry] = useState<string | string[]>("all");
   const [filteredCos, setFilteredCos] = useState(companies);
 
@@ -65,10 +68,12 @@ export default function Home({ companies }: { companies: any[] }) {
   return (
     <div>
       <Meta
-        title={`Vietnam Tech Companies & Startups — Browse ${companies.length}+ | Viet.io`}
-        desc={`Browse ${companies.length}+ Vietnam technology companies and startups by industry: fintech, ecommerce, gaming, healthcare, education and more. Free, open-source directory.`}
+        title={s.companies.metaTitle(companies.length)}
+        desc={s.companies.metaDesc(companies.length)}
         keywords='Vietnam tech companies, Vietnam startups list, Vietnam fintech, Vietnam ecommerce companies, Vietnam software companies, startups in Ho Chi Minh City, startups in Hanoi'
-        canonical='https://viet.io/companies'
+        canonical={localePath(locale, '/companies')}
+        locale={locale}
+        alternates={hreflangAlternates('/companies')}
         jsonLd={[
           itemListSchema({
             name: 'Vietnam Tech Companies & Startups',
@@ -85,13 +90,13 @@ export default function Home({ companies }: { companies: any[] }) {
             {/* Header */}
             <div className="text-center mt-16 mb-8 animate-fade-in-up">
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-                Find <span className="text-primary">Vietnam Companies</span>
+                {s.companies.headerPre}<span className="text-primary">{s.companies.headerAccent}</span>
               </h1>
             </div>
 
             {/* Search */}
             <div className="mb-8">
-              <MySearch items={companies} openItem={openCompany} type='companies' />
+              <MySearch items={companies} openItem={openCompany} type='companies' placeholder={s.companies.searchPlaceholder} />
             </div>
 
             {/* Industry Filter Buttons */}
@@ -104,14 +109,14 @@ export default function Home({ companies }: { companies: any[] }) {
               {currentCos && currentCos.length > 0 ?
                 currentCos.map((item: any) =>
                   <CompanyCard key={item.data.slug} company={item.data} setIndustry={setIndustry} openCompany={openCompany} />)
-                : <p className="my-12 text-muted-foreground text-xl text-center col-span-full">{`No ${industry} companies`}</p>}
+                : <p className="my-12 text-muted-foreground text-xl text-center col-span-full">{s.companies.noResults(industry.toString())}</p>}
             </div>
 
             {/* Loading Indicator */}
             {filteredCos.length > 0 && currentPage !== maxPage ? (
               <div ref={setElement} className="flex flex-col items-center gap-3 my-12">
                 <div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full"></div>
-                <p className="text-sm text-muted-foreground">Loading more...</p>
+                <p className="text-sm text-muted-foreground">{s.companies.loadingMore}</p>
               </div>
             ) : null}
           </div>

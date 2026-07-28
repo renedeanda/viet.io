@@ -2,6 +2,10 @@
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
           
                       <url>
+                          <loc>https://localhost:3000/about</loc>
+                      </url>
+                  
+                      <url>
                           <loc>https://localhost:3000</loc>
                       </url>
                   
@@ -10,11 +14,31 @@
                       </url>
                   
                       <url>
+                          <loc>https://localhost:3000/investors</loc>
+                      </url>
+                  
+                      <url>
                           <loc>https://localhost:3000/market/index</loc>
                       </url>
                   
                       <url>
-                          <loc>https://localhost:3000/investors</loc>
+                          <loc>https://localhost:3000/vi/about</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://localhost:3000/vi/companies</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://localhost:3000/vi/index</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://localhost:3000/vi/investors</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://localhost:3000/vi/market</loc>
                       </url>
                   
                       <url>
