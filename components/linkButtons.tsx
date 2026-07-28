@@ -17,7 +17,7 @@ export default function LinkButtons(
         {company.blogUrl ?
           <li>
             <a
-              className='group flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 hover:translate-x-1 transition-all duration-200'
+              className='group flex items-center gap-2 text-lg text-primary hover:text-primary/80 hover:translate-x-1 transition-all duration-200'
               href={withHttp(company.blogUrl)}
               target='_blank'
               rel="noreferrer">
@@ -29,7 +29,7 @@ export default function LinkButtons(
         {company.facebook ?
           <li>
             <a
-              className='group flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 hover:translate-x-1 transition-all duration-200'
+              className='group flex items-center gap-2 text-lg text-primary hover:text-primary/80 hover:translate-x-1 transition-all duration-200'
               href={withHttp(company.facebook)}
               target='_blank'
               rel="noreferrer">
@@ -41,7 +41,7 @@ export default function LinkButtons(
         {company.linkedin ?
           <li>
             <a
-              className='group flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 hover:translate-x-1 transition-all duration-200'
+              className='group flex items-center gap-2 text-lg text-primary hover:text-primary/80 hover:translate-x-1 transition-all duration-200'
               href={withHttp(company.linkedin)}
               target='_blank'
               rel="noreferrer">
@@ -53,7 +53,7 @@ export default function LinkButtons(
         {company.demoUrl ?
           <li>
             <a
-              className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
+              className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
               href={withHttp(company.demoUrl)}
               target='_blank'
               rel="noreferrer">
@@ -65,7 +65,7 @@ export default function LinkButtons(
         {company.androidUrl ?
           <li>
             <a
-              className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
+              className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
               href={withHttp(company.androidUrl)}
               target='_blank'
               rel="noreferrer">
@@ -77,7 +77,7 @@ export default function LinkButtons(
         {company.iosUrl ?
           <li>
             <a
-              className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
+              className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
               href={withHttp(company.iosUrl)}
               target='_blank'
               rel="noreferrer">
@@ -91,7 +91,7 @@ export default function LinkButtons(
           {investor.facebook ?
             <li>
               <a
-                className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
+                className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
                 href={withHttp(investor.facebook)}
                 target='_blank'
                 rel="noreferrer">
@@ -103,7 +103,7 @@ export default function LinkButtons(
           {investor.linkedin ?
             <li>
               <a
-                className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
+                className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
                 href={withHttp(investor.linkedin)}
                 target='_blank'
                 rel="noreferrer">
@@ -115,7 +115,7 @@ export default function LinkButtons(
           {investor.crunchbase ?
             <li>
               <a
-                className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
+                className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
                 href={withHttp(investor.crunchbase)}
                 target='_blank'
                 rel="noreferrer">
@@ -127,7 +127,7 @@ export default function LinkButtons(
           {investor.portfolio ?
             <li>
               <a
-                className='flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors'
+                className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
                 href={withHttp(investor.portfolio)}
                 target='_blank'
                 rel="noreferrer">
