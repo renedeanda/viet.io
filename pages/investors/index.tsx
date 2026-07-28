@@ -170,13 +170,20 @@ export const getStaticProps: GetStaticProps = async () => {
     const investorsDirectory = path.join(process.cwd(), '/public/data/investors');
     const filenames = fs.readdirSync(investorsDirectory);
 
+    // Slim payload: only fields used by cards, search, and filters
     const investors = filenames.map((filename) => {
       const filePath = path.join(investorsDirectory, filename);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const investor = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
       return {
-        filename,
-        data: JSON.parse(fileContents),
+        data: {
+          name: investor.name || '',
+          slug: investor.slug || '',
+          type: investor.type || '',
+          description: investor.description ? `${investor.description.slice(0, 160)}` : '',
+          logoUrl: investor.logoUrl || '',
+          tagline: '',
+        },
       };
     });
 

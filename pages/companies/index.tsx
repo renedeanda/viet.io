@@ -125,13 +125,20 @@ export const getStaticProps: GetStaticProps = async () => {
   const companiesDirectory = path.join(process.cwd(), '/public/data/companies')
   const filenames = fs.readdirSync(companiesDirectory)
 
+  // Slim payload: only fields used by cards, search, and filters
   const companies = filenames.map((filename) => {
     const filePath = path.join(companiesDirectory, filename)
-    const fileContents = fs.readFileSync(filePath, 'utf8')
+    const company = JSON.parse(fs.readFileSync(filePath, 'utf8'))
 
     return {
-      filename,
-      data: JSON.parse(fileContents),
+      data: {
+        name: company.name || '',
+        slug: company.slug || '',
+        tagline: company.tagline || '',
+        description: company.description ? `${company.description.slice(0, 160)}` : '',
+        industry: company.industry || '',
+        logoUrl: company.logoUrl || '',
+      },
     }
   })
 
