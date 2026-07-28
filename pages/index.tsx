@@ -47,13 +47,13 @@ export default function Home({ stats }: { stats: HomeStats }) {
             {/* Live stat chips */}
             <div className="flex flex-wrap justify-center gap-2.5 mb-10">
               <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium bg-card border border-border text-muted-foreground">
-                <span className="font-semibold text-gold-600 dark:text-gold-400">{stats.companyCount}</span> {s.home.companiesLabel}
+                <span className="font-semibold text-gold-700 dark:text-gold-400">{stats.companyCount}</span> {s.home.companiesLabel}
               </span>
               <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium bg-card border border-border text-muted-foreground">
-                <span className="font-semibold text-gold-600 dark:text-gold-400">{stats.investorCount}</span> {s.home.investorsLabel}
+                <span className="font-semibold text-gold-700 dark:text-gold-400">{stats.investorCount}</span> {s.home.investorsLabel}
               </span>
               <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium bg-card border border-border text-muted-foreground">
-                <span className="font-semibold text-gold-600 dark:text-gold-400">{stats.industryCount}</span> {s.home.industriesLabel}
+                <span className="font-semibold text-gold-700 dark:text-gold-400">{stats.industryCount}</span> {s.home.industriesLabel}
               </span>
             </div>
 
@@ -79,7 +79,7 @@ export default function Home({ stats }: { stats: HomeStats }) {
             <div className="flex justify-center">
               <Link href={localePath(locale, '/market')} className="group">
                 <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-card border border-border hover:border-gold-400/60 hover:shadow-sm transition-all duration-200 cursor-pointer">
-                  <BarChart3 className="h-6 w-6 text-gold-600 dark:text-gold-400" />
+                  <BarChart3 className="h-6 w-6 text-gold-700 dark:text-gold-400" />
                   <div className="text-left">
                     <div className="font-semibold text-foreground">{s.home.marketCallout}</div>
                     <div className="text-sm text-muted-foreground">{s.home.marketCalloutSub}</div>
@@ -106,7 +106,7 @@ export default function Home({ stats }: { stats: HomeStats }) {
                 <Link key={industry.name} href={`${localePath(locale, '/companies')}?industry=${encodeURIComponent(industry.name)}`}>
                   <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium cursor-pointer bg-card border border-border text-muted-foreground hover:text-foreground hover:border-gold-400/60 hover:shadow-sm transition-all duration-200 hover:-translate-y-0.5">
                     {industry.name}
-                    <span className="text-xs text-gold-600 dark:text-gold-400 font-semibold">{industry.count}</span>
+                    <span className="text-xs text-gold-700 dark:text-gold-400 font-semibold">{industry.count}</span>
                   </span>
                 </Link>
               ))}
