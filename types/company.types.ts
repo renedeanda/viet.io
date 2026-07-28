@@ -1,3 +1,11 @@
+export interface RelatedCompany {
+    name: string;
+    slug: string;
+    tagline: string;
+    logoUrl: string;
+    industry: string;
+}
+
 export interface Company {
     name: string;
     slug: string;

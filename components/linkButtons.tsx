@@ -3,142 +3,64 @@ import { Company } from '../types/company.types';
 import { Investor } from '../types/investor.types';
 import { Facebook, Linkedin, Globe, Rss, Briefcase, Smartphone, Store } from 'lucide-react';
 
+interface LinkItem {
+  label: string;
+  url: string;
+  Icon: typeof Globe;
+}
+
+function LinkChips({ links }: { links: LinkItem[] }) {
+  if (links.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {links.map(({ label, url, Icon }) => (
+        <a
+          key={label}
+          href={withHttp(url)}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium bg-card border border-border text-muted-foreground hover:text-primary hover:border-gold-400/60 hover:shadow-sm transition-all duration-200 hover:-translate-y-0.5"
+        >
+          <Icon className="h-4 w-4" />
+          {label}
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export default function LinkButtons(
-  { company, investor, size, isTextList }: {
+  { company, investor }: {
     company?: Company,
     investor?: Investor,
     size?: string,
     isTextList?: boolean
   }) {
 
-  const textList = (
-    company ?
-      (<ul className="space-y-3">
-        {company.blogUrl ?
-          <li>
-            <a
-              className='group flex items-center gap-2 text-lg text-primary hover:text-primary/80 hover:translate-x-1 transition-all duration-200'
-              href={withHttp(company.blogUrl)}
-              target='_blank'
-              rel="noreferrer">
-              <Rss className="h-5 w-5 group-hover:scale-110 transition-transform" />
-              Blog
-            </a>
-          </li>
-          : null}
-        {company.facebook ?
-          <li>
-            <a
-              className='group flex items-center gap-2 text-lg text-primary hover:text-primary/80 hover:translate-x-1 transition-all duration-200'
-              href={withHttp(company.facebook)}
-              target='_blank'
-              rel="noreferrer">
-              <Facebook className="h-5 w-5 group-hover:scale-110 transition-transform" />
-              Facebook
-            </a>
-          </li>
-          : null}
-        {company.linkedin ?
-          <li>
-            <a
-              className='group flex items-center gap-2 text-lg text-primary hover:text-primary/80 hover:translate-x-1 transition-all duration-200'
-              href={withHttp(company.linkedin)}
-              target='_blank'
-              rel="noreferrer">
-              <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
-              LinkedIn
-            </a>
-          </li>
-          : null}
-        {company.demoUrl ?
-          <li>
-            <a
-              className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
-              href={withHttp(company.demoUrl)}
-              target='_blank'
-              rel="noreferrer">
-              <Globe className="h-5 w-5" />
-              Product Demo
-            </a>
-          </li>
-          : null}
-        {company.androidUrl ?
-          <li>
-            <a
-              className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
-              href={withHttp(company.androidUrl)}
-              target='_blank'
-              rel="noreferrer">
-              <Smartphone className="h-5 w-5" />
-              Google Play
-            </a>
-          </li>
-          : null}
-        {company.iosUrl ?
-          <li>
-            <a
-              className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
-              href={withHttp(company.iosUrl)}
-              target='_blank'
-              rel="noreferrer">
-              <Store className="h-5 w-5" />
-              App Store
-            </a>
-          </li>
-          : null}
-      </ul>) : (investor ?
-        (<ul className="space-y-3">
-          {investor.facebook ?
-            <li>
-              <a
-                className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
-                href={withHttp(investor.facebook)}
-                target='_blank'
-                rel="noreferrer">
-                <Facebook className="h-5 w-5" />
-                Facebook
-              </a>
-            </li>
-            : null}
-          {investor.linkedin ?
-            <li>
-              <a
-                className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
-                href={withHttp(investor.linkedin)}
-                target='_blank'
-                rel="noreferrer">
-                <Linkedin className="h-5 w-5" />
-                LinkedIn
-              </a>
-            </li>
-            : null}
-          {investor.crunchbase ?
-            <li>
-              <a
-                className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
-                href={withHttp(investor.crunchbase)}
-                target='_blank'
-                rel="noreferrer">
-                <Globe className="h-5 w-5" />
-                Crunchbase
-              </a>
-            </li>
-            : null}
-          {investor.portfolio ?
-            <li>
-              <a
-                className='flex items-center gap-2 text-lg text-primary hover:text-primary/80 transition-colors'
-                href={withHttp(investor.portfolio)}
-                target='_blank'
-                rel="noreferrer">
-                <Briefcase className="h-5 w-5" />
-                Portfolio
-              </a>
-            </li>
-            : null}
-        </ul>) : null
-      )
-  )
+  if (company) {
+    const links: LinkItem[] = [
+      company.blogUrl && { label: 'Blog', url: company.blogUrl, Icon: Rss },
+      company.facebook && { label: 'Facebook', url: company.facebook, Icon: Facebook },
+      company.linkedin && { label: 'LinkedIn', url: company.linkedin, Icon: Linkedin },
+      company.demoUrl && { label: 'Product Demo', url: company.demoUrl, Icon: Globe },
+      company.androidUrl && { label: 'Google Play', url: company.androidUrl, Icon: Smartphone },
+      company.iosUrl && { label: 'App Store', url: company.iosUrl, Icon: Store },
+    ].filter(Boolean) as LinkItem[];
 
-  return textList
+    return <LinkChips links={links} />;
+  }
+
+  if (investor) {
+    const links: LinkItem[] = [
+      investor.facebook && { label: 'Facebook', url: investor.facebook, Icon: Facebook },
+      investor.linkedin && { label: 'LinkedIn', url: investor.linkedin, Icon: Linkedin },
+      investor.crunchbase && { label: 'Crunchbase', url: investor.crunchbase, Icon: Globe },
+      investor.portfolio && { label: 'Portfolio', url: investor.portfolio, Icon: Briefcase },
+    ].filter(Boolean) as LinkItem[];
+
+    return <LinkChips links={links} />;
+  }
+
+  return null;
 }
