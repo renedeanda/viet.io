@@ -5,6 +5,8 @@ import { GetStaticProps } from 'next';
 import { Building, TrendingUp, BarChart3, ChevronRight } from 'lucide-react';
 import Page from '../components/page';
 import Meta from '../components/Meta';
+import LanternBackground from '../components/lanternBackground';
+import Reveal from '../components/reveal';
 
 interface HomeStats {
   companyCount: number;
@@ -24,8 +26,9 @@ export default function Home({ stats }: { stats: HomeStats }) {
 
       <Page>
         {/* Hero */}
-        <div className="py-20 md:py-28 px-6">
-          <div className="max-w-3xl mx-auto text-center animate-fade-in-up">
+        <div className="relative py-20 md:py-28 px-6">
+          <LanternBackground />
+          <div className="relative max-w-3xl mx-auto text-center animate-fade-in-up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-5">
               Vietnam&apos;s <span className="text-primary">startup ecosystem</span>, open-sourced
             </h1>
@@ -82,7 +85,7 @@ export default function Home({ stats }: { stats: HomeStats }) {
 
         {/* Top industries */}
         <div className="px-6 pb-20">
-          <div className="max-w-3xl mx-auto">
+          <Reveal className="max-w-3xl mx-auto">
             <div className="mb-6 flex items-center gap-4">
               <div>
                 <h2 className="text-lg font-semibold text-foreground">Explore by industry</h2>
@@ -105,7 +108,7 @@ export default function Home({ stats }: { stats: HomeStats }) {
                 </span>
               </Link>
             </div>
-          </div>
+          </Reveal>
         </div>
       </Page>
 
