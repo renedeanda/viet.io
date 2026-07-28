@@ -43,6 +43,7 @@ export default function About({ stats }: { stats: AboutStats }) {
         desc={s.about.metaDesc(stats.companyCount, stats.investorCount)}
         keywords='about Viet.io, Vietnam startup directory, open source Vietnam tech, contribute Vietnam startups'
         canonical={localePath(locale, '/about')}
+        image='/og-about.png'
         locale={locale}
         alternates={hreflangAlternates('/about')}
         jsonLd={[
@@ -205,8 +206,8 @@ export const getStaticProps: GetStaticProps = async () => {
   const companiesDirectory = path.join(process.cwd(), '/public/data/companies')
   const investorsDirectory = path.join(process.cwd(), '/public/data/investors')
 
-  const companyFiles = fs.readdirSync(companiesDirectory)
-  const investorFiles = fs.readdirSync(investorsDirectory)
+  const companyFiles = fs.readdirSync(companiesDirectory).filter((filename) => filename.endsWith('.json'))
+  const investorFiles = fs.readdirSync(investorsDirectory).filter((filename) => filename.endsWith('.json'))
 
   const industries = new Set<string>()
   companyFiles.forEach((filename) => {

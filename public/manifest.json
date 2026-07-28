@@ -20,7 +20,7 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#C8102E",
-  "background_color": "#FAFAF8",
+  "theme_color": "#FAF7EF",
+  "background_color": "#FAF7EF",
   "description": "Open-source directory of Vietnam technology companies, startups, and investors."
 }

@@ -9,10 +9,10 @@ const invTypeOptions = [
   { key: "Venture Capital", text: "Venture Capital", value: "Venture Capital" }
 ]
 
-export default function InvTypeButtons({ invType, filteredLength, setInvType }: {
+export default function InvTypeButtons({ invType, setInvType, label }: {
   invType: string | string[],
-  filteredLength: number,
-  setInvType: any
+  setInvType: (type: string) => void,
+  label: string,
 }) {
 
   let validOption: boolean = false;
@@ -32,11 +32,13 @@ export default function InvTypeButtons({ invType, filteredLength, setInvType }: 
   };
 
   return (
-    <div className="flex flex-wrap gap-2 py-4 justify-center">
-      {invTypeOptions.map((option, key) => (
+    <div role="group" aria-label={label} className="flex flex-wrap gap-2 py-4 justify-center">
+      {invTypeOptions.map((option) => (
         <button
-          key={key}
+          key={option.value}
+          type="button"
           onClick={() => setInvType(option.value)}
+          aria-pressed={isActive(option.value)}
           className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-all duration-200 hover:-translate-y-0.5 border ${
             isActive(option.value)
               ? "bg-primary border-primary text-primary-foreground"

@@ -14,8 +14,6 @@ export default function CompanyPage({ company, related }: { company: Company, re
     ? `${company.name} — ${company.tagline} Learn about this ${company.industry || 'Vietnam tech'} company: website, social links and profile on Viet.io, the open Vietnam startup directory.`
     : `${company.name} profile on Viet.io: ${company.industry ? `a ${company.industry} company in Vietnam` : 'a technology company in Vietnam'}. Website, social links and company details.`
 
-  const screenSrc = `/img/company/${company.slug}-screenshot.png`
-
   return (
     <>
       <Meta
@@ -23,7 +21,7 @@ export default function CompanyPage({ company, related }: { company: Company, re
         desc={description}
         keywords={`${company.name}, ${company.industry} Vietnam, Vietnam startups, Vietnam tech companies`}
         canonical={`https://viet.io/company/${company.slug}`}
-        image={screenSrc}
+        image={`/og/company/${company.slug}.png`}
         jsonLd={[
           companySchema(company),
           breadcrumbSchema([
@@ -42,7 +40,7 @@ export default function CompanyPage({ company, related }: { company: Company, re
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const companiesDirectory = path.join(process.cwd(), '/public/data/companies')
-  const filenames = fs.readdirSync(companiesDirectory)
+  const filenames = fs.readdirSync(companiesDirectory).filter((filename) => filename.endsWith('.json'))
 
   const paths = filenames.map((filename) => {
     const filePath = path.join(companiesDirectory, filename)
@@ -65,6 +63,7 @@ export const getStaticProps: GetStaticProps = async context => {
 
   // Related companies in the same industry (slim fields only)
   const related: RelatedCompany[] = fs.readdirSync(companiesDirectory)
+    .filter((filename) => filename.endsWith('.json'))
     .map((filename) => JSON.parse(fs.readFileSync(path.join(companiesDirectory, filename), 'utf8')))
     .filter((item: Company) => item.slug !== company.slug && item.industry === company.industry)
     .slice(0, 6)

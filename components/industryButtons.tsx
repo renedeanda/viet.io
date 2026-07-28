@@ -31,10 +31,10 @@ const industryOptions = [
   { key: "Web Hosting", text: "Web Hosting", value: "Web Hosting" },
 ]
 
-export default function IndustryButtons({ industry, filteredLength, setIndustry }: {
+export default function IndustryButtons({ industry, setIndustry, label }: {
   industry: string | string[],
-  filteredLength: number,
-  setIndustry: any
+  setIndustry: (industry: string) => void,
+  label: string,
 }) {
 
   let validOption: boolean = false;
@@ -54,11 +54,13 @@ export default function IndustryButtons({ industry, filteredLength, setIndustry 
   };
 
   return (
-    <div className="flex flex-wrap gap-2 py-4 justify-center">
-      {industryOptions.map((option, key) => (
+    <div role="group" aria-label={label} className="flex flex-wrap gap-2 py-4 justify-center">
+      {industryOptions.map((option) => (
         <button
-          key={key}
+          key={option.value}
+          type="button"
           onClick={() => setIndustry(option.value)}
+          aria-pressed={isActive(option.value)}
           className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-all duration-200 hover:-translate-y-0.5 border ${
             isActive(option.value)
               ? "bg-primary border-primary text-primary-foreground"

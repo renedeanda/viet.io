@@ -1,5 +1,5 @@
 {
-  "name": "Tech.Viet",
+  "name": "viet.io",
   "version": "1.0.0",
   "type": "commonjs",
   "private": true,
@@ -8,8 +8,10 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "npm run optimize:images && next build",
+    "build": "npm run brand:generate && npm run sitemap:generate && npm run optimize:images && next build",
     "start": "next start",
+    "brand:generate": "node scripts/generate-brand-assets.js",
+    "sitemap:generate": "node util/generateSiteMap.mjs",
     "optimize:images": "node scripts/optimize-images.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"

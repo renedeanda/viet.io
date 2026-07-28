@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import InvestorCard from '../../components/investorCard';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Investor } from '../../types/investor.types';
 import { filterInvestors } from '../../util/helpers';
 import usePagination from '../../util/hooks/usePagination';
@@ -14,42 +14,29 @@ import InvTypeButtons from '../../components/invTypeButtons';
 import { itemListSchema, breadcrumbSchema } from '../../util/seo';
 import { useLocale, localePath, hreflangAlternates, strings } from '../../util/i18n';
 
-export default function Investors({ investors }: { investors: Investor[] }) {
+export default function Investors({ investors }: { investors: any[] }) {
   const router = useRouter();
   const locale = useLocale();
   const s = strings[locale];
   const [invType, setInvType] = useState<string>("all");
-  const [filteredInvs, setFilteredInvs] = useState(investors);
-  const [element, setElement] = useState<HTMLDivElement | null>(null);
+  const [search, setSearch] = useState('');
   
   // Initialize router and query parameters
   useEffect(() => {
     if (!router.isReady) return;
 
     const queryInvType = router.query['type'];
-    if (queryInvType && typeof queryInvType === 'string') {
-      setInvType(queryInvType);
-    }
+    setInvType(typeof queryInvType === 'string' ? queryInvType : 'all');
+    const querySearch = router.query['search'];
+    setSearch(typeof querySearch === 'string' ? querySearch : '');
   }, [router.isReady, router.query]);
 
-  const openInvestor = (investor: Investor) => {
-    try {
-      const url = new URL(`/investors/${investor.slug}`, window.location.origin);
-      // Preserve UTM parameters
-      const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
-      utmParams.forEach(param => {
-        const value = router.query[param];
-        if (value) {
-          url.searchParams.set(param, String(value));
-        }
-      });
-      window.open(url.toString(), '_blank');
-    } catch (error) {
-      console.error('Error opening investor page:', error);
-      // Fallback to simple URL if URL construction fails
-      window.open(`/investors/${investor.slug}`, '_blank');
-    }
-  };
+  const filteredInvs = useMemo(() => {
+    const typeResults = filterInvestors(investors, invType);
+    const query = search.trim().toLocaleLowerCase();
+    if (!query) return typeResults;
+    return typeResults.filter((item: any) => item.data.name.toLocaleLowerCase().includes(query));
+  }, [investors, invType, search]);
 
   const { 
     next, 
@@ -59,37 +46,38 @@ export default function Investors({ investors }: { investors: Investor[] }) {
     resetCurrentPage 
   } = usePagination(filteredInvs, 12);
 
-  // Update filtered investors when invType changes
   useEffect(() => {
-    if (!investors) return;
-
-    const filtered = filterInvestors(investors, invType);
-    setFilteredInvs(filtered);
     resetCurrentPage();
-  }, [invType, investors, resetCurrentPage]);
+  }, [invType, search, resetCurrentPage]);
 
   const currentInvs = currentData();
 
-  // Intersection observer for infinite scroll pagination
-  useEffect(() => {
-    if (!element) return;
+  const updateQuery = (
+    key: 'type' | 'search',
+    value: string,
+    method: 'push' | 'replace'
+  ) => {
+    const query = { ...router.query };
+    if (!value || (key === 'type' && value.toLocaleLowerCase() === 'all')) {
+      delete query[key];
+    } else {
+      query[key] = value;
+    }
+    void router[method]({ pathname: router.pathname, query }, undefined, {
+      shallow: true,
+      scroll: false,
+    });
+  };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const firstEntry = entries[0];
-        if (firstEntry.isIntersecting && currentPage < maxPage) {
-          next();
-        }
-      },
-      { threshold: 0.1, rootMargin: '100px' }
-    );
+  const handleTypeChange = (value: string) => {
+    setInvType(value);
+    updateQuery('type', value, 'push');
+  };
 
-    observer.observe(element);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [element, currentPage, maxPage, next]);
+  const handleSearchChange = (value: string) => {
+    setSearch(value);
+    updateQuery('search', value, 'replace');
+  };
 
   return (
     <>
@@ -98,6 +86,7 @@ export default function Investors({ investors }: { investors: Investor[] }) {
         desc={s.investors.metaDesc(investors.length)}
         keywords='Vietnam venture capital, Vietnam investors, Vietnam VC firms, Vietnam angel investors, Vietnam startup accelerators, Southeast Asia venture capital'
         canonical={localePath(locale, '/investors')}
+        image='/og-investors.png'
         locale={locale}
         alternates={hreflangAlternates('/investors')}
         jsonLd={[
@@ -124,20 +113,26 @@ export default function Investors({ investors }: { investors: Investor[] }) {
             <div className="mb-8">
               <MySearch
                 items={investors}
-                openItem={openInvestor}
-                type='investors'
+                value={search}
+                onValueChange={handleSearchChange}
+                hrefForItem={(investor) => `/investors/${investor.slug}`}
                 placeholder={s.investors.searchPlaceholder}
+                noResultsText={s.investors.searchNoResults}
               />
             </div>
 
             {/* Type Filter Buttons */}
             <div className="mb-8">
               <InvTypeButtons
-                setInvType={setInvType}
+                setInvType={handleTypeChange}
                 invType={invType}
-                filteredLength={filteredInvs.length}
+                label={s.investors.filterLabel}
               />
             </div>
+
+            <p aria-live="polite" className="text-center text-sm text-muted-foreground mb-6">
+              {s.investors.resultCount(filteredInvs.length)}
+            </p>
 
             {/* Investor Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -146,22 +141,25 @@ export default function Investors({ investors }: { investors: Investor[] }) {
                   <InvestorCard
                     key={item.data.slug}
                     investor={item.data}
-                    setInvType={setInvType}
-                    openInvestor={openInvestor}
+                    setInvType={handleTypeChange}
                   />
                 ))
               ) : (
                 <p className="my-12 text-muted-foreground text-xl text-center col-span-full">
-                  {s.investors.noResults(invType)}
+                  {search ? s.investors.searchNoResults(search) : s.investors.noResults(invType)}
                 </p>
               )}
             </div>
 
-            {/* Loading Indicator */}
             {filteredInvs.length > 0 && currentPage !== maxPage ? (
-              <div ref={setElement} className="flex flex-col items-center gap-3 my-12">
-                <div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full"></div>
-                <p className="text-sm text-muted-foreground">{s.investors.loadingMore}</p>
+              <div className="flex justify-center my-12">
+                <button
+                  type="button"
+                  onClick={next}
+                  className="px-5 py-2.5 rounded-full bg-card border border-border text-sm font-semibold text-foreground hover:text-primary hover:border-gold-400/60 transition-colors"
+                >
+                  {s.investors.loadMore}
+                </button>
               </div>
             ) : null}
           </div>
@@ -174,7 +172,7 @@ export default function Investors({ investors }: { investors: Investor[] }) {
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const investorsDirectory = path.join(process.cwd(), '/public/data/investors');
-    const filenames = fs.readdirSync(investorsDirectory);
+    const filenames = fs.readdirSync(investorsDirectory).filter((filename) => filename.endsWith('.json'));
 
     // Slim payload: only fields used by cards, search, and filters
     const investors = filenames.map((filename) => {

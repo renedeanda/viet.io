@@ -143,6 +143,8 @@ export function marketDatasetSchema(
     name: 'Vietnam Startup Ecosystem Directory',
     description: `Open-source dataset of ${companyCount} Vietnam technology companies and ${investorCount} active investors, categorized by industry and investor type.`,
     url: `${SITE_URL}/market`,
+    dateModified: '2026-07-28',
+    temporalCoverage: '2025/2026-07',
     license: 'https://opensource.org/licenses/MIT',
     creator: {
       '@type': 'Organization',
@@ -158,6 +160,12 @@ export function marketDatasetSchema(
       '@type': 'Country',
       name: 'Vietnam',
     },
+    isBasedOn: [
+      'https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/07/thong-cao-bao-chi-ve-tinh-hinh-kinh-te-xa-hoi-quy-ii-va-sau-thang-dau-nam-2026/',
+      'https://www.worldbank.org/en/news/press-release/2026/05/15/viet-nam-s-economy-remains-resilient-but-sustained-reforms-are-key-to-navigating-heightened-uncertainty-wb',
+      'https://services.google.com/fh/files/misc/vietnam_e_conomy_sea_2025_report.pdf',
+      'https://www.bcg.com/publications/2026/vietnam-innovation-and-private-capital-report',
+    ],
   };
 }
 
