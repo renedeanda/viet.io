@@ -1,13 +1,13 @@
 # Viet.io — Vietnam's Startup Ecosystem, Open-Sourced
 
-[Viet.io](https://viet.io) is an open-source directory of **250+ technology companies** and **80+ active investors** in Vietnam, built as a fast static website with Next.js.
+[Viet.io](https://viet.io) is an open-source directory of technology companies and active investors in Vietnam, built as a fast static website with Next.js.
 
 Every company and investor is a plain JSON file in this repository — anyone can add, correct, or enrich the data with a pull request.
 
 ## Features
 
-- 🏢 **Company directory** — 250+ Vietnam tech companies, filterable by industry with instant search
-- 💰 **Investor directory** — 80+ VCs, angels, accelerators, corporate VCs, and PE firms
+- 🏢 **Company directory** — Vietnam tech companies, filterable by industry with instant search
+- 💰 **Investor directory** — VCs, angels, accelerators, corporate VCs, and PE firms
 - 📊 **[Market overview](https://viet.io/market)** — live ecosystem stats computed from the dataset plus curated macro indicators
 - 🏮 **Delightful design** — Vietnam-inspired red & gold design system with an animated lantern hero (Framer Motion)
 - 🌐 **Bilingual** — English and Vietnamese (`/vi`) with hreflang alternates

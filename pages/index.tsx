@@ -28,6 +28,7 @@ export default function Home({ stats }: { stats: HomeStats }) {
         desc={s.home.metaDesc(stats.companyCount, stats.investorCount, stats.industryCount)}
         keywords='Vietnam startups, Vietnam tech companies, Vietnam startup ecosystem, Vietnam investors, Vietnam venture capital, Southeast Asia startups, Vietnam digital economy'
         canonical={localePath(locale, '/')}
+        image='/og-image.png'
         locale={locale}
         alternates={hreflangAlternates('/')}
         jsonLd={[websiteSchema(), siteOrganizationSchema()]} />
@@ -128,8 +129,8 @@ export const getStaticProps: GetStaticProps = async () => {
   const companiesDirectory = path.join(process.cwd(), '/public/data/companies')
   const investorsDirectory = path.join(process.cwd(), '/public/data/investors')
 
-  const companyFiles = fs.readdirSync(companiesDirectory)
-  const investorFiles = fs.readdirSync(investorsDirectory)
+  const companyFiles = fs.readdirSync(companiesDirectory).filter((filename) => filename.endsWith('.json'))
+  const investorFiles = fs.readdirSync(investorsDirectory).filter((filename) => filename.endsWith('.json'))
 
   const industryCounts: Record<string, number> = {}
   companyFiles.forEach((filename) => {

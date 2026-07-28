@@ -35,7 +35,8 @@ export default function Meta(props: SEOProps) {
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="HandheldFriendly" content="true" />
-      <meta name="theme-color" content="#C8102E" />
+      <meta key="theme-color-light" name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7EF" />
+      <meta key="theme-color-dark" name="theme-color" media="(prefers-color-scheme: dark)" content="#141414" />
       <link rel="manifest" href="/manifest.json" />
 
       {/* Icons */}

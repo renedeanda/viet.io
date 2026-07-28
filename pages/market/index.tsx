@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
-import { Building, TrendingUp, Github, Users, Globe, Smartphone, Landmark, Wallet, CalendarClock } from 'lucide-react';
+import { Building, TrendingUp, Github, Users, Globe, Smartphone, Landmark, Wallet, CalendarClock, ExternalLink } from 'lucide-react';
 import Page from '../../components/page';
 import Meta from '../../components/Meta';
 import Reveal from '../../components/reveal';
@@ -22,7 +22,7 @@ interface MarketStats {
   investorTypes: Breakdown[];
 }
 
-const indicatorIcons = [Users, Landmark, Wallet, Globe, Smartphone, CalendarClock];
+const indicatorIcons = [TrendingUp, CalendarClock, Wallet, Globe, Smartphone, Landmark, Building, TrendingUp, Users];
 
 function SectionHeader({ title, subtitle }: { title: string; subtitle: string }) {
   return (
@@ -71,6 +71,7 @@ export default function Market({ stats }: { stats: MarketStats }) {
         desc={s.market.metaDesc(stats.companyCount, stats.investorCount, stats.industryCount)}
         keywords='Vietnam market overview, Vietnam digital economy, Vietnam GDP growth, Vietnam tech market, Vietnam startup statistics, Vietnam internet economy, e-Conomy SEA Vietnam'
         canonical={localePath(locale, '/market')}
+        image='/og-market.png'
         locale={locale}
         alternates={hreflangAlternates('/market')}
         jsonLd={[
@@ -83,6 +84,9 @@ export default function Market({ stats }: { stats: MarketStats }) {
         {/* Hero */}
         <div className="py-16 md:py-24 px-6">
           <div className="max-w-3xl mx-auto text-center animate-fade-in-up">
+            <div className="inline-flex items-center px-3 py-1.5 mb-5 rounded-full border border-primary/20 bg-primary/5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+              {s.market.updatedLabel}
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-5">
               {s.market.heroPre}<span className="text-primary">{s.market.heroAccent}</span>
             </h1>
@@ -175,7 +179,15 @@ export default function Market({ stats }: { stats: MarketStats }) {
                       </div>
                       <div className="text-2xl font-bold text-foreground mb-1.5">{indicator.value}</div>
                       <p className="text-sm text-muted-foreground leading-relaxed mb-3">{indicator.detail}</p>
-                      <p className="text-xs text-muted-foreground/70">{s.market.sourceLabel}: {indicator.source}</p>
+                      <a
+                        href={indicator.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-start gap-1 text-xs text-muted-foreground/70 hover:text-primary transition-colors"
+                      >
+                        <span>{s.market.sourceLabel}: {indicator.source}</span>
+                        <ExternalLink className="h-3 w-3 mt-0.5 flex-shrink-0" />
+                      </a>
                     </div>
                   );
                 })}
@@ -183,6 +195,51 @@ export default function Market({ stats }: { stats: MarketStats }) {
               <p className="mt-4 text-xs text-muted-foreground/70">
                 {s.market.macroDisclaimer}
               </p>
+            </Reveal>
+
+            {/* Market interpretation */}
+            <Reveal className="mb-14">
+              <SectionHeader
+                title={s.market.signalsTitle}
+                subtitle={s.market.signalsSub}
+              />
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-3.5">
+                {s.market.signals.map((signal, index) => (
+                  <div key={signal.title} className="relative p-5 rounded-xl border border-border bg-card overflow-hidden">
+                    <div className="absolute -right-1 -top-5 text-7xl font-bold text-primary/[0.06]" aria-hidden="true">
+                      {String(index + 1).padStart(2, '0')}
+                    </div>
+                    <div className="relative">
+                      <div className="text-xs font-semibold tracking-[0.16em] uppercase text-primary mb-3">
+                        {String(index + 1).padStart(2, '0')}
+                      </div>
+                      <h3 className="text-base font-semibold text-foreground mb-2">{signal.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{signal.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+
+            {/* Risks and watchlist */}
+            <Reveal className="mb-14">
+              <SectionHeader
+                title={s.market.watchTitle}
+                subtitle={s.market.watchSub}
+              />
+              <div className="rounded-xl border border-border bg-card divide-y divide-border">
+                {s.market.watchItems.map((item, index) => (
+                  <div key={item.title} className="grid grid-cols-[auto_1fr] gap-4 p-5">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <h3 className="text-base font-semibold text-foreground mb-1.5">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </Reveal>
 
             {/* CTA row */}
@@ -228,8 +285,8 @@ export const getStaticProps: GetStaticProps = async () => {
   const companiesDirectory = path.join(process.cwd(), '/public/data/companies')
   const investorsDirectory = path.join(process.cwd(), '/public/data/investors')
 
-  const companyFiles = fs.readdirSync(companiesDirectory)
-  const investorFiles = fs.readdirSync(investorsDirectory)
+  const companyFiles = fs.readdirSync(companiesDirectory).filter((filename) => filename.endsWith('.json'))
+  const investorFiles = fs.readdirSync(investorsDirectory).filter((filename) => filename.endsWith('.json'))
 
   const industryCounts: Record<string, number> = {}
   companyFiles.forEach((filename) => {

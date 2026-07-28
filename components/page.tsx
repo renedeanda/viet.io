@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Navbar from './navbar';
@@ -6,9 +6,11 @@ import Footer from './footer';
 import { useTheme } from 'next-themes';
 import { X, Sun, Moon, Github, Building, TrendingUp, BarChart3, Info, Languages, ExternalLink } from 'lucide-react';
 import { useLocale, localePath, alternatePath, strings } from '../util/i18n';
+import * as Dialog from '@radix-ui/react-dialog';
 
 export default function Page({ children, inverted, footerHidden }: { children: React.ReactNode, inverted?: boolean, footerHidden?: boolean }) {
   const [visible, setVisible] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const locale = useLocale();
@@ -35,33 +37,34 @@ export default function Page({ children, inverted, footerHidden }: { children: R
         Skip to content
       </a>
       <Navbar
+        menuButtonRef={menuButtonRef}
         openDrawer={() => setVisible(!visible)} />
       <main id="main-content" className="flex-1">
         {children}
       </main>
 
-        {/* Mobile Sidebar Overlay */}
-        <div
-          className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-          onClick={() => setVisible(false)}
-        />
-
-        {/* Mobile Sidebar */}
-        <div className={`fixed top-0 right-0 h-full w-72 bg-card border-l border-border shadow-2xl z-50 transform transition-all duration-300 ease-out md:hidden ${visible ? 'translate-x-0' : 'translate-x-full'}`}>
+      <Dialog.Root open={visible} onOpenChange={setVisible}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0" />
+          <Dialog.Content
+            aria-describedby={undefined}
+            onCloseAutoFocus={(event) => {
+              event.preventDefault();
+              menuButtonRef.current?.focus();
+            }}
+            className="fixed top-0 right-0 h-full w-72 bg-card border-l border-border shadow-2xl z-[70] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right duration-300 focus:outline-none"
+          >
           <div className="flex flex-col h-full">
-            {/* Header with close button */}
             <div className="flex items-center justify-between p-4 border-b border-border">
-              <h2 className="text-lg font-bold text-foreground">{s.nav.menu}</h2>
-              <button
-                onClick={() => setVisible(false)}
+              <Dialog.Title className="text-lg font-bold text-foreground">{s.nav.menu}</Dialog.Title>
+              <Dialog.Close
                 className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" />
-              </button>
+              </Dialog.Close>
             </div>
 
-            {/* Menu items */}
             <nav className="flex-1 overflow-y-auto p-4 space-y-1">
               <Link
                 href={localePath(locale, '/companies')}
@@ -142,7 +145,9 @@ export default function Page({ children, inverted, footerHidden }: { children: R
               </a>
             </nav>
           </div>
-        </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
       <Footer inverted={inverted} hidden={footerHidden} />
     </div>
   )

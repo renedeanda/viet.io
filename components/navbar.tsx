@@ -1,11 +1,17 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type RefObject } from 'react';
 import { Menu, Sun, Moon, Github, Languages } from 'lucide-react';
 import { useLocale, localePath, alternatePath, strings } from '../util/i18n';
 
-export default function Navbar({ openDrawer }: { openDrawer: () => void; }) {
+export default function Navbar({
+  openDrawer,
+  menuButtonRef,
+}: {
+  openDrawer: () => void;
+  menuButtonRef: RefObject<HTMLButtonElement>;
+}) {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const locale = useLocale();
@@ -31,10 +37,6 @@ export default function Navbar({ openDrawer }: { openDrawer: () => void; }) {
     const currentTheme = resolvedTheme || theme;
     setTheme(currentTheme === 'dark' ? 'light' : 'dark');
   };
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <nav className="w-full bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
@@ -89,12 +91,15 @@ export default function Navbar({ openDrawer }: { openDrawer: () => void; }) {
               className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
               aria-label="Toggle theme"
             >
-              {resolvedTheme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {mounted && resolvedTheme === 'dark'
+                ? <Sun className="h-5 w-5" />
+                : <Moon className="h-5 w-5" />}
             </button>
           </div>
 
           {/* Mobile Hamburger */}
           <button
+            ref={menuButtonRef}
             onClick={openDrawer}
             className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
             aria-label="Open menu"

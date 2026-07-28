@@ -28,7 +28,7 @@ TODO: Create a function to create a branch
 */
 
 PropertiesService.getScriptProperties().setProperty('YOUR_USERNAME', 'renedeanda');
-PropertiesService.getScriptProperties().setProperty('YOUR_REPO', 'Tech.Viet');
+PropertiesService.getScriptProperties().setProperty('YOUR_REPO', 'viet.io');
 PropertiesService.getScriptProperties().setProperty('GITHUB_KEY', 'XXXXX');
 
 

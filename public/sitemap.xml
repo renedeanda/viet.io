@@ -1,1360 +1,1020 @@
 <?xml version="1.0" encoding="UTF-8"?>
-      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-          
-                      <url>
-                          <loc>https://localhost:3000/about</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/companies</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/market/index</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/vi/about</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/vi/companies</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/vi/index</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/vi/investors</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/vi/market</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/247express</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/9cv9</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/9pay</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/ai-health</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/amanotes</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/ancient8</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/anfin</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/anphabe</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/antbuddy</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/antoree</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/antsvn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/appota</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/artcific</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/axie-infinity</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/azota</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/baolau</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/base.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/bave</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/be_group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/bepos</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/bigtime.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/bitcoin-vietnam</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/bizzi</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/boxme</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/bravo-software-jsc</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/btaskee</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/buy2sell</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/bvnex</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/carota</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/cho-tot</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/choppvn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/citics</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/clevai</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/cloudjet-solutions</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/coc-coc</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/coderschool</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/coin98-finance</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/dat-bike</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/deepview</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/di-vui</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/dibee</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/dichungvn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/digipay-mfast</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/digistar</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/dip_vietnam</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/divmob</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/docosan</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/drobebox</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/dutycast</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/easygop</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/ecotruck</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/edoctor</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/edubit.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/educa-corporation</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/edumall</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/elines</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/elsa</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/emddi</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/everest-education</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/ewayvn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/ezcloud</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/fibo</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/fika</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/finhay</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/finsify-money-lover</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/fonos</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/foodmap</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/foody</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/fpt-corporation</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/freelancerviet.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/fundiin</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/gcalls</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/gencrm</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/giaohangtietkiemvn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/gimo</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/global-care</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/go2joy</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/gocomvn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/godee</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/goong.io</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/gostream</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/got-it</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/gotadi</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/grove-hr</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/hanet</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/haravan</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/hasu</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/heroes-empires</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/hiip</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/hocmaivn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/homebase</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/hoozing</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/houselink-jsc</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/hvn-group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/icheck</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/inet.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/infina</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/internship</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/ipos.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/itviec</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/ivivu</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/izi</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/izihelp</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/jamja</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/jio-health</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/jobhopin</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/jobseeker.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/jupviecvn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/kamereo</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/kardiachain</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/kidpod</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/kilo</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/kiotviet</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/litextension</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/logivan</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/lozi</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/magestore</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/marathon-education</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/marketingworks</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/marry</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/med247</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/medici</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/medigo</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/mio</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/misa</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/mobicast</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/mobifone</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/modmo</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/momo</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/mona</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/movi</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/muabannhanh</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/mystorage</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/mytour-vietnam</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/nano-technologies</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/nct-corporation</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/neoloka</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/nganluong.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/nhadat24h.net</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/nhanhvn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/ohana</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/on-group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/online-management-training</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/onmic</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/opencommerce-group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/oyster</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/papaya</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/payoo</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/phenikaa-maas</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/piktina</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/pixie</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/poc-pharma</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/point-avenue</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/pops-worldwide</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/prep</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/primedata</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/rainbowsvn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/recruitery</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/resident</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/reti</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/rever</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/rfox</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/riviu</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/rootopia</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/s3co.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/saigoneer</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/saladin</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/samo-jsc</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/sapo</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/savemoney</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/savis.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/savyu</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/schola</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/selex-motors</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/selly</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/sendovn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/sieu-viet-group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/sipher</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/smartbooks_co.ltd</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/smartpay</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/smartr</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/sobanhang</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/space-falcon</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/sship</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/startup-oi</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/stemup_dtt</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/stringee</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/subiz</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/summoners-arena</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/suno.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/supership</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/techtrain</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/teky</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/telio</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/tepbac</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/thuocsivn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/tiki-corp</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/timo-bank</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/tinhte.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/tinhvan-group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/tititada</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/topcv</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/topdev</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/tradezi</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/tribee</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/triip</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/triphunter</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/trusting-social</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/unica.vn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vbee</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vccorp</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vega-corp</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vexere</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vhost</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/viecco</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vietcetera</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vietiso</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vietnamobile</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vietnamworks</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vietnix</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vietsearch</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/viettel-group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vietwheels</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vifo</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vigo-retail</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vill-viet-nam</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vimi-studios</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vinabookcom</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vinahost</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vinfast</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vlance</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vleisure</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vndirect</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vng-corp</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vnp-group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vnpay</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vnpt-vinaphone</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vntrip</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/voiz-fm</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vu-phong-solar</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vuihoc</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/vulcan-augmetics</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/websosanhvn</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/webtretho</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/wee-digital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/wellcare</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/wisepass</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/younet-group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/company/zotabox</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/1982-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/500-startups-vietnam</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/access-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/affirma-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/alpha-jwc-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/antler</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/ascend-vietnam-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/beacon-fund</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/beenext</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/blauwpark-partners</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/captii-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/cocoon-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/cyberagent-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/do-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/dragon-capital-group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/east-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/esp-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/expara</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/febe-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/fpt-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/funverse-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/genesia-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/ggv-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/gic</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/global-founders-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/go-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/golden-gate-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/goodwater-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/granite-oak</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/hustle-fund</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/idg-capital-vietnam</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/insignia-ventures-partners</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/inspire-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/integra-partners</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/iseed-sea</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/january-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/jungle-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/kkr</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/kusto-vietnam</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/masan-group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/megala-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/mekong-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/monk-s-hill-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/nextrans-vietnam</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/nexttech-group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/north-base-media</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/openspace-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/patamar-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/pavilion-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/phoenix-holdings</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/reapra</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/resolution-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/rtp-global</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/saison-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/seedcom</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/smilegate-investment</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/softbank-investment-advisers</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/softbank-ventures-asia</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/square-peg-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/summit-media</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/surge</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/theventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/thinkzone-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/tiger-global-management</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/tnb-aura</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/touchstone-partners</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/trihill-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/venturra-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/vic-partners</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/viet-capital-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/vietnam-investments-group</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/viisa</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/vinacapital-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/vnv-global</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/vsv-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/vulpes-ventures</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/warburg-pincus</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/wavemaker-partners</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/z-venture-capital</loc>
-                      </url>
-                  
-                      <url>
-                          <loc>https://localhost:3000/investors/zone-startups-vietnam</loc>
-                      </url>
-                  
-      </urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://viet.io/about</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/companies</loc>
+  </url>
+  <url>
+    <loc>https://viet.io</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/market</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/vi/about</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/vi/companies</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/vi</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/vi/investors</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/vi/market</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/247express</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/9cv9</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/9pay</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/ai-health</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/amanotes</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/ancient8</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/anfin</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/anphabe</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/antbuddy</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/antoree</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/antsvn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/appota</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/artcific</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/axie-infinity</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/azota</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/baolau</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/base.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/bave</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/be_group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/bepos</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/bigtime.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/bitcoin-vietnam</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/bizzi</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/boxme</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/bravo-software-jsc</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/btaskee</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/buy2sell</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/bvnex</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/carota</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/cho-tot</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/choppvn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/citics</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/clevai</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/cloudjet-solutions</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/coc-coc</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/coderschool</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/coin98-finance</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/dat-bike</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/deepview</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/di-vui</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/dibee</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/dichungvn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/digipay-mfast</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/digistar</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/dip_vietnam</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/divmob</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/docosan</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/drobebox</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/dutycast</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/easygop</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/ecotruck</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/edoctor</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/edubit.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/educa-corporation</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/edumall</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/elines</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/elsa</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/emddi</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/everest-education</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/ewayvn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/ezcloud</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/fibo</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/fika</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/finhay</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/finsify-money-lover</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/fonos</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/foodmap</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/foody</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/fpt-corporation</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/freelancerviet.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/fundiin</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/gcalls</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/gencrm</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/giaohangtietkiemvn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/gimo</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/global-care</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/go2joy</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/gocomvn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/godee</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/goong.io</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/gostream</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/got-it</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/gotadi</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/grove-hr</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/hanet</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/haravan</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/hasu</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/heroes-empires</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/hiip</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/hocmaivn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/homebase</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/hoozing</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/houselink-jsc</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/hvn-group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/icheck</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/inet.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/infina</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/internship</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/ipos.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/itviec</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/ivivu</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/izi</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/izihelp</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/jamja</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/jio-health</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/jobhopin</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/jobseeker.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/jupviecvn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/kamereo</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/kardiachain</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/kidpod</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/kilo</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/kiotviet</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/litextension</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/logivan</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/lozi</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/magestore</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/marathon-education</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/marketingworks</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/marry</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/med247</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/medici</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/medigo</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/mio</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/misa</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/mobicast</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/mobifone</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/modmo</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/momo</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/mona</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/movi</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/muabannhanh</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/mystorage</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/mytour-vietnam</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/nano-technologies</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/nct-corporation</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/neoloka</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/nganluong.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/nhadat24h.net</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/nhanhvn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/ohana</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/on-group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/online-management-training</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/onmic</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/opencommerce-group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/oyster</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/papaya</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/payoo</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/phenikaa-maas</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/piktina</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/pixie</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/poc-pharma</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/point-avenue</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/pops-worldwide</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/prep</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/primedata</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/rainbowsvn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/recruitery</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/resident</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/reti</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/rever</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/rfox</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/riviu</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/rootopia</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/s3co.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/saigoneer</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/saladin</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/samo-jsc</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/sapo</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/savemoney</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/savis.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/savyu</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/schola</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/selex-motors</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/selly</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/sendovn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/sieu-viet-group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/sipher</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/smartbooks_co.ltd</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/smartpay</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/smartr</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/sobanhang</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/space-falcon</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/sship</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/startup-oi</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/stemup_dtt</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/stringee</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/subiz</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/summoners-arena</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/suno.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/supership</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/techtrain</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/teky</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/telio</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/tepbac</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/thuocsivn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/tiki-corp</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/timo-bank</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/tinhte.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/tinhvan-group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/tititada</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/topcv</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/topdev</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/tradezi</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/tribee</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/triip</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/triphunter</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/trusting-social</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/unica.vn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vbee</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vccorp</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vega-corp</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vexere</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vhost</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/viecco</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vietcetera</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vietiso</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vietnamobile</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vietnamworks</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vietnix</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vietsearch</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/viettel-group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vietwheels</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vifo</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vigo-retail</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vill-viet-nam</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vimi-studios</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vinabookcom</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vinahost</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vinfast</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vlance</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vleisure</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vndirect</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vng-corp</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vnp-group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vnpay</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vnpt-vinaphone</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vntrip</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/voiz-fm</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vu-phong-solar</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vuihoc</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/vulcan-augmetics</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/websosanhvn</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/webtretho</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/wee-digital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/wellcare</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/wisepass</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/younet-group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/company/zotabox</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/1982-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/500-startups-vietnam</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/access-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/affirma-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/alpha-jwc-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/antler</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/ascend-vietnam-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/beacon-fund</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/beenext</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/blauwpark-partners</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/captii-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/cocoon-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/cyberagent-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/do-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/dragon-capital-group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/east-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/esp-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/expara</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/febe-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/fpt-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/funverse-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/genesia-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/ggv-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/gic</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/global-founders-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/go-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/golden-gate-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/goodwater-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/granite-oak</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/hustle-fund</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/idg-capital-vietnam</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/insignia-ventures-partners</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/inspire-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/integra-partners</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/iseed-sea</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/january-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/jungle-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/kkr</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/kusto-vietnam</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/masan-group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/megala-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/mekong-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/monk-s-hill-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/nextrans-vietnam</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/nexttech-group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/north-base-media</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/openspace-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/patamar-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/pavilion-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/phoenix-holdings</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/reapra</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/resolution-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/rtp-global</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/saison-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/seedcom</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/smilegate-investment</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/softbank-investment-advisers</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/softbank-ventures-asia</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/square-peg-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/summit-media</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/surge</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/theventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/thinkzone-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/tiger-global-management</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/tnb-aura</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/touchstone-partners</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/trihill-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/venturra-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/vic-partners</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/viet-capital-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/vietnam-investments-group</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/viisa</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/vinacapital-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/vnv-global</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/vsv-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/vulpes-ventures</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/warburg-pincus</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/wavemaker-partners</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/z-venture-capital</loc>
+  </url>
+  <url>
+    <loc>https://viet.io/investors/zone-startups-vietnam</loc>
+  </url>
+</urlset>

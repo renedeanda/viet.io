@@ -15,8 +15,6 @@ export default function InvestorPage({ investor, related }: { investor: Investor
     ? `${investor.name} — ${shortDesc}… ${investor.type || 'Investor'} active in Vietnam startups. Profile, portfolio and links on Viet.io.`
     : `${investor.name}, ${investor.type ? `a ${investor.type} investor` : 'an investor'} active in Vietnam's startup ecosystem. Profile, portfolio and links on Viet.io.`
 
-  const screenSrc = `/img/investor/${investor.slug}-screenshot.png`
-
   return (
     <>
       <Meta
@@ -24,7 +22,7 @@ export default function InvestorPage({ investor, related }: { investor: Investor
         desc={description}
         keywords={`${investor.name}, ${investor.type} Vietnam, Vietnam venture capital, Vietnam startup investors`}
         canonical={`https://viet.io/investors/${investor.slug}`}
-        image={screenSrc}
+        image={`/og/investor/${investor.slug}.png`}
         jsonLd={[
           investorSchema(investor),
           breadcrumbSchema([
@@ -43,7 +41,7 @@ export default function InvestorPage({ investor, related }: { investor: Investor
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const investorsDirectory = path.join(process.cwd(), '/public/data/investors')
-  const filenames = fs.readdirSync(investorsDirectory)
+  const filenames = fs.readdirSync(investorsDirectory).filter((filename) => filename.endsWith('.json'))
 
   const paths = filenames.map((filename) => {
     const filePath = path.join(investorsDirectory, filename)
@@ -66,6 +64,7 @@ export const getStaticProps: GetStaticProps = async context => {
 
   // Related investors of the same type (slim fields only)
   const related: RelatedInvestor[] = fs.readdirSync(investorsDirectory)
+    .filter((filename) => filename.endsWith('.json'))
     .map((filename) => JSON.parse(fs.readFileSync(path.join(investorsDirectory, filename), 'utf8')))
     .filter((item: Investor) => item.slug !== investor.slug && item.type === investor.type)
     .slice(0, 6)

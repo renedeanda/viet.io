@@ -1,124 +1,146 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 
-// Helper function to escape special regex characters
-function escapeRegExp(string: string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+interface SearchItem {
+  data: {
+    name: string;
+    slug: string;
+    tagline?: string;
+    description?: string;
+  };
 }
 
-const initialState = {
-  loading: false,
-  results: [],
-  value: '',
-  showResults: false,
-}
-
-function searchReducer(state, action) {
-  switch (action.type) {
-    case 'CLEAN_QUERY':
-      return initialState
-    case 'START_SEARCH':
-      return { ...state, loading: true, value: action.query, showResults: true }
-    case 'FINISH_SEARCH':
-      return { ...state, loading: false, results: action.results }
-    case 'UPDATE_SELECTION':
-      return { ...state, value: action.selection, showResults: false }
-    case 'HIDE_RESULTS':
-      return { ...state, showResults: false }
-    default:
-      throw new Error()
-  }
-}
-
-export default function MySearch({ items, openItem, type, placeholder }: {
-  items: any[],
-  openItem: any,
-  type: string,
-  placeholder?: string
+export default function MySearch({
+  items,
+  value,
+  onValueChange,
+  hrefForItem,
+  placeholder,
+  noResultsText,
+}: {
+  items: SearchItem[];
+  value: string;
+  onValueChange: (value: string) => void;
+  hrefForItem: (item: SearchItem['data']) => string;
+  placeholder: string;
+  noResultsText: (query: string) => string;
 }) {
-  const [state, dispatch] = React.useReducer(searchReducer, initialState)
-  const { loading, results, value, showResults } = state
-  const searchRef = useRef<HTMLDivElement>(null)
+  const router = useRouter();
+  const listboxId = useId();
+  const inputId = useId();
+  const searchRef = useRef<HTMLDivElement>(null);
+  const [showResults, setShowResults] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+
+  const results = useMemo(() => {
+    const query = value.trim().toLocaleLowerCase();
+    if (!query) return [];
+    return items.filter((item) => item.data.name.toLocaleLowerCase().includes(query));
+  }, [items, value]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
-        dispatch({ type: 'HIDE_RESULTS' })
+        setShowResults(false);
+        setActiveIndex(-1);
       }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    if (activeIndex >= results.length) setActiveIndex(results.length - 1);
+  }, [activeIndex, results.length]);
+
+  const chooseResult = (item: SearchItem) => {
+    setShowResults(false);
+    setActiveIndex(-1);
+    void router.push(hrefForItem(item.data));
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Escape') {
+      setShowResults(false);
+      setActiveIndex(-1);
+      return;
     }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value
-    dispatch({ type: 'START_SEARCH', query })
+    if (!showResults || results.length === 0) return;
 
-    setTimeout(() => {
-      if (query.length === 0) {
-        dispatch({ type: 'CLEAN_QUERY' })
-        return
-      }
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      setActiveIndex((current) => Math.min(current + 1, results.length - 1));
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      setActiveIndex((current) => Math.max(current - 1, 0));
+    } else if (event.key === 'Enter' && activeIndex >= 0) {
+      event.preventDefault();
+      chooseResult(results[activeIndex]);
+    }
+  };
 
-      const re = new RegExp(escapeRegExp(query), 'i')
-      const isMatch = (result) => re.test(result.data.name)
-
-      dispatch({
-        type: 'FINISH_SEARCH',
-        results: items.filter(isMatch),
-      })
-    }, 300)
-  }
-
-  const handleResultClick = (item: any) => {
-    openItem(item.data)
-    dispatch({ type: 'UPDATE_SELECTION', selection: item.data.name })
-  }
+  const expanded = showResults && value.trim().length > 0;
 
   return (
     <div ref={searchRef} className="relative w-full max-w-2xl mx-auto">
-      <div className="relative">
-        <input
-          type="text"
-          placeholder={placeholder || `Search ${type}`}
-          value={value}
-          onChange={handleSearchChange}
-          className="w-full px-4 py-3 text-base rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
-        />
-        {loading && (
-          <div className="absolute right-3 top-1/2 -translate-y-1/2">
-            <div className="animate-spin h-5 w-5 border-2 border-primary border-t-transparent rounded-full"></div>
-          </div>
-        )}
-      </div>
+      <label htmlFor={inputId} className="sr-only">{placeholder}</label>
+      <input
+        id={inputId}
+        type="search"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-expanded={expanded}
+        aria-controls={listboxId}
+        aria-activedescendant={activeIndex >= 0 ? `${listboxId}-${activeIndex}` : undefined}
+        placeholder={placeholder}
+        value={value}
+        onFocus={() => value.trim() && setShowResults(true)}
+        onChange={(event) => {
+          onValueChange(event.target.value);
+          setShowResults(true);
+          setActiveIndex(-1);
+        }}
+        onKeyDown={handleKeyDown}
+        className="w-full px-4 py-3 text-base rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
+      />
 
-      {showResults && results.length > 0 && (
-        <div className="absolute z-50 w-full mt-2 bg-popover border border-border rounded-xl shadow-lg max-h-96 overflow-y-auto">
-          {results.map((item: any, index: number) => (
-            <div
-              key={index}
-              onClick={() => handleResultClick(item)}
-              className="group px-4 py-3 hover:bg-secondary cursor-pointer border-b border-border last:border-b-0 transition-colors duration-200"
+      {expanded && results.length > 0 && (
+        <div
+          id={listboxId}
+          role="listbox"
+          className="absolute z-50 w-full mt-2 bg-popover border border-border rounded-xl shadow-lg max-h-96 overflow-y-auto"
+        >
+          {results.map((item, index) => (
+            <button
+              id={`${listboxId}-${index}`}
+              key={item.data.slug}
+              type="button"
+              role="option"
+              aria-selected={activeIndex === index}
+              onMouseEnter={() => setActiveIndex(index)}
+              onClick={() => chooseResult(item)}
+              className={`block w-full px-4 py-3 text-left border-b border-border last:border-b-0 transition-colors ${
+                activeIndex === index ? 'bg-secondary' : 'hover:bg-secondary'
+              }`}
             >
-              <div className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                {item.data.name}
-              </div>
-              {item.data.tagline && (
-                <div className="text-sm text-muted-foreground mt-1 line-clamp-1">
-                  {item.data.tagline}
-                </div>
+              <span className="block font-semibold text-foreground">{item.data.name}</span>
+              {(item.data.tagline || item.data.description) && (
+                <span className="block text-sm text-muted-foreground mt-1 line-clamp-1">
+                  {item.data.tagline || item.data.description}
+                </span>
               )}
-            </div>
+            </button>
           ))}
         </div>
       )}
 
-      {showResults && value && results.length === 0 && !loading && (
-        <div className="absolute z-50 w-full mt-2 bg-popover border border-border rounded-xl shadow-lg p-4">
-          <div className="text-center text-muted-foreground">
-            No results found for &quot;{value}&quot;
-          </div>
+      {expanded && results.length === 0 && (
+        <div role="status" className="absolute z-50 w-full mt-2 bg-popover border border-border rounded-xl shadow-lg p-4">
+          <div className="text-center text-muted-foreground">{noResultsText(value)}</div>
         </div>
       )}
     </div>
-  )
+  );
 }
