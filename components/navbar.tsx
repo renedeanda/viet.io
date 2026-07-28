@@ -3,6 +3,12 @@ import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { Menu, Sun, Moon, Github } from 'lucide-react';
 
+const navLinks = [
+  { href: '/companies', label: 'Companies' },
+  { href: '/investors', label: 'Investors' },
+  { href: '/market', label: 'Market' },
+];
+
 export default function Navbar({ openDrawer }: { openDrawer: () => void; }) {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -22,53 +28,49 @@ export default function Navbar({ openDrawer }: { openDrawer: () => void; }) {
   }
 
   return (
-    <nav className="w-full bg-white dark:bg-[#161B22] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-14">
+    <nav className="w-full bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-            Viet.io
+          <Link href="/" className="text-xl font-bold tracking-tight text-foreground hover:text-primary transition-colors">
+            Viet<span className="text-primary">.io</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              aria-label="Toggle theme"
-            >
-              {resolvedTheme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </button>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
 
             <a
               href="https://github.com/renedeanda/Tech.Viet"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center gap-2"
+              className="px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors flex items-center gap-2"
             >
               <Github className="h-4 w-4" />
               GitHub
             </a>
 
-            <Link
-              href="/companies"
-              className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              aria-label="Toggle theme"
             >
-              Companies
-            </Link>
-
-            <Link
-              href="/investors"
-              className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            >
-              Investors
-            </Link>
+              {resolvedTheme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </button>
           </div>
 
           {/* Mobile Hamburger */}
           <button
             onClick={openDrawer}
-            className="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
             aria-label="Open menu"
           >
             <Menu className="h-6 w-6" />
