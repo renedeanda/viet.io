@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
+# Answer and search agents that fetch pages when someone asks a question.
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+
 Sitemap: https://viet.io/sitemap.xml
