@@ -1,0 +1,18 @@
+// Cloudflare Workers deployment: serve the static export in out/ as assets, with no Worker code.
+// Committing this file stops `wrangler deploy` from auto-configuring the OpenNext adapter, which needs a server
+// build and fails on `output: "export"`. Deploy with `npm run deploy:cloudflare` (see iBootstrap/docs/COMPANION_SITES.md).
+{
+  "$schema": "https://unpkg.com/wrangler@4.162.0/config-schema.json",
+  // Must match the Worker's name in the Cloudflare dashboard.
+  "name": "viet-io",
+  "compatibility_date": "2026-11-13",
+  "assets": {
+    "directory": "./out",
+    // /page serves out/page.html; /page/ and /page.html redirect to /page (folders: /dir/ serves dir/index.html).
+    "html_handling": "auto-trailing-slash",
+    // Unknown paths get out/404.html with a real 404 status.
+    "not_found_handling": "404-page"
+  },
+  // Worker Previews for non-production branches (`npm run preview:cloudflare`); they reuse the assets config above.
+  "previews": {}
+}

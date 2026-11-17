@@ -59,6 +59,16 @@ Special thanks to [Franck](https://github.com/pfranck) for automating company su
 
 Feel free to connect with me on [LinkedIn](https://linkedin.com/in/renedeanda).
 
+## Deployment (Cloudflare Workers)
+
+The site is a static export (`out/`). `wrangler.jsonc` serves it as Cloudflare Workers static assets, with no Worker code. Keep it committed: without it, `wrangler deploy` auto-installs the OpenNext adapter, which fails on a static export.
+
+- Build command: `npm run build`
+- Deploy command (production branch): `npm run deploy:cloudflare`
+- Preview command (other branches, optional): `npm run preview:cloudflare` (every preview page is sent `noindex`)
+
+Wrangler is pinned through `npx wrangler@4.162.0` in those scripts rather than as a dependency, so `yarn.lock` and `package-lock.json` stay untouched. `npx wrangler@4.162.0 dev` serves a built `out/` locally the way Cloudflare will.
+
 ## License
 
 Viet.io is distributed under the MIT license. See [LICENSE](https://github.com/renedeanda/viet.io/blob/master/LICENSE.md) for details.
