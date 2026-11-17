@@ -67,7 +67,7 @@ The site is a static export (`out/`). `wrangler.jsonc` serves it as Cloudflare W
 - Deploy command (production branch): `npm run deploy:cloudflare`
 - Preview command (other branches, optional): `npm run preview:cloudflare` (every preview page is sent `noindex`)
 
-Wrangler is pinned through `npx wrangler@4.162.0` in those scripts rather than as a dependency, so `yarn.lock` and `package-lock.json` stay untouched. `npx wrangler@4.162.0 dev` serves a built `out/` locally the way Cloudflare will.
+Wrangler is pinned through `npx wrangler@4.162.0` in those scripts rather than as a dependency, so `package-lock.json` stays untouched. `npx wrangler@4.162.0 dev` serves a built `out/` locally the way Cloudflare will.
 
 ## License
 

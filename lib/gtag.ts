@@ -1,4 +1,5 @@
-export const GA_TRACKING_ID = 'UA-109309630-7'
+// Set at build time from NEXT_PUBLIC_GA_MEASUREMENT_ID (next.config.mjs); empty on preview builds.
+export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: String) => {
