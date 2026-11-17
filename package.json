@@ -1,7 +1,6 @@
 {
   "name": "viet.io",
   "version": "1.0.0",
-  "type": "commonjs",
   "private": true,
   "engines": {
     "node": ">=20.9.0"
@@ -28,22 +27,20 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.18.2",
     "lucide-react": "^0.562.0",
-    "next": "^15.5.22",
+    "next": "^16.4.6",
     "next-themes": "^0.4.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "react-markdown": "^9.0.1",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
     "@types/gtag.js": "0.0.18",
     "@types/node": "^20.10.6",
-    "@types/react": "^18.2.46",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
+    "@types/react": "^19.3.0",
     "autoprefixer": "^10.4.23",
-    "eslint": "^8.56.0",
-    "eslint-config-next": "^15.5.16",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.6",
     "globby": "^14.0.0",
     "postcss": "^8.5.18",
     "sharp": "^0.35.3",
