@@ -10,8 +10,8 @@ export default {
         unoptimized: true,
         qualities: [60]
     },
-    // NEXT_PUBLIC_GA_MEASUREMENT_ID is the variable name every portfolio site uses. Preview builds (Vercel or
-    // Cloudflare) ship without Google Analytics, so they never count as visits.
+    // NEXT_PUBLIC_GA_MEASUREMENT_ID is the variable name every portfolio site uses. Preview builds ship without
+    // Google Analytics, so they never count as visits.
     env: {
         // This repository's production branch is `master` (isPreviewBuild assumes `main` otherwise).
         NEXT_PUBLIC_GA_MEASUREMENT_ID: isPreviewBuild({ ...process.env, PRODUCTION_BRANCH: process.env.PRODUCTION_BRANCH || 'master' })

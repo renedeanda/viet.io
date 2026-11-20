@@ -1,0 +1,13 @@
+# Served by Cloudflare Workers static assets. Rules that match one request merge, and a header set twice is
+# joined with a comma, so each header is set in one rule only. Limits: 100 rules, 2,000 characters a line.
+# Shared baseline (iBootstrap templates/site/public/_headers); site rules follow it.
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), browsing-topics=()
+
+# Hashed build files never change under the same name.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
