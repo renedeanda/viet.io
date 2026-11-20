@@ -15,8 +15,8 @@
     "optimize:images": "node scripts/optimize-images.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "deploy:cloudflare": "node scripts/cloudflare-headers.mjs && npx --yes wrangler@4.162.0 deploy",
-    "preview:cloudflare": "node scripts/cloudflare-headers.mjs --preview && npx --yes wrangler@4.162.0 preview"
+    "deploy:cloudflare": "npx --yes wrangler@4.162.0 deploy",
+    "preview:cloudflare": "node scripts/preview-noindex.mjs && npx --yes wrangler@4.162.0 preview"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
