@@ -6,6 +6,10 @@
   // Must match the Worker's name in the Cloudflare dashboard.
   "name": "viet-io",
   "compatibility_date": "2026-11-13",
+  // Serve on the custom domain only: no *.workers.dev URL and no per-version preview URLs. `wrangler deploy` applies
+  // both settings from this file, so a deploy never switches them back on in the dashboard.
+  "workers_dev": false,
+  "preview_urls": false,
   "assets": {
     "directory": "./out",
     // /page serves out/page.html; /page/ and /page.html redirect to /page (folders: /dir/ serves dir/index.html).
