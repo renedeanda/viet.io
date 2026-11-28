@@ -1,0 +1,17 @@
+{
+    "name": "VietnamDevs",
+    "slug": "vietnamdevs",
+    "website": "vietnamdevs.com",
+    "industry": "HR / Recruitment",
+    "tagline": "Find tech jobs in Vietnam for English speakers",
+    "logoUrl": "/img/company/vietnamdevs-avatar.png",
+    "description": "Hand-picked software engineer jobs in Vietnam for English speakers. Jobs from good local and global tech companies.",
+    "facebook": "fb.com/vietnamdevsdotcom",
+    "linkedin": "https://www.linkedin.com/company/vietnamdevs",
+    "blogUrl": "https://vietnamdevs.com/blog",
+    "androidUrl": "",
+    "iosUrl": "",
+    "demoUrl": "",
+    "hiring": false,
+    "businessType": "Both"
+}
